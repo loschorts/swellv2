@@ -1,0 +1,26 @@
+{
+  "name": "swellv2",
+  "version": "1.0.0",
+  "description": "swellular device",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/loschorts/swellv2.git"
+  },
+  "author": "kenjamin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loschorts/swellv2/issues"
+  },
+  "homepage": "https://github.com/loschorts/swellv2#readme",
+  "devDependencies": {
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
