@@ -160,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bundler
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
@@ -175,4 +176,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
