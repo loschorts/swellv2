@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: swellv2_production
-  username: swellv2
-  password: <%= ENV['SWELLV2_DATABASE_PASSWORD'] %>
