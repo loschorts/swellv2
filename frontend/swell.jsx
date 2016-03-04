@@ -12,14 +12,10 @@ window.ApiUtil = require('./utils/api_util');
 
 var routes = (
 	<Router history={browserHistory}>
-		<Route path="/" component={App}/>
+		<Route path="/app" component={App}/>
 	</Router>
 	);
 
-var APP_PATH = "/app";
-
-if (window.location.pathname = APP_PATH) {
-	document.addEventListener("DOMContentLoaded", function(){
-		ReactDOM.render(routes, document.getElementById("swell"));
-	});
-}
+document.addEventListener("DOMContentLoaded", function(){
+	ReactDOM.render(routes, document.getElementById("swell"));
+});

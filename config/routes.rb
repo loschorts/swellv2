@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :spots, only: [:show, :index]
   end
 
-  root to: "pages#home"
+  root to: "pages#splash"
 
-  get "main" => "pages#main"
+  get "/app", to: "pages#index"
 
   
   # The priority is based upon order of creation: first created -> highest priority.
