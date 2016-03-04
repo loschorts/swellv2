@@ -14,13 +14,13 @@ module.exports = {
 	},
 	loginUser: function(user){
 		$.ajax({
-			url: 'session',
+			url: 'api/session',
 			method: 'post',
 			data: {user: user},
 			success: function(data){
 				console.log(data);
 			},
-			error: function(data){
+			error: function(error){
 				console.log(error);
 			}
 		});
