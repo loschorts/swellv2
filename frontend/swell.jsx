@@ -3,6 +3,7 @@ var ReactDOM = require("react-dom");
 
 var Router = require("react-router").Router;
 var Route = require("react-router").Route;
+var IndexRoute = require("react-router").IndexRoute;
 var browserHistory = require("react-router").browserHistory;
 
 var App = require('./components/app');
@@ -15,6 +16,10 @@ var routes = (
 	</Router>
 	);
 
-document.addEventListener("DOMContentLoaded", function(){
-	ReactDOM.render(routes, document.getElementById("swell"));
-});
+var APP_PATH = "/app";
+
+if (window.location.pathname = APP_PATH) {
+	document.addEventListener("DOMContentLoaded", function(){
+		ReactDOM.render(routes, document.getElementById("swell"));
+	});
+}
