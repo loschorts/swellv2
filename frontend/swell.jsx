@@ -17,5 +17,8 @@ var routes = (
 	);
 
 document.addEventListener("DOMContentLoaded", function(){
-	ReactDOM.render(routes, document.getElementById("swell"));
+	var hook = document.getElementById("swell");
+	if (hook){
+		ReactDOM.render(routes, hook);
+	}
 });
