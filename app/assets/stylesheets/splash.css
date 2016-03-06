@@ -1,21 +1,31 @@
 #background { 
+    z-index: -2;
+    height: 100%;
+}
+
+.page-centered {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2;
     transform: translate(-50%, -50%);
+}
+
+.hidden {
+    opacity: 0;
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
+
+}
+
+.fade-in {
+    opacity: 1;
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
 }
 
 h1 {
 	font-family: sans-serif;
 	color: white;
-	position: fixed;
-	top: 50%;
-	left: 50%;
 }
 
 a {
@@ -23,15 +33,7 @@ a {
     color: white;
 }
 
-#filter {
-    background: #33ccff;
-    opacity: .1;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
+a:hover {
+    text-decoration: none;
+    color: white;
 }

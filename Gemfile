@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'figaro'
+gem 'cloudinary'
 #for auth
 gem 'bcrypt'
 #for heroku

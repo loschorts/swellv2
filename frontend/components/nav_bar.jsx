@@ -4,8 +4,9 @@ var CurrentUserState = require("../modules/current_user_state");
 var NavBar = React.createClass({
 	mixins: [CurrentUserState],
 	render: function(){
-		<nav className="nav-bar">
-		</nav>
+		return (
+			<nav className="nav-bar"></nav>
+		);
 	}
 });
 
