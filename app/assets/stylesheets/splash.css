@@ -1,4 +1,4 @@
-video#bgvid { 
+#background { 
     position: fixed;
     top: 0%;
     left: 0%;
@@ -18,13 +18,13 @@ h1 {
 }
 
 a {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 
-div#filter {
+#filter {
     background: #33ccff;
-    opacity: .4;
+    opacity: .1;
     position: fixed;
     top: 0%;
     left: 0%;

@@ -1,8 +1,22 @@
 var React = require("react");
- 
+var NavBar = require("./nav_bar");
+var UserStore = require('../stores/user_store');
+var UserApiUtil = require('../utils/user_api_util');
+var CurrentUserState = require('../modules/current_user_state');
+
+window.UserApiUtil = UserApiUtil;
+
 var App = React.createClass({
+	mixins: [CurrentUserState],
+	componentDidMount: function(){
+	},
 	render: function(){
-		return (<div>Hello</div>);
+		return (
+			<div id="app-container">
+				<NavBar/>
+				{this.props.children}
+			</div>
+			);
 	}
 });
 

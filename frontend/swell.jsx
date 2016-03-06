@@ -6,9 +6,9 @@ var Route = require("react-router").Route;
 var IndexRoute = require("react-router").IndexRoute;
 var browserHistory = require("react-router").browserHistory;
 
-var App = require('./components/app');
+var App = require("./components/app");
 
-window.ApiUtil = require('./utils/api_util');
+window.UserApiUtil = require("./utils/user_api_util");
 
 var routes = (
 	<Router history={browserHistory}>

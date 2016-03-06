@@ -1,11 +1,16 @@
-module.exports = {
+var UserStore = require("../stores/user_store");
+var AppDispatcher = require('../stores/dispatcher');
+var UserApiUtil = {
 	createUser: function(user){
 		$.ajax({
 			url: 'api/users',
 			method: 'post',
 			data: {user: user},
-			success: function(data){
-				console.log(data);
+			success: function(response){
+				AppDispatcher.dispatch({
+					actionType: "LOGIN",
+					user: response
+				});
 			},
 			error: function(error){
 				console.log(error);
@@ -18,7 +23,10 @@ module.exports = {
 			method: 'post',
 			data: {user: user},
 			success: function(data){
-				console.log(data);
+				AppDispatcher.dispatch({
+					actionType: "LOGIN",
+					user: data
+				});
 			},
 			error: function(error){
 				console.log(error);
@@ -30,7 +38,9 @@ module.exports = {
 			url: 'api/session',
 			method: 'delete',
 			success: function(data){
-				console.log(data);
+				AppDispatcher.dispatch({
+					actionType: "LOGOUT"
+				});
 			},
 			error: function(error){
 				console.log(error);
@@ -42,7 +52,10 @@ module.exports = {
 			url: 'api/session',
 			method: 'get',
 			success: function(data){
-				console.log(data);
+				AppDispatcher.dispatch({
+					actionType: "LOGIN",
+					user: data
+				});
 			},
 			error: function(error){
 				console.log(error);
@@ -50,3 +63,5 @@ module.exports = {
 		});
 	}
 };
+
+module.exports = UserApiUtil;
