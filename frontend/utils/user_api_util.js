@@ -13,7 +13,6 @@ var UserApiUtil = {
 				});
 			},
 			error: function(error){
-				console.log(error);
 			}
 		});
 	},
@@ -29,7 +28,6 @@ var UserApiUtil = {
 				});
 			},
 			error: function(error){
-				console.log(error);
 			}
 		});
 	},
@@ -43,7 +41,6 @@ var UserApiUtil = {
 				});
 			},
 			error: function(error){
-				console.log(error);
 			}
 		});
 	},
@@ -58,7 +55,6 @@ var UserApiUtil = {
 				});
 			},
 			error: function(error){
-				console.log(error);
 			}
 		});
 	}
