@@ -57,6 +57,9 @@ var UserApiUtil = {
 			error: function(error){
 			}
 		});
+	},
+	guestLogin: function(){
+		this.login({username: "guest", password: "password"});
 	}
 };
 

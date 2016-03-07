@@ -10,3 +10,4 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 User.create(username: "loschorts", email: "ken@ken.com", password: "kenken")
 User.create(username: "audball", email: "audrey@audrey.com", password: "kenissexy")
+User.create(username: "guest", email: "guest@guest.com", password: "password")

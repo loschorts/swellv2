@@ -4,12 +4,25 @@ var CheckIfExists = require("../modules/check_if_exists");
 var NavBarForm = require("./nav_bar_form");
 var MenuItem = require("./menu_item");
 var browserHistory = require("react-router").browserHistory;
+var UserApiUtil = require("../utils/user_api_util");
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
+
 
 var NavBar = React.createClass({
-	mixins: [CurrentUserState, CheckIfExists],
+	mixins: [CurrentUserState, CheckIfExists, LinkedStateMixin],
 	handleClick: function(e){
 		var formName = e.currentTarget.pathname.slice(1);
-		this.setState({formName: formName});
+		switch (formName) {
+			case "logout":
+				UserApiUtil.logout();
+				break;
+			case "guest": 
+				UserApiUtil.guestLogin();
+				break;
+			default: 
+				this.setState({formName: formName});
+				break;
+		}
 	},
 	preRender: function(){
 		if (this.state.user){
