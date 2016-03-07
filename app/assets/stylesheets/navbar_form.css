@@ -1,9 +1,10 @@
 nav .user-form {
+	display: block;
 	padding: 0px 10px;
 	margin: 0px;
 	margin-top: -4px;
 	height: 100%;
-
+	float: right;
 }
 
 .user-form * {
@@ -11,10 +12,6 @@ nav .user-form {
 	margin-right: 3px;
 }
 
-.user-form .form-input {
-}
-
 .user-form .form-submit {
-	max-height: 5%;
 	border-radius: 5px;
 }

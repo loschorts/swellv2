@@ -9,12 +9,12 @@ var NavBar = React.createClass({
 	preRender: function(){
 		if (this.state.user){
 			this.greeting = <a href="#">{"hi there, " + this.state.user.username}</a>;
-			this.signIn = <li><a href="signin">switch accounts</a></li>
-			this.signOut = <li><a href="signout">sign out</a></li>
+			this.signIn = <MenuItem href="login" text="switch accounts"/>
+			this.signOut = <MenuItem href="logout" text="log out"/>
 		} else {
 			this.greeting = <a href="#">hi there</a>;
-			this.signIn = <li><a href="signin">log in</a></li>
-			this.signOut = <li><a href="new">create an account</a></li>
+			this.signIn = <MenuItem href="login" text="login"/>
+			this.signOut = <MenuItem href="new" text="create account"/>
 		}
 	},
 	render: function(){
@@ -27,10 +27,10 @@ var NavBar = React.createClass({
 					<ul className="nav-item menu-items group">
 						{this.signIn}
 						{this.signOut}
-						<li><a href="guest">guest login</a></li>
+						<MenuItem href="guest" text="guest login"/>
 					</ul>
-					<NavBarForm action={this.state.action}/>
 				</div>
+				<NavBarForm action={this.state.action}/>
 
 			</nav>
 		);
