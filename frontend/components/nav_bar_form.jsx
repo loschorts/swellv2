@@ -9,6 +9,18 @@ var NavBarForm = React.createClass({
 			password: undefined
 		};
 	},
+	handleSubmit: function(e){
+		console.log(e);
+		e.preventDefault();
+		switch (this.props.action) {
+			case "login": 
+				UserApiUtil.login(this.state);
+				break;
+			case "create": 
+				USserApiUtil.createUser(this.state);
+				break;
+		}
+	},
 	render: function(){
 		return (
 			<div className="nav-item user-form right group">
@@ -25,7 +37,11 @@ var NavBarForm = React.createClass({
 						placeholder="password"
 						valueLink={this.linkState('password')}>
 					</input>
-					<input className="form-submit" type="submit" value={this.props.action}></input>
+					<input className="form-submit" 
+						type="submit" 
+						value={this.props.action} 
+						onClick={this.handleSubmit}>
+					</input>
 				</form>
 			</div>	
 			);
