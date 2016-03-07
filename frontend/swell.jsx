@@ -8,8 +8,6 @@ var browserHistory = require("react-router").browserHistory;
 
 var App = require("./components/app");
 
-window.UserApiUtil = require("./utils/user_api_util");
-
 var routes = (
 	<Router history={browserHistory}>
 		<Route path="/app" component={App}/>
