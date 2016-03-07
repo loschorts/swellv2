@@ -33,7 +33,7 @@ a.splash {
     color: white;
 }
 
-a:hover {
+a.splash:hover {
     text-decoration: none;
     color: white;
 }

@@ -1,0 +1,34 @@
+nav {
+	background-color: blue;
+	height: 50px;
+}
+
+.nav-item {
+	margin: auto 0px;
+	position: relative;
+	top: 25%;
+}
+
+ul.nav-item {
+	width: 25%;
+	height: 100%;
+	padding: 0px;
+	list-style: none;
+	float: right;
+}
+
+a.nav-item {
+	float: left;
+}
+
+ul.nav-item li {
+	text-align: right;
+	margin: 0;
+}
+
+#swell {
+	background: #fff;
+	width: 85%;
+	overflow: auto;
+	margin: auto;
+}
