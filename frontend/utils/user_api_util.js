@@ -52,6 +52,7 @@ var UserApiUtil = {
 			url: 'api/session',
 			method: 'get',
 			success: function(data){
+				console.log('fetchcurrentuser', data)
 				AppDispatcher.dispatch({
 					actionType: "LOGIN",
 					user: data

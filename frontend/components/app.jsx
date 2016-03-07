@@ -7,8 +7,8 @@ var CurrentUserState = require('../modules/current_user_state');
 window.UserApiUtil = UserApiUtil;
 
 var App = React.createClass({
-	mixins: [CurrentUserState],
 	componentDidMount: function(){
+		UserApiUtil.fetchCurrentUser();
 	},
 	render: function(){
 		return (

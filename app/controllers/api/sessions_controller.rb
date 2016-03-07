@@ -21,7 +21,7 @@ class Api::SessionsController < ApplicationController
 		if @user
 			render 'api/users/show' 
 		else
-			render json: nil
+			render json: {error: 'no one logged in'}, status: 422
 		end
 	end
 

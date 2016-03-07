@@ -3,7 +3,7 @@ var Store = require('flux/utils').Store;
 
 var UserStore = new Store(AppDispatcher);
 
-var _currentUser = null;
+var _currentUser;
 
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -23,7 +23,7 @@ UserStore.login = function(user){
 };
 
 UserStore.logout = function(){
-	return _currentUser = null;
+	return _currentUser = undefined;
 };
 
 UserStore.currentUser = function(){

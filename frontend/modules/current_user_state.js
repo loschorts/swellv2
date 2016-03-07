@@ -9,7 +9,6 @@ var CurrentUserState = {
 	},
 	componentDidMount: function(){
 		UserStore.addListener(this.updateUser);
-		UserApiUtil.fetchCurrentUser();
 	},
 	updateUser: function(){
 		this.setState({currentUser: UserStore.currentUser()});
