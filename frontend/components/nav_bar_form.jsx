@@ -25,7 +25,7 @@ var NavBarForm = React.createClass({
 						placeholder="password"
 						valueLink={this.linkState('password')}>
 					</input>
-					<input className="form-submit" type="submit"></input>
+					<input className="form-submit" type="submit" value={this.props.action}></input>
 				</form>
 			</div>	
 			);

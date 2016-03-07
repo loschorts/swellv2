@@ -24,9 +24,9 @@
 	top: 12px;
 	background: white;
 	color: gray;
+	padding: 5px;
 }
 
 .menu:hover .menu-items * {
 	display: inherit;
-	margin: 0px;
 }
