@@ -6,4 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: "loschorts", email: "loschorts@gmail.com", password: "kenken")
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+
+User.create(username: "loschorts", email: "ken@ken.com", password: "kenken")
+User.create(username: "audball", email: "audrey@audrey.com", password: "kenissexy")
