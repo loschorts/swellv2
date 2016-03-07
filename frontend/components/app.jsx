@@ -12,7 +12,7 @@ var App = React.createClass({
 	},
 	render: function(){
 		return (
-			<div className="group">
+			<div id="app" className="group">
 				<NavBar/>
 				{this.props.children}
 			</div>

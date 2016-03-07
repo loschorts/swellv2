@@ -6,13 +6,23 @@ var NavBar = React.createClass({
 	mixins: [CurrentUserState, CheckIfExists],
 	render: function(){
 		var username = this.returnIfExists("this.state.currentUser.username");
-		if (username) {username = "hi there, " + username; }
+		if (username) {
+			username = "hi there, " + username; 
+			var sessionButton = "switch accounts";
+		} else {
+			var sessionButton = "log in";
+		}
+
 		return (
 			<nav className="group">
-				<a className="nav-item" href="#"> swell </a>
-				<ul className="nav-item group">
-					<li>{username}</li>
-				</ul>
+				<a className="nav-item left nav-icon" href="#"> swell </a>
+				<div className="nav-item right menu group">
+					<div className="menu-header">{username}</div>
+					<ul className="nav-item right menu-items group">
+						<li>{sessionButton}</li>
+						<li>logout</li>
+					</ul>
+				</div>
 			</nav>
 		);
 	}

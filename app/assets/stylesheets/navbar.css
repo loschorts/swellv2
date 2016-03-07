@@ -1,34 +1,66 @@
 nav {
-	background-color: blue;
-	height: 50px;
+	background-color: #009999;
+	height: 40px;
 }
 
 .nav-item {
 	margin: auto 0px;
 	position: relative;
 	top: 25%;
+	color: white;
 }
 
-ul.nav-item {
-	width: 25%;
-	height: 100%;
+.nav-item.nav-icon {
+	font-weight: bold;
+}
+.nav-item.left {
+	float: left;
+	margin-left: 10px;
+}
+
+.nav-item.right {
+	float: right;
+	margin-right: 10px;
+}
+
+.menu {
 	padding: 0px;
 	list-style: none;
-	float: right;
+	display: block;
 }
 
-a.nav-item {
-	float: left;
+.menu-header {
+	float: inherit;
+	margin: auto;
+	display: block;
+	clear: both;
 }
 
-ul.nav-item li {
-	text-align: right;
+.menu .menu-items {
+	display: none;
+}
+
+.menu:hover .menu-items {
+	display: block;
 	margin: 0;
+	text-align: right;
+	clear: both;
+	top: 12px;
+	background: white;
+	color: gray;
+}
+
+.menu:hover .menu-items * {
+	display: inherit;
+	margin: 0px;
 }
 
 #swell {
-	background: #fff;
-	width: 85%;
-	overflow: auto;
+	background: inherit;
+	width: 100%;
 	margin: auto;
+}
+
+#app {
+	background: inherit;
 }
