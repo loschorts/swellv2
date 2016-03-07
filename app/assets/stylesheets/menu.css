@@ -12,11 +12,11 @@
 }
 
 .menu .menu-items {
-	display: none;
-	
+	visibility: hidden;
 }
 
 .menu:hover .menu-items {
+	visibility: visible;
 	display: block;
 	margin: 0;
 	text-align: right;
