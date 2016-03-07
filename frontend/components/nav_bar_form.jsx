@@ -10,9 +10,9 @@ var NavBarForm = React.createClass({
 		};
 	},
 	handleSubmit: function(e){
-		console.log(e);
 		e.preventDefault();
 		switch (this.props.action) {
+			case "switch":
 			case "login": 
 				UserApiUtil.login(this.state);
 				break;
@@ -24,7 +24,7 @@ var NavBarForm = React.createClass({
 	render: function(){
 		return (
 			<div className="nav-item user-form right group">
-				<form className="form">
+				<form className="form" onSubmit={this.handleSubmit}>
 					<input 
 						className="form-input" 
 						type="text" 
@@ -39,8 +39,7 @@ var NavBarForm = React.createClass({
 					</input>
 					<input className="form-submit" 
 						type="submit" 
-						value={this.props.action} 
-						onClick={this.handleSubmit}>
+						value={this.props.action}>
 					</input>
 				</form>
 			</div>	
