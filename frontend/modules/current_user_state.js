@@ -4,14 +4,15 @@ var CurrentUserState = {
 
 	getInitialState: function(){
 		return {
-			currentUser: UserStore.currentUser()
+			currentUser: UserStore.currentUser(),
+			user: UserStore.currentUser()
 		};
 	},
 	componentDidMount: function(){
 		UserStore.addListener(this.updateUser);
 	},
 	updateUser: function(){
-		this.setState({currentUser: UserStore.currentUser()});
+		this.setState({user: UserStore.currentUser(), currentUser: UserStore.currentUser()});
 	}
 	
 };

@@ -4,23 +4,28 @@ var CheckIfExists = require("../modules/check_if_exists");
 
 var NavBar = React.createClass({
 	mixins: [CurrentUserState, CheckIfExists],
-	render: function(){
-		var username = this.returnIfExists("this.state.currentUser.username");
-		if (username) {
-			username = "hi there, " + username; 
-			var sessionButton = "switch accounts";
+	preRender: function(){
+		if (this.state.user){
+			this.greeting = <a href="#">{"hi there, " + this.state.user.username}</a>;
+			this.signIn = <li><a href="signin">switch accounts</a></li>
+			this.signOut = <li><a href="signout">sign out</a></li>
 		} else {
-			var sessionButton = "log in";
+			this.greeting = <a href="#">hi there</a>;
+			this.signIn = <li><a href="signin">log in</a></li>
+			this.signOut = <li><a href="new">create an account</a></li>
 		}
-
+	},
+	render: function(){
+		this.preRender();
 		return (
 			<nav className="group">
 				<a className="nav-item left nav-icon" href="#"> swell </a>
 				<div className="nav-item right menu group">
-					<div className="menu-header">{username}</div>
+					<div className="menu-header">{this.greeting}</div>
 					<ul className="nav-item right menu-items group">
-						<li>{sessionButton}</li>
-						<li>logout</li>
+						{this.signIn}
+						{this.signOut}
+						<li><a href="guest">guest login</a></li>
 					</ul>
 				</div>
 			</nav>
