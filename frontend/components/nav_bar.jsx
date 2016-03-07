@@ -19,14 +19,21 @@ var NavBar = React.createClass({
 		this.preRender();
 		return (
 			<nav className="group">
-				<a className="nav-item left nav-icon" href="#"> swell </a>
+				<div className="nav-item left nav-icon"><a href="#"> swell </a></div>
 				<div className="nav-item right menu group">
 					<div className="menu-header">{this.greeting}</div>
-					<ul className="nav-item right menu-items group">
+					<ul className="nav-item menu-items group">
 						{this.signIn}
 						{this.signOut}
 						<li><a href="guest">guest login</a></li>
 					</ul>
+				</div>
+				<div className="nav-item user-form right group">
+					<form className="form">
+						<input type="text" placeholder="username"></input>
+						<input type="password" placeholder="password"></input>
+						<input type="submit"></input>
+					</form>
 				</div>
 			</nav>
 		);

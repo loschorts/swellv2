@@ -1,0 +1,31 @@
+.menu {
+	padding: 0px;
+	list-style: none;
+	display: block;
+}
+
+.menu-header {
+	float: inherit;
+	margin: auto;
+	display: block;
+	clear: both;
+}
+
+.menu .menu-items {
+	display: none;
+}
+
+.menu:hover .menu-items {
+	display: block;
+	margin: 0;
+	text-align: right;
+	clear: both;
+	top: 12px;
+	background: white;
+	color: gray;
+}
+
+.menu:hover .menu-items * {
+	display: inherit;
+	margin: 0px;
+}
