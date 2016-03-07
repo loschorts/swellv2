@@ -7,7 +7,9 @@ var NavBar = React.createClass({
 	render: function(){
 		var username = this.returnIfExists("this.state.currentUser.username");
 		return (
-			<nav className="nav-bar">{username}</nav>
+			<nav className="navbar">
+				<a>hello</a>
+			</nav>
 		);
 	}
 });

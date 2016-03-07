@@ -23,12 +23,12 @@
     transition: opacity 1s linear;
 }
 
-h1 {
+h1.splash {
 	font-family: sans-serif;
 	color: white;
 }
 
-a {
+a.splash {
     text-decoration: none;
     color: white;
 }

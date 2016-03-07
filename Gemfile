@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'normalize-rails'
 gem 'figaro'
 gem 'cloudinary'
 #for auth
