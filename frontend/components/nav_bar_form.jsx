@@ -20,6 +20,7 @@ var NavBarForm = React.createClass({
 				USserApiUtil.createUser(this.state);
 				break;
 		}
+		this.props.hide();
 	},
 	render: function(){
 		return (

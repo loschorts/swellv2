@@ -24,6 +24,9 @@ var NavBar = React.createClass({
 				break;
 		}
 	},
+	clearForm: function(){
+		this.setState({formAction: undefined});
+	},
 	preRender: function(){
 		if (this.state.user){
 			this.greeting = <a href="#">{"hi there, " + this.state.user.username}</a>
@@ -35,7 +38,7 @@ var NavBar = React.createClass({
 			this.signOut = <MenuItem href="new" text="create account" onClick={this.handleClick}/>
 		}
 		if (this.state.formAction){
-			this.form = <NavBarForm action={this.state.formAction}/>
+			this.form = <NavBarForm action={this.state.formAction} hide={this.clearForm}/>
 		} else {
 			this.form = undefined;
 		}
