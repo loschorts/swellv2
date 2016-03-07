@@ -21,7 +21,6 @@ var NavBar = React.createClass({
 			this.signIn = <MenuItem href="login" text="login" onClick={this.handleClick}/>
 			this.signOut = <MenuItem href="new" text="create account" onClick={this.handleClick}/>
 		}
-
 		if (this.state.formName){
 			this.form = <NavBarForm formName={this.state.formName} action={this.state.action}/>
 		}
@@ -40,7 +39,6 @@ var NavBar = React.createClass({
 					</ul>
 				</div>
 				{this.form}
-
 			</nav>
 		);
 	}
