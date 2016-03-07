@@ -1,6 +1,8 @@
 var React = require("react");
 var CurrentUserState = require("../modules/current_user_state");
 var CheckIfExists = require("../modules/check_if_exists");
+var NavBarForm = require('./nav_bar_form');
+var MenuItem = require('./menu_item');
 
 var NavBar = React.createClass({
 	mixins: [CurrentUserState, CheckIfExists],
@@ -27,14 +29,9 @@ var NavBar = React.createClass({
 						{this.signOut}
 						<li><a href="guest">guest login</a></li>
 					</ul>
+					<NavBarForm action={this.state.action}/>
 				</div>
-				<div className="nav-item user-form right group">
-					<form className="form">
-						<input type="text" placeholder="username"></input>
-						<input type="password" placeholder="password"></input>
-						<input type="submit"></input>
-					</form>
-				</div>
+
 			</nav>
 		);
 	}
