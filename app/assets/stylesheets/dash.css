@@ -10,8 +10,15 @@
 
 #dash-left {
 	background: black;
+	height: 100%;
 }
 
 #dash-right {
 	background: gray;
+	height: 100%;
+}
+
+.preview {
+	border: 1px solid red;
+	height: 33%
 }

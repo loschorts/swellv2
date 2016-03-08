@@ -1,8 +1,11 @@
 /*see also menu.css and navbar_form.css*/
 
 nav {
+	width: 100%;
+	position: absolute;
+	top: 0%;
 	background-color: #009999;
-	height: 40px;
+	height: 5%;
 }
 
 .nav-item {

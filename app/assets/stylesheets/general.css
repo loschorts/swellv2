@@ -25,9 +25,11 @@ a:hover {
 }
 
 #swell {
+	position: absolute;
+	top: 0px;
 	background: inherit;
 	width: 100%;
-	height: 800px;
+	height: 100%;
 	margin: auto;
 }
 
