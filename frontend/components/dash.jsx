@@ -10,9 +10,11 @@ var Dash = React.createClass({
 					<Focus/>
 				</section>
 				<section id="dash-right" className="group">
-					<Preview/>
-					<Preview/>
-					<Preview/>
+					<div className="preview-wrapper group">
+						<Preview/>
+						<Preview/>
+						<Preview/>
+					</div>
 				</section>
 			</main>
 			);
