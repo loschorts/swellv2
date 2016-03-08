@@ -7,11 +7,12 @@ var IndexRoute = require("react-router").IndexRoute;
 var browserHistory = require("react-router").browserHistory;
 
 var App = require("./components/app");
-
+var Dash = require("./components/dash");
 var routes = (
 	<Router history={browserHistory}>
-		<Route path="/app" component={App}/>
-		
+		<Route path="/app" component={App}>
+			<Route path="dash" component={Dash}/>
+		</Route>
 	</Router>
 	);
 

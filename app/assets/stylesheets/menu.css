@@ -2,6 +2,7 @@
 	padding: 0px;
 	list-style: none;
 	display: block;
+	border: 1px solid red;
 }
 
 .menu-header {
@@ -12,16 +13,28 @@
 }
 
 .menu .menu-items {
-	visibility: hidden;
+	display: none;
 }
 
 .menu:hover .menu-items {
-	visibility: visible;
+	position: absolute;
 	display: block;
 	margin: 0;
 	text-align: right;
 	clear: both;
-	top: 12px;
+	top: 30px;
+	background: white;
+	color: gray;
+	padding: 5px;
+}
+
+.menu-items:hover {
+	position: absolute;
+	display: block;
+	margin: 0;
+	text-align: right;
+	clear: both;
+	top: 30px;
 	background: white;
 	color: gray;
 	padding: 5px;

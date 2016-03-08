@@ -1,0 +1,17 @@
+#dash {
+	display: flex;
+	background: yellow;
+	height: 100%;
+}
+
+#dash > section {
+	flex: 1;
+}
+
+#dash-left {
+	background: black;
+}
+
+#dash-right {
+	background: gray;
+}

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: "pages#splash"
 
   get "/app", to: "pages#app"
+  get "/app/dash", to: "pages#app"
 
   
   # The priority is based upon order of creation: first created -> highest priority.
