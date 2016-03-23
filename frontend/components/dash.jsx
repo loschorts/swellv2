@@ -5,7 +5,7 @@ var Preview = require("./preview");
 var Dash = React.createClass({
 	render: function(){
 		return(
-			<main id="dash" className="group">
+			<main id="dash" className="group" spotId={1}>
 				<section id="dash-left" className="group">
 					<Focus/>
 				</section>

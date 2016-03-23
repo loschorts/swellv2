@@ -4,21 +4,29 @@ var React = require("react");
 // components
 var WeatherOverlay = require("./weather_overlay");
 
+// stores
+var SpotStore = require("../stores/spot_store");
+var ForecastStore = require("../stores/forecast_store");
+
+// api utils
+var SpotApiUtil = require("../utils/spot_api_util");
+var ForecastApiUtil = require("../utils/forecast_api_util");
+
 // modules 
 var CurrentUserState = require("../modules/current_user_state");
 var CheckIfExists = require("../modules/check_if_exists");
 
 var Focus = React.createClass({
 	componentDidMount: function(){
-		SpotApiUtil.fetchSpot(this.props.spotId);
+		// add listeners
 		SpotStore.addListener(this.updateSpot);
+		ForecastStore.addListener(this.update);
+		// make api calls
+		SpotApiUtil.fetchSpot(this.props.spotId);
+		ForecastApiUtil.fetchForecast(this.props.spotId);
 	},
-	updateSpot: function(){
-		ForecastStore.addListener(this.updateForecast);
-		ForecastApiUtil.fetchForecast();
+	update: function(){
 		this.setState({spot: SpotStore.find(this.props.spotId)});
-	},
-	updateForecast: function(){
 		this.setState({forecast: ForecastStore.find(this.props.spotId)});
 	},
 	spotInfo: function(){
@@ -35,12 +43,20 @@ var Focus = React.createClass({
 				);
 		}
 	},
+	renderContent: function(){
+		var spot = this.spotInfo;
+		var forecast = this.forecastInfo;
+		if (spot && forecast) {
+
+		} else {1
+			return "loading";
+		}
+	},
 	render: function(){
 		return (
 			<div id="focus" className="group">
 				<WeatherOverlay/>
-				{this.spotInfo()}
-				{this.forecastInfo()}
+				{this.renderContent()}
 			</div>
 		);
 	}
