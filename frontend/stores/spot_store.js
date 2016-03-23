@@ -11,7 +11,7 @@ var _spots = {};
 SpotStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "UPDATE_SPOT":
-    	SpotStore.update(payload.spot);
+    	SpotStore.set(payload.spot);
     	SpotStore.__emitChange();
       break;
   }

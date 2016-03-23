@@ -3,8 +3,8 @@ var Store = require('flux/utils').Store;
 
 var ForecastStore = new Store(AppDispatcher);
 
-var LocalKey = require("../helpers/id_table").LocalKeys;
-var SpitcastKey = require("../helpers.id_table").SpitcastKeys;
+var LocalKey = require("../helpers/id_table").LocalKey;
+var SpitcastKey = require("../helpers.id_table").SpitcastKey;
 
 var _forecasts = {};
 var _countyForecasts = {};
@@ -12,7 +12,7 @@ var _countyForecasts = {};
 ForecastStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "UPDATE_SPOT":
-    	ForecastStore.update(payload.spot);
+    	ForecastStore.set(payload.spot);
     	ForecastStore.__emitChange();
       break;
   }

@@ -1,13 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require_relative './seeds_helper'
 
-ActiveRecord::Base.connection.reset_pk_sequence!('users')
+reset_tables
 
-User.create(username: "loschorts", email: "ken@ken.com", password: "kenken")
-User.create(username: "audball", email: "audrey@audrey.com", password: "kenissexy")
-User.create(username: "guest", email: "guest@guest.com", password: "password")
+fetch_spots_remote(true) #change to true to hit the spitcast API for spots
+
+create_regions
+create_counties
+create_spots
+
+# neighbors can only be fetched/set after spots are created
+
+# TODO fix neighbors
+# fetch_neighbors_remote(false) #change to true to hit the Spitcast API for neighbors
+# set_neighbors
+
+create_guest_account
+
