@@ -1,4 +1,4 @@
-#dash {
+/*#dash {
 	display: block;
 	position: absolute;
 	top: 5%;
@@ -52,4 +52,37 @@
 	height: 100%;
 	background: navy;
 	height: 33.3%;
+}*/
+
+
+#dash {
+	display: flex;
+	height: 100%;
+}
+
+#dash > section {
+}
+
+#dash-left {
+	flex: 1;
+	height: 100%;
+	background: blue;
+}
+
+#dash-right {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100%;
+	background: black;
+}
+
+#focus {
+
+}
+
+.preview {
+	flex: 1;
+a	border: 1px solid red;
 }
