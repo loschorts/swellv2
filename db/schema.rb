@@ -11,16 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307081141) do
+ActiveRecord::Schema.define(version: 20160323201848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "examples", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "counties", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.string   "spitcast_county", null: false
+    t.integer  "region_id",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "counties", ["region_id"], name: "index_counties_on_region_id", using: :btree
+  add_index "counties", ["spitcast_county"], name: "index_counties_on_spitcast_county", unique: true, using: :btree
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.string   "spitcast_county", null: false
+    t.string   "county_name",     null: false
+    t.float    "lat",             null: false
+    t.float    "lng",             null: false
+    t.integer  "spitcast_id",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "spots", ["spitcast_county"], name: "index_spots_on_spitcast_county", using: :btree
+  add_index "spots", ["spitcast_id"], name: "index_spots_on_spitcast_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -29,5 +55,9 @@ ActiveRecord::Schema.define(version: 20160307081141) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

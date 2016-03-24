@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'json'
 gem 'normalize-rails'
 gem 'figaro'
 gem 'cloudinary'

@@ -1,4 +1,5 @@
 require "byebug"
+require "json"
 
 $REGIONS = {
 	"Del Norte" => "The North",
@@ -64,9 +65,9 @@ def fetch_spots_remote(should_run = false)
 	File.write("./db/validspots", "")
 	spots.each do |spot|
 		if forecast_exists?(spot)
-			File.open("./db/validspots", "a") { |f| f << JSON.stringify(spot) + "\n" }
+			File.open("./db/validspots", "a") { |f| f << JSON.generate(spot) + "\n" }
 		else 
-			p "invalid!"
+			puts "invalid!"
 		end
 	end
 end

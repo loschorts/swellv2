@@ -189,6 +189,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  json
   normalize-rails
   pg (~> 0.18.4)
   pry-rails
