@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :destroy]
     resource :session, only: [:create, :show, :destroy]
     resources :spots, only: [:show, :index]
+    resources :counties, only: [:show, :index]
+    resources :regions, only: [:show, :index]
   end
 
   root to: "pages#splash"

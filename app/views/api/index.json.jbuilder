@@ -1,0 +1,1 @@
+json.array! @collection { |item| json.merge! item.attributes }
