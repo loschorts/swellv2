@@ -3,9 +3,6 @@ var Store = require('flux/utils').Store;
 
 var SpotStore = new Store(AppDispatcher);
 
-var LocalKey = require("../helpers/id_table").LocalKey;
-var SpitcastKey = require("../helpers.id_table").SpitcastKey;
-
 var _spots = {};
 
 SpotStore.__onDispatch = function (payload) {

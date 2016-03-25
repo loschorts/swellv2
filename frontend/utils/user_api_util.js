@@ -3,7 +3,7 @@ var AppDispatcher = require('../stores/dispatcher');
 var UserApiUtil = {
 	createUser: function(user){
 		$.ajax({
-			url: 'api/users',
+			url: '/api/users',
 			method: 'post',
 			data: {user: user},
 			success: function(response){
@@ -18,7 +18,7 @@ var UserApiUtil = {
 	},
 	login: function(user){
 		$.ajax({
-			url: 'api/session',
+			url: '/api/session',
 			method: 'post',
 			data: {user: user},
 			success: function(data){
@@ -33,7 +33,7 @@ var UserApiUtil = {
 	},
 	logout: function(){
 		$.ajax({
-			url: 'api/session',
+			url: '/api/session',
 			method: 'delete',
 			success: function(data){
 				AppDispatcher.dispatch({
@@ -46,7 +46,7 @@ var UserApiUtil = {
 	},
 	fetchCurrentUser: function(){
 		$.ajax({
-			url: 'api/session',
+			url: '/api/session',
 			method: 'get',
 			success: function(data){
 				AppDispatcher.dispatch({

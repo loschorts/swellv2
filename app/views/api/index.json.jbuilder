@@ -1,1 +1,1 @@
-json.array! @collection { |item| json.merge! item.attributes }
+json.array! @collection do |item| json.merge! item.attributes end

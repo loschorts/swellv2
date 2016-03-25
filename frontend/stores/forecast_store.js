@@ -1,29 +1,36 @@
 var AppDispatcher = require('./dispatcher.js');
 var Store = require('flux/utils').Store;
 
-var ForecastStore = new Store(AppDispatcher);
+var TimeHelper = require("../helpers/time_helper");
 
-var LocalKey = require("../helpers/id_table").LocalKey;
-var SpitcastKey = require("../helpers.id_table").SpitcastKey;
+var ForecastStore = new Store(AppDispatcher);
 
 var _forecasts = {};
 var _countyForecasts = {};
 
 ForecastStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
-    case "UPDATE_SPOT":
-    	ForecastStore.set(payload.spot);
+    case "UPDATE_FORECAST":
+    	ForecastStore.set(payload.id, payload.forecast);
     	ForecastStore.__emitChange();
       break;
   }
 };
 
-ForecastStore.set = function(forecast){
-  _forecasts[LocalKey[forecast.spitcastId]] = forecast;
+ForecastStore.set = function(id, forecast){
+  _forecasts[id] = forecast;
 };
 
-ForecastStore.get = function(id){
+ForecastStore.getFull = function(id){
 	return _forecasts[id];
+};
+
+ForecastStore.getCurrent = function(id){
+	if (!_forecasts[id]) { return; }
+	var now = TimeHelper.convert(new Date());
+	return _forecasts[id].find(function(segment){
+		return segment.hour == now;
+	});
 };
 
 

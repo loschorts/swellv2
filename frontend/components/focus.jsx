@@ -10,53 +10,35 @@ var ForecastStore = require("../stores/forecast_store");
 
 // api utils
 var SpotApiUtil = require("../utils/spot_api_util");
-var ForecastApiUtil = require("../utils/forecast_api_util");
+// var ForecastApiUtil = require("../utils/forecast_api_util");
+
+// actions
+var SpotActions = require("../actions/spot_actions");
+var ForecastActions = require("../actions/forecast_actions");
 
 // modules 
 var CurrentUserState = require("../modules/current_user_state");
 var CheckIfExists = require("../modules/check_if_exists");
 
 var Focus = React.createClass({
+	mixins: [CurrentUserState],
 	componentDidMount: function(){
-		// add listeners
-		SpotStore.addListener(this.updateSpot);
+		SpotStore.addListener(this.update);
 		ForecastStore.addListener(this.update);
-		// make api calls
-		SpotApiUtil.fetchSpot(this.props.spotId);
-		ForecastApiUtil.fetchForecast(this.props.spotId);
+
+		SpotActions.fetch(this.props.spotId);
+		ForecastActions.fetch(this.props.spotId);
 	},
 	update: function(){
-		this.setState({spot: SpotStore.find(this.props.spotId)});
-		this.setState({forecast: ForecastStore.find(this.props.spotId)});
-	},
-	spotInfo: function(){
-		if (this.state.spot) {
-			return (
-
-				);
-		}
-	},
-	forecastInfo: function(){
-		if (this.state.forecast) {
-			return (
-				
-				);
-		}
-	},
-	renderContent: function(){
-		var spot = this.spotInfo;
-		var forecast = this.forecastInfo;
-		if (spot && forecast) {
-
-		} else {1
-			return "loading";
-		}
+		this.setState({
+			spot: SpotStore.get(this.props.spotId), 
+			forecast: ForecastStore.getCurrent(this.props.spotId)
+		});
 	},
 	render: function(){
 		return (
 			<div id="focus" className="group">
-				<WeatherOverlay/>
-				{this.renderContent()}
+				{JSON.stringify(this.state)}
 			</div>
 		);
 	}

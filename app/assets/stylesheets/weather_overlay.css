@@ -6,4 +6,5 @@
 	width: 100%;
 	background: purple;
 	opacity: .1;
+	z-index: -1;
 }
