@@ -21,5 +21,6 @@ module.exports = {
   resolve: {
   // you can now require('file') instead of require('file.coffee')
   extensions: ['', '.js', '.jsx', '.json', '.coffee'] 
-  }
+  },
+  resolveLoader: __dirname + "node_modules"
 };
