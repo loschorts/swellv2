@@ -7,13 +7,16 @@ var WeatherOverlay = require("./weather_overlay");
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
+var CheckIfExists = require("../modules/check_if_exists");
 
 var Focus = React.createClass({
-	mixins: [CurrentUserState, CurrentForecastState],
+	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
 	render: function(){
 		return (
 			<div id="focus" className="group">
-				{JSON.stringify(this.state)}
+				<h2 className="spot-name">{this.returnIf("this.state.spot.name")}</h2>
+				<h3 className="shape-full">{this.returnIf("this.state.forecast.shape_full", "fds")}</h3>
+				<h3 className="size">{this.returnIf("this.state.forecast.size", "as")}</h3>	
 			</div>
 		);
 	}

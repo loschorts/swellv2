@@ -1,0 +1,16 @@
+#focus {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	background: purple;
+}
+
+#focus h2.spot-name {
+
+}
+
+#focus h3.shape-full {
+}
+
+#focus h3.size {
+}

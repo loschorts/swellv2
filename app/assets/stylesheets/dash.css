@@ -8,20 +8,15 @@
 
 #dash-left {
 	flex: 1;
-	height: 100%;
+	border: 1px solid red;
 }
 
 #dash-right {
 	display: flex;
-	flex: 1;
+	flex: 2;
 	flex-direction: column;
 	flex-wrap: wrap;
-	height: 100%;
-}
-
-#focus {
-	flex: 1;
-	height: 100%;
+	border: 1px solid blue;
 }
 
 .preview {

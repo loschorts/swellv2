@@ -12,9 +12,7 @@ var App = React.createClass({
 	},
 	render: function(){
 		return (
-			<div id="app" className="group">
-				<NavBar/>
-				{this.props.children}
+			<div id="swell" className="group">
 			</div>
 			);
 	}

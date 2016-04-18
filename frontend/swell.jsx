@@ -10,9 +10,7 @@ var App = require("./components/app");
 var Dash = require("./components/dash");
 var routes = (
 	<Router history={browserHistory}>
-		<Route path="/app" component={App}>
-			<Route path="dash" component={Dash}/>
-		</Route>
+		<Route path="/" component={App}/>
 	</Router>
 	);
 

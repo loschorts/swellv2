@@ -7,12 +7,8 @@ Rails.application.routes.draw do
     resources :regions, only: [:show, :index]
   end
 
-  root to: "pages#splash"
+  root to: "pages#app"
 
-  get "/app", to: "pages#app"
-  get "/app/dash", to: "pages#app"
-
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
