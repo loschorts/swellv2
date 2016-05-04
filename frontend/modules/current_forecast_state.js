@@ -5,11 +5,15 @@ var ForecastActions = require("../actions/forecast_actions");
 
 var CurrentForecastState = {
 	componentDidMount: function(){
-		SpotStore.addListener(this.update);
-		ForecastStore.addListener(this.update);
+		this.CurrentForecastStateSpotStoreListener = SpotStore.addListener(this.update);
+		this.CurrentForecastStateForecastStoreListener = ForecastStore.addListener(this.update);
 
 		SpotActions.fetch(this.props.spotId);
 		ForecastActions.fetch(this.props.spotId);
+	},
+	componentWillUnmount: function(){
+		this.CurrentForecastStateSpotStoreListener.remove();
+		this.CurrentForecastStateForecastStoreListener.remove();
 	},
 	update: function(){
 		this.setState({
