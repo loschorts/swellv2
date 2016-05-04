@@ -18,7 +18,7 @@ var CurrentForecastState = {
 	update: function(){
 		this.setState({
 			spot: SpotStore.get(this.props.spotId), 
-			forecast: ForecastStore.getCurrent(this.props.spotId)
+			currentForecast: ForecastStore.getCurrent(this.props.spotId)
 		});
 	},
 };
