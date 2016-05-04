@@ -9,6 +9,7 @@ var browserHistory = require("react-router").browserHistory;
 var App = require("./components/app");
 var Dash = require("./components/dash");
 var Home = require("./components/home");
+var Focus = require("./components/focus");
 
 var routes = (
 	<Router history={browserHistory}>

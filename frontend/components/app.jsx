@@ -7,7 +7,7 @@ var CurrentUserState = require('../modules/current_user_state');
 var App = React.createClass({
 	render: function(){
 		return (
-			<div id="swell" className="group">
+			<div id="app" className="group">
 			{this.props.children}
 			</div>
 			);

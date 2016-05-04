@@ -9,6 +9,7 @@ var Jumbotron = React.createClass({
 	render: function(){
 		return (
 			<div id="jumbotron" className="group">
+				Hello
 			</div>
 			);
 	}
