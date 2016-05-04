@@ -7,12 +7,10 @@ var CurrentUserState = require('../modules/current_user_state');
 window.UserApiUtil = UserApiUtil;
 
 var App = React.createClass({
-	componentDidMount: function(){
-		UserApiUtil.fetchCurrentUser();
-	},
 	render: function(){
 		return (
 			<div id="swell" className="group">
+			{this.props.children}
 			</div>
 			);
 	}

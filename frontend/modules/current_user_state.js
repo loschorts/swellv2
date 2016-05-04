@@ -1,4 +1,5 @@
 var SessionStore = require('../stores/session_store');
+var UserApiUtil = require('../utils/user_api_util');
 
 var CurrentUserState = {
 
@@ -10,6 +11,9 @@ var CurrentUserState = {
 	},
 	componentDidMount: function(){
 		this.CurrentUserStateListener = SessionStore.addListener(this.updateUser);
+		if (!this.state.user) {
+			UserApiUtil.fetchCurrentUser();
+		}
 	},
 	componentWillUnmount: function(){
 		this.CurrentUserStateListener.remove();
