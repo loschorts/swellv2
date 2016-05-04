@@ -1,5 +1,5 @@
-var SessionStore = require('../stores/session_store');
-var UserApiUtil = require('../utils/user_api_util');
+var SessionStore = require("../stores/session_store");
+var UserApiUtil = require("../utils/user_api_util");
 
 var CurrentUserState = {
 

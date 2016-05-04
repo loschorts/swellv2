@@ -8,9 +8,12 @@ var browserHistory = require("react-router").browserHistory;
 
 var App = require("./components/app");
 var Dash = require("./components/dash");
+var Home = require("./components/home");
+
 var routes = (
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
+			<IndexRoute component={Home}/>
 			<Route path="spot/:spotId" component={Focus}/>
 		</Route>
 	</Router>
