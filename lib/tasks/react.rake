@@ -9,9 +9,4 @@ namespace :react do
 		system "rm frontend/components/#{name}.jsx"
 		system "rm app/assets/stylesheets/#{name}.css"
 	end
-
-	task test: :environment do 
-		system "pwd"
-		system "echo #{File.dirname(__F1ILE__)}"
-	end
 end
