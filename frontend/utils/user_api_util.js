@@ -1,4 +1,4 @@
-var UserStore = require("../stores/user_store");
+var SessionStore = require("../stores/session_store");
 var AppDispatcher = require('../stores/dispatcher');
 var UserApiUtil = {
 	createUser: function(user){

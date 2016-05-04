@@ -1,18 +1,21 @@
-var UserStore = require('../stores/user_store');
+var SessionStore = require('../stores/session_store');
 
 var CurrentUserState = {
 
 	getInitialState: function(){
 		return {
-			currentUser: UserStore.currentUser(),
-			user: UserStore.currentUser()
+			currentUser: SessionStore.currentUser(),
+			user: SessionStore.currentUser()
 		};
 	},
 	componentDidMount: function(){
-		UserStore.addListener(this.updateUser);
+		this.SessionStore.addListener(this.updateUser);
 	},
+	componentWillUnmoun: function(){
+
+	}
 	updateUser: function(){
-		this.setState({user: UserStore.currentUser(), currentUser: UserStore.currentUser()});
+		this.setState({user: SessionStore.currentUser(), currentUser: SessionStore.currentUser()});
 	}
 	
 };
