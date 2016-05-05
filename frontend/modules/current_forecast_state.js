@@ -7,9 +7,11 @@ var CurrentForecastState = {
 	componentDidMount: function(){
 		this.CurrentForecastStateSpotStoreListener = SpotStore.addListener(this.update);
 		this.CurrentForecastStateForecastStoreListener = ForecastStore.addListener(this.update);
+		
+		this.spotId = this.props.spotId || this.props.params.spotId;
 
-		SpotActions.fetch(this.props.spotId);
-		ForecastActions.fetch(this.props.spotId);
+		SpotActions.fetch(spotId);
+		ForecastActions.fetch(spotId);
 	},
 	componentWillUnmount: function(){
 		this.CurrentForecastStateSpotStoreListener.remove();
@@ -17,8 +19,8 @@ var CurrentForecastState = {
 	},
 	update: function(){
 		this.setState({
-			spot: SpotStore.get(this.props.spotId), 
-			currentForecast: ForecastStore.getCurrent(this.props.spotId)
+			spot: SpotStore.get(this.spotId), 
+			currentForecast: ForecastStore.getCurrent(this.spotId)
 		});
 	},
 };

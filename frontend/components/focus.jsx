@@ -14,7 +14,7 @@ var Focus = React.createClass({
 	render: function(){
 		return (
 			<div id="focus" className="group">
-				<h2 className="spot-name">{this.returnIf("this.state.spot.name")}</h2>
+				<h2 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h2>
 				<h3 className="shape-full">{this.returnIf("this.state.forecast.shape_full", "fds")}</h3>
 				<h3 className="size">{this.returnIf("this.state.forecast.size", "as")}</h3>	
 			</div>

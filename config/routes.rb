@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: "pages#app"
 
-  get "/spot/*", to: "pages#app"
+  get "spot/:id", to: "pages#app"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
