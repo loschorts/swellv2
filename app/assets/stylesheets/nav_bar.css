@@ -24,7 +24,7 @@
 
 #nav-bar.scrolled{
 	background-color: black;
-	transition: background 2s;
+	transition: background 1s;
 }
 
 #nav-bar > button {

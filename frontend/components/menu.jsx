@@ -19,7 +19,6 @@ var Menu = React.createClass({
 	},
 	render: function(){
 		return(
-
 			<div className="menu">
 				<div className="menu-button" onClick={this.toggleMenu} >Menu</div>
 				{this.menuItems()}
