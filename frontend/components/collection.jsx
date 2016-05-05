@@ -12,7 +12,7 @@ var Collection = React.createClass({
 					<p> Regular footers rejoice at these right-hand point breaks. </p>
 				</div>
 				<div className="thumbnail-row">
-					<div className="thumbnail" style={style}>
+					<div className="thumbnail double" style={style}>
 						<h3>Pleasure Point</h3>
 					</div>
 					<div className="thumbnail" style={style}>

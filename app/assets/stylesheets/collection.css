@@ -12,11 +12,12 @@
 .collection > .thumbnail-row {
 	display: flex;
 	flex-flow: wrap;
+	margin: 0 20px;
 }
 
 
 .thumbnail {
-	flex: 1;
+	flex: 2;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
@@ -24,10 +25,10 @@
 	background-size: cover;
 	overflow: hidden;
 	height: 300px;
-	margin: 20px;
+	margin: 10px;
 	color: white;
 }
 
 .thumbnail.double {
-	flex: 2;
+	flex: 3;
 }
