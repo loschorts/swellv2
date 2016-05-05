@@ -9,13 +9,16 @@ var NavBar = React.createClass({
 	},
 	componentDidMount: function(){
 		var self = this;
-		$(document).scroll( function(){
+		this.scrollEvent = $(document).scroll( function(){
 			if ($(window).scrollTop() !== 0) {
 				self.setState({scrolled: "scrolled"});
 			} else {
 				self.setState({scrolled: ""});
 			}
 		});
+	},
+	componentWillUnmount: function(){
+		this.scrollEvent.off();
 	},
 	render: function(){
 		return (
