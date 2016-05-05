@@ -9,9 +9,13 @@
 	justify-content: space-between;
 
 	height: 30px;
-	opacity: .8;
-	background: gray;
 	z-index: 1;
 }
 
-#nav-bar:nth
+#nav-bar.scrolled{
+	opacity: 1;
+	background-color: black;
+	color: white;
+	transition: color 2s;
+	transition: background 2s ;
+}

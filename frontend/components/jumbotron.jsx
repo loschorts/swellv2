@@ -9,7 +9,6 @@ var Jumbotron = React.createClass({
 	render: function(){
 		return (
 			<div id="jumbotron" className="group">
-				Jumbotron is black
 			</div>
 			);
 	}

@@ -7,12 +7,22 @@ var browserHistory = require("react-router").browserHistory;
 var UserApiUtil = require("../utils/user_api_util");
 
 var NavBar = React.createClass({
+	getInitialState: function(){
+		return {scrolled: ""};
+	},
 	componentDidMount: function(){
-
+		var self = this;
+		$(document).scroll( function(){
+			if ($(window).scrollTop() !== 0) {
+				self.setState({scrolled: "scrolled"});
+			} else {
+				self.setState({scrolled: ""});
+			}
+		});
 	},
 	render: function(){
 		return (
-			<nav id="nav-bar">
+			<nav id="nav-bar" className={this.state.scrolled}>
 				<div id="nav-logo">Logo</div>
 				<button id="nav-menu">Button</button>
 			</nav>

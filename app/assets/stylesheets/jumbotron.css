@@ -6,6 +6,7 @@
 	height: 550px;
 	opacity: 10%;
 	clear: both;
+	background: blue;
 }
 
 #jumbotron + main {
