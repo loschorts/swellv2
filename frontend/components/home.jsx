@@ -1,5 +1,6 @@
 var React = require("react");
 var Jumbotron = require("./jumbotron");
+var Navbar = require("./nav_bar");
 
 var Home = React.createClass({
 	render: function(){

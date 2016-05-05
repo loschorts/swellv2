@@ -1,0 +1,17 @@
+#nav-bar{
+	position: fixed;
+	left: 0;
+
+	top: 0;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+
+	height: 30px;
+	opacity: .8;
+	background: gray;
+	z-index: 1;
+}
+
+#nav-bar:nth
