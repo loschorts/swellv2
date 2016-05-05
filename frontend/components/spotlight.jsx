@@ -3,7 +3,7 @@ var React = require("react");
 var Spotlight = React.createClass({
 	render: function(){
 		return (
-			<div id="spotlight">
+			<section id="spotlight">
 				<div id="image-container">
 					<img src="http://res.cloudinary.com/swell/image/upload/v1462425167/ruKkhOq_efxdug.jpg"/>
 				</div>
@@ -15,7 +15,7 @@ var Spotlight = React.createClass({
 						See live conditions, forecasts, and predicted surf quality to find the best spots near you.
 					</p>
 				</div>
-			</div>
+			</section>
 			);
 	}
 });

@@ -1,0 +1,23 @@
+.collection {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+}
+
+.collection > .collection-header {
+	text-align: center;
+}
+
+.collection > .thumbnail-row {
+	display: flex;
+	flex-flow: wrap;
+}
+
+.thumbnail {
+	background-size: cover;
+	overflow: hidden;
+	height: 200px;
+	flex: 1;
+	margin: 20px;
+}
