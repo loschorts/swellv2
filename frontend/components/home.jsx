@@ -12,9 +12,11 @@ var Home = React.createClass({
 		return(
 			<div id="home">
 				<Jumbotron/>
-				<ul>
-					{items}
-				</ul>
+				<main>
+					<ul>
+						{items}
+					</ul>
+				</main>
 			</div>
 			);
 	}

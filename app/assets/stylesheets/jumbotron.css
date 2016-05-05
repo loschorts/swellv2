@@ -1,8 +1,15 @@
-#jumbotron{
+#jumbotron {
 	display: flex;
 	position: absolute;
+	background-image: url('http://i.imgur.com/frrB81S.gifv');
 	left: 0;
 	width: 100%;
-	height: 60%;
-	border: 1px solid black;
+	height: 400px;
+	background: gray;
+	opacity: 10%;
+	clear: both;
+}
+
+#jumbotron + main {
+	padding-top: 400px;
 }
