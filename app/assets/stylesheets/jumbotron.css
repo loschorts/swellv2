@@ -1,20 +1,17 @@
 #jumbotron {
-	background-image: url("http://res.cloudinary.com/swell/image/upload/c_crop,h_600,w_1620,x_0,y_400/v1450226800/Unknown-1620x1080_ugchnu.jpg");
-	background-size: cover;
 	display: flex;
+	justify-content: space-between;
 	flex-direction: column;
-	justify-content: center;
-	align-content: center;
-	position: absolute;
-	left: 0;
+
 	width: 100%;
 	height: 600px;
-	opacity: 10%;
-	clear: both;
+
+	background-image: url("http://res.cloudinary.com/swell/image/upload/c_crop,h_600,w_1620,x_0,y_400/v1450226800/Unknown-1620x1080_ugchnu.jpg");
+	background-size: cover;
 }
 
 #jumbotron + main {
-	padding-top: 600px;
+	margin-top: 40px;
 }
 
 #jumbotron > * {
@@ -22,12 +19,11 @@
 }
 
 #search-container {
-	position: absolute;
-	justify-content: center;
-	bottom: 0;
-	width: 100%;
 	display: flex;
+	justify-content: center;
+	width: 100%;
 	height: 120px;
+
 	background: rgba(0, 0, 0, 0.5);
 }
 

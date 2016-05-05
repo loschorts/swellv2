@@ -1,7 +1,7 @@
 var React = require("react");
 var Jumbotron = require("./jumbotron");
 var Navbar = require("./nav_bar");
-
+var Spotlight = require("./spotlight");
 var Home = React.createClass({
 	render: function(){
 		var items = [];
@@ -14,9 +14,7 @@ var Home = React.createClass({
 			<div id="home">
 				<Jumbotron/>
 				<main>
-					<ul>
-						{items}
-					</ul>
+					<Spotlight/>
 				</main>
 			</div>
 			);

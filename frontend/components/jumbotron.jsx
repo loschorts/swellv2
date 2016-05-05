@@ -8,10 +8,13 @@ var Jumbotron = React.createClass({
 	render: function(){
 		return (
 			<div id="jumbotron" className="group">
-				<h1 id="header"> Better surf. </h1>
-				<h2 id="tagline"> 
-					Find forecasts for your favorite spots and know before you go.
-				</h2>
+				<div id="placeholder"/>
+				<div id="header">
+					<h1> Better surf. </h1>
+					<h2> 
+						Find forecasts for your favorite spots and know before you go.
+					</h2>
+				</div>
 				<div id="search-container">
 					<input id="search" placeholder="search for a spot or county"/>
 				</div>
