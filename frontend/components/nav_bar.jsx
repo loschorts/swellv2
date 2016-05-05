@@ -24,7 +24,7 @@ var NavBar = React.createClass({
 		return (
 			<nav id="nav-bar" className={this.state.scrolled}>
 				<div id="nav-logo">Logo</div>
-				<button id="nav-menu">Button</button>
+				<div id="nav-menu">Button</div>
 			</nav>
 			);
 	}

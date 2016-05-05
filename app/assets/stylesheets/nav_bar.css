@@ -1,21 +1,35 @@
 #nav-bar{
 	position: fixed;
 	left: 0;
-
 	top: 0;
 	width: 100%;
+	height: 40px;
 
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 
-	height: 30px;
 	z-index: 1;
+
+	color: white;
+
+	background: none;
+	transition: background 1s;
 }
 
+#nav-bar > * {
+	margin: 0 10px;
+}
+
+
 #nav-bar.scrolled{
-	opacity: 1;
 	background-color: black;
-	color: white;
-	transition: color 2s;
-	transition: background 2s ;
+	transition: background 2s;
+}
+
+#nav-bar > button {
+
+}
+
+#nav-logo {
 }
