@@ -12,7 +12,7 @@
 .collection > .thumbnail-row {
 	display: flex;
 	flex-flow: wrap;
-	margin: 0 20px;
+	margin: 0 10px;
 }
 
 
