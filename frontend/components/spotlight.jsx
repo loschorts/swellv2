@@ -4,7 +4,9 @@ var Spotlight = React.createClass({
 	render: function(){
 		return (
 			<div id="spotlight">
-				<img src="http://res.cloudinary.com/swell/image/upload/v1462425167/ruKkhOq_efxdug.jpg"/>
+				<div id="image-container">
+					<img src="http://res.cloudinary.com/swell/image/upload/v1462425167/ruKkhOq_efxdug.jpg"/>
+				</div>
 				<div className="blurb">
 					<h2> 
 						Never miss an epic session. 
