@@ -1,0 +1,25 @@
+.menu > .menu-list {
+	list-style: none;
+	z-index: -1;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+	padding: 0 10px 10px 10px;
+	background: white;
+	border: 1px solid gray;
+	border-radius: 10px 0;
+}
+
+.menu-list > .menu-item {
+	color: gray;
+	width: 250px;
+	border-bottom: 1px dashed black;
+	padding: 5px;
+	transform: translate(-2px, 0);
+	transition: transform .5s;
+}
+
+.menu-item:hover {
+	transform: translate(2px, 0);
+	transition: transform .5s;
+}
