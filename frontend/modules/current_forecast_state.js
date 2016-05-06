@@ -10,8 +10,8 @@ var CurrentForecastState = {
 		
 		this.spotId = this.props.spotId || this.props.params.spotId;
 
-		SpotActions.fetch(spotId);
-		ForecastActions.fetch(spotId);
+		SpotActions.fetch(this.spotId);
+		ForecastActions.fetch(this.spotId);
 	},
 	componentWillUnmount: function(){
 		this.CurrentForecastStateSpotStoreListener.remove();
