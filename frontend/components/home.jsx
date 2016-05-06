@@ -1,5 +1,5 @@
 var React = require("react");
-var Jumbotron = require("./jumbotron");
+var HomeJumbotron = require("./home_jumbotron");
 var Navbar = require("./nav_bar");
 var Spotlight = require("./spotlight");
 var Collection = require("./collection");
@@ -14,7 +14,7 @@ var Home = React.createClass({
 
 		return(
 			<div id="home">
-				<Jumbotron/>
+				<HomeJumbotron/>
 				<main>
 					<Spotlight/>
 					<Collection/>

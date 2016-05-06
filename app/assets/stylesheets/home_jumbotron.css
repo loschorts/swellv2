@@ -1,4 +1,4 @@
-#jumbotron {
+#home-jumbotron {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
@@ -10,11 +10,11 @@
 	background-size: cover;
 }
 
-#jumbotron + main {
+#home-jumbotron + main {
 	margin-top: 40px;
 }
 
-#jumbotron > * {
+#home-jumbotron > * {
 	text-align: center;
 }
 

@@ -13,10 +13,12 @@ var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
 	render: function(){
 		return (
-			<div id="focus" className="group">
-				<h2 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h2>
-				<h3 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h3>
-				<h3 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h3>	
+			<div id="focus">
+				<header id="focus-jumbotron">
+					<h2 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h2>
+					<h3 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h3>
+					<h3 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h3>	
+				</header>
 			</div>
 		);
 	}

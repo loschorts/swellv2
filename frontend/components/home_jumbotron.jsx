@@ -4,10 +4,10 @@ var SessionStore = require("../stores/session_store");
 var UserApiUtil = require("../utils/user_api_util");
 var CurrentUserState = require("../modules/current_user_state");
 
-var Jumbotron = React.createClass({
+var HomeJumbotron = React.createClass({
 	render: function(){
 		return (
-			<div id="jumbotron" className="group">
+			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
 				<div id="header">
 					<h1> Surf better. </h1>
@@ -23,4 +23,4 @@ var Jumbotron = React.createClass({
 	}
 });
 
-module.exports = Jumbotron;
+module.exports = HomeJumbotron;

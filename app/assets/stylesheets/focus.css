@@ -2,15 +2,9 @@
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	background: purple;
+	background: BurlyWood;
 }
 
-#focus h2.spot-name {
+#focus-header {
 
-}
-
-#focus h3.shape-full {
-}
-
-#focus h3.size {
 }
