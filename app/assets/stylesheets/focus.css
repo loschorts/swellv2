@@ -15,13 +15,16 @@
 }
 
 #focus-header {
+	height: 100%;
 	display: flex column;
+	justify-content: flex-end;
 	background: blue;
 	flex: 1;
 }
 
 #focus-map {
 	height: 400px;
+	width: 400px;
 	flex: 1;
 	border: 1px solid black;
 }
