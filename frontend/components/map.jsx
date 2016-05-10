@@ -18,7 +18,7 @@ var Map = React.createClass({
   },
 	render: function(){
 		return (
-			<div id="focus-map">I am the Map</div>
+			<div id="focus-map"/>
 			);
 	}
 });
