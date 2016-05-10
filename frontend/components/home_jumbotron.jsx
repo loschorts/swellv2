@@ -10,7 +10,9 @@ var HomeJumbotron = React.createClass({
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
 				<div id="header">
-					<h1> Surf better. </h1>
+					<h1> 
+						Surf better. 
+					</h1>
 					<h2> 
 						Find forecasts for your favorite spots and know before you go.
 					</h2>

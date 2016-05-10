@@ -2,7 +2,7 @@
 var React = require("react");
 
 // components
-var WeatherOverlay = require("./weather_overlay");
+var Map = require("./map");
 
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
@@ -15,10 +15,23 @@ var Focus = React.createClass({
 		return (
 			<div id="focus">
 				<header id="focus-jumbotron">
-					<h2 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h2>
-					<h3 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h3>
-					<h3 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h3>	
+					<div id="focus-header">
+						<h1 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h1>
+						<h2 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h2>
+						<h2 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h2>	
+					</div>
+					<Map/>
 				</header>
+				
+				<main id="focus-main" >
+					<p>"Hello"</p>
+					<p>"Hello"</p>
+					<p>"Hello"</p>
+					<p>"Hello"</p>
+					<p>"Hello"</p>
+					<p>"Hello"</p>
+					<p>"Hello"</p>				
+				</main>
 			</div>
 		);
 	}

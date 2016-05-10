@@ -2,9 +2,52 @@
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+}
+
+#focus-jumbotron {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 	background: BurlyWood;
+	width: 100%;
+	height: 650px;
+
 }
 
 #focus-header {
+	display: flex column;
+	background: blue;
+	flex: 1;
+}
 
+#focus-map {
+	height: 400px;
+	flex: 1;
+	border: 1px solid black;
+}
+
+#focus-jumbotron + main {
+	margin-top: 40px;
+	background: white;
+}
+
+#search-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 120px;
+
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#search {
+	text-align: center;
+	width: 30%;
+	color: black;
+	height: 35px;
+	margin: auto;
+}
+
+#search:focus {
+	outline: none;
 }
