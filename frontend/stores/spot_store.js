@@ -11,10 +11,6 @@ SpotStore.__onDispatch = function (payload) {
     	this.set(payload.spot);
     	this.__emitChange();
       break;
-    case "RECEIVE_WEATHER":
-    	this.setWeather(payload.spotId, payload.weather);
-    	this.__emitChange();
-    	break;
   }
 };
 
