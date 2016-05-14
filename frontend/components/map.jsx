@@ -11,7 +11,7 @@ var Map = React.createClass({
   	if (newProps.lat && newProps.lng){
 	  	this.map = new google.maps.Map(document.getElementById('focus-map'), {
 	      center: {lat: newProps.lat, lng: newProps.lng},
-	      zoom: 14,
+	      zoom: 17,
 	      mapTypeId: google.maps.MapTypeId.SATELLITE
 	  	});
   	}
