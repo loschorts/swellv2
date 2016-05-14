@@ -13,7 +13,12 @@ var Map = React.createClass({
 	      center: {lat: newProps.lat, lng: newProps.lng},
 	      zoom: 17,
 	      mapTypeId: google.maps.MapTypeId.SATELLITE,
-	      disableDefaultUI: true
+	      disableDefaultUI: true,
+	      scrollwheel: false,
+		    navigationControl: false,
+		    mapTypeControl: false,
+		    scaleControl: false,
+		    draggable: true,
 	  	});
   	}
   },

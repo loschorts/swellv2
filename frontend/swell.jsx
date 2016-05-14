@@ -11,6 +11,8 @@ var Dash = require("./components/dash");
 var Home = require("./components/home");
 var Focus = require("./components/focus");
 
+window.WeatherActions = require("./actions/weather_actions");
+
 var routes = (
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
