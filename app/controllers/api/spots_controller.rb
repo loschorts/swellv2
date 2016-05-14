@@ -5,7 +5,7 @@ class Api::SpotsController < ApplicationController
 	end
 
 	def show
-		@item = Spot.find(params[:id])
+		@item = Spot.find(params[:id]) || Spot.find(params[:name])
 		render 'api/show'
 	end
 end
