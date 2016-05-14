@@ -3,7 +3,7 @@ var React = require("react");
 
 // components
 var Map = require("./map");
-
+var Wind = require("./wind");
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
@@ -17,10 +17,17 @@ var Focus = React.createClass({
 			<div id="focus">
 				<header id="focus-jumbotron">
 					<div id="focus-container">
-						<div id="focus-header">
+						<div id="focus-left">
+						</div>
+						<div id="focus-center">
 							<h1 className="spot-name">{this.returnIf("state.spot.name")}</h1>
 							<h2 className="shape-full">{this.returnIf("state.currentForecast.shape_full")}</h2>
 							<h2 className="size">{this.returnIf("state.currentForecast.size")} ft</h2>	
+						</div>
+						<div id="focus-right">
+							<Wind
+								speed={this.returnIf("state.weather.wind.speed")}
+								dir={this.returnIf("state.weather.wind.dir")}/>
 						</div>
 					</div>
 					<Map 
