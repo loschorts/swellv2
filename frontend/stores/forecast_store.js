@@ -11,8 +11,8 @@ var _countyForecasts = {};
 ForecastStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "UPDATE_FORECAST":
-    	ForecastStore.set(payload.id, payload.forecast);
-    	ForecastStore.__emitChange();
+    	this.set(payload.id, payload.forecast);
+    	this.__emitChange();
       break;
   }
 };

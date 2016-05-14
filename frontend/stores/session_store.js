@@ -8,12 +8,12 @@ var _currentUser;
 SessionStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "LOGIN":
-    	SessionStore.login(payload.user);
-    	SessionStore.__emitChange();
+    	this.login(payload.user);
+    	this.__emitChange();
       break;
     case "LOGOUT":
-    	SessionStore.logout();
-    	SessionStore.__emitChange();
+    	this.logout();
+    	this.__emitChange();
       break;
   }
 };

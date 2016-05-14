@@ -2,6 +2,7 @@ var SpotStore = require("../stores/spot_store");
 var ForecastStore = require("../stores/forecast_store");
 var SpotActions = require("../actions/spot_actions");
 var ForecastActions = require("../actions/forecast_actions");
+var WeatherActions = require("../actions/weather_actions");
 
 var CurrentForecastState = {
 	componentDidMount: function(){

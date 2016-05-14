@@ -14,12 +14,11 @@ var WeatherActions = {
 			},
 			desc: data.weather.map(function(entry){ return entry.main; })
 		};
-		console.log(spotId, weather);
-		// AppDispatcher.dispatch({
-		// 	actionType: "RECEIVE_SPOT_FORECAST",
-		// 	spot: spotId,
-		// 	weather: weather
-		// });
+		AppDispatcher.dispatch({
+			actionType: "RECEIVE_WEATHER",
+			spot: spotId,
+			weather: weather
+		});
 	}
 };
 
