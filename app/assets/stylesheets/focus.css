@@ -11,16 +11,24 @@
 	background: BurlyWood;
 	width: 100%;
 	height: 650px;
-
 }
 
-#focus-header {
+#focus-header-container {
 	position: absolute;
-	top: 40px; 
+	top: 0; 
 	left: 0;
 	height: 100%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#focus-header {
+	min-width: 25%;
 	z-index: 1;
+	background: rgba(0,0,0, .5);
+	padding: 20px;
 }
 
 #focus-map {

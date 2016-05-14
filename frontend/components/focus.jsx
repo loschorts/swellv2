@@ -16,10 +16,12 @@ var Focus = React.createClass({
 		return (
 			<div id="focus">
 				<header id="focus-jumbotron">
-					<div id="focus-header">
-						<h1 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h1>
-						<h2 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h2>
-						<h2 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h2>	
+					<div id="focus-header-container">
+						<div id="focus-header">
+							<h1 className="spot-name">{this.returnIf("this.state.spot.name", "loading spot name...")}</h1>
+							<h2 className="shape-full">{this.returnIf("this.state.currentForecast.shape_full", "loading shape...")}</h2>
+							<h2 className="size">{this.returnIf("this.state.currentForecast.size", "loading size...")}</h2>	
+						</div>
 					</div>
 					<Map 
 						lat={this.returnIf("state.spot.lat")} 

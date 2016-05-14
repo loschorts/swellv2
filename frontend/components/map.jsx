@@ -12,7 +12,8 @@ var Map = React.createClass({
 	  	this.map = new google.maps.Map(document.getElementById('focus-map'), {
 	      center: {lat: newProps.lat, lng: newProps.lng},
 	      zoom: 17,
-	      mapTypeId: google.maps.MapTypeId.SATELLITE
+	      mapTypeId: google.maps.MapTypeId.SATELLITE,
+	      disableDefaultUI: true
 	  	});
   	}
   },
