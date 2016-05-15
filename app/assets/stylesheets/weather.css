@@ -1,0 +1,19 @@
+.weather-box {
+	padding: 20px;
+	background: rgba(0,0,0,.5);
+}
+.weather-components{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.weather-icon {
+	max-height: 80px;
+	max-width: 80px;
+}
+
+.weather-temp-icon {
+	max-height: 30px;
+	max-width: 30px;
+}

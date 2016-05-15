@@ -12,7 +12,7 @@ var WeatherActions = {
 				dir: data.wind.deg,
 				speed: data.wind.speed
 			},
-			desc: data.weather.map(function(entry){ return entry.main; })
+			desc: data.weather[0].main
 		};
 
 		AppDispatcher.dispatch({

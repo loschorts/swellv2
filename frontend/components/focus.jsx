@@ -29,7 +29,10 @@ var Focus = React.createClass({
 								<h2 className="shape-full">{this.returnIf("state.currentForecast.shape_full")}</h2>
 								<h2 className="size">{this.returnIf("state.currentForecast.size")} ft</h2>	
 							</div>
-							<Weather/>
+							<Weather
+								temp={this.returnIf("state.weather.temp")}
+								desc={this.returnIf("state.weather.desc")}
+							/>
 						</div>
 						<div id="focus-right">
 							<Wind

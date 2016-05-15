@@ -16,7 +16,7 @@ var Wind = React.createClass({
 	},
 	render: function(){
 		var style = {
-			transform: "rotate(" + (this.props.dir - 180) + "deg)"
+			transform: "rotate(" + (this.props.dir) + "deg)"
 		};
 
 		return (
