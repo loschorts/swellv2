@@ -25,20 +25,17 @@
 
 #focus-container > * {
 	z-index: 1;
-	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
 #focus-center {
+	display: flex;
+	flex-direction: column;
 	min-width: 25%;
 	background: rgba(0,0,0, .5);
 	padding: 20px;
-}
-
-#focus-wind {
-	align-self: flex-start;
 }
 
 #focus-map {
@@ -73,4 +70,8 @@
 
 #search:focus {
 	outline: none;
+}
+
+.spot-name:hover {
+	cursor: pointer;
 }
