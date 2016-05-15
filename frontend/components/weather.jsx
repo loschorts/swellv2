@@ -4,7 +4,7 @@ var Weather = React.createClass({
 	render: function(){
 		return (
 			<div id="weather-box">
-			WEATHER
+			<h2>Weather</h2>
 			</div>
 			);
 	}

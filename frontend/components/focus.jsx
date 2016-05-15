@@ -22,7 +22,7 @@ var Focus = React.createClass({
 						<div id="focus-left">
 						</div>
 						<div id="focus-center">
-							<div class="focus-blurb">
+							<div className="focus-blurb">
 								<h1 className="spot-name" onClick={this.recenter}>
 										{this.returnIf("state.spot.name")}
 								</h1>
