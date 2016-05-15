@@ -4,10 +4,14 @@ var SessionStore = require("../stores/session_store");
 var UserApiUtil = require("../utils/user_api_util");
 var CurrentUserState = require("../modules/current_user_state");
 
+var SearchActions = require("../actions/search_actions");
 
 var HomeJumbotron = React.createClass({
 	getInitialState: function(){
 		return {search: null};
+	},
+	componentDidMount: function(){
+		this.refs.focus.getDOMNode().focus();
 	},
 	handleChange: function(e){
 		e.preventDefault();
@@ -15,6 +19,7 @@ var HomeJumbotron = React.createClass({
 	},
 	handleSubmit: function(e){
 		e.preventDefault();
+		SearchActions.fetch(this.state.search);
 	},
 	render: function(){
 		console.log(this.state);
@@ -33,9 +38,10 @@ var HomeJumbotron = React.createClass({
 					<form onSubmit={this.handleSubmit}>
 						<input
 							id="search" 
-							placeholder="Search for a spot or county, e.g. Mavericks"
+							placeholder="Search for a spot, e.g. Mavericks"
 							value={this.state.search}
-							onChange={this.handleChange}>
+							onChange={this.handleChange}
+							ref="focus">
 						</input>
 					</form>
 				</div>
