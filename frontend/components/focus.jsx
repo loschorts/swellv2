@@ -15,13 +15,12 @@ var CheckIfExists = require("../modules/check_if_exists");
 var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
 	render: function(){
-		console.log(this.state);
 		return (
 			<div id="focus">
 				<header id="focus-jumbotron">
 					<div id="focus-container">
 						<div id="focus-left">
-							<Waves/>
+							<Waves swell={this.returnIf("state.currentCountyForecast.swell")}/>
 						</div>
 						<div id="focus-center">
 							<div className="focus-blurb">

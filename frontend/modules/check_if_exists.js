@@ -21,7 +21,7 @@ module.exports = {
 
 		return result;
 	},
-	returnIf: function(objectNameAsString, valueIfUndefined = null){
+	returnIf: function(objectNameAsString, valueIfUndefined = undefined){
 		var scope = this;
 		var result;
 		var levels = objectNameAsString.split(".");
