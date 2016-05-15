@@ -8,11 +8,11 @@ var Waves = React.createClass({
 		console.log(this.props.swell);
 		if ( this.props.swell ) {
 			var mainSwell = this.props.swell[0]
-			var dir = Conversions.cardinal(mainSwell.dir);
+			var dir = Conversions.cardinal(mainSwell.dir + 180);
 			var height = Conversions.imperial(mainSwell.hs);
 			var period = mainSwell.tp;
 			var style = {
-				transform: "rotate(" + (mainSwell.dir) + "deg)"
+				transform: "rotate(" + (mainSwell.dir + 180) + "deg)"
 			};
 			return (
 				<div className="waves-box">

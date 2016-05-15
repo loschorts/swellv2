@@ -33,6 +33,7 @@ var Focus = React.createClass({
 							<Weather
 								temp={this.returnIf("state.weather.temp")}
 								desc={this.returnIf("state.weather.desc")}
+								detail={this.returnIf("state.weather.detail")}
 							/>
 						</div>
 						<div id="focus-right">

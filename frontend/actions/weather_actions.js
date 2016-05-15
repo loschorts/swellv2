@@ -6,13 +6,15 @@ var WeatherActions = {
 		WeatherApiUtil.fetch(spot.lat, spot.lng, this.receive.bind(null, spot.id));
 	},
 	receive(spotId, data){
+		console.log(data);
 		var weather = {
 			temp: data.main.temp,
 			wind: {
 				dir: data.wind.deg,
 				speed: data.wind.speed
 			},
-			desc: data.weather[0].main
+			desc: data.weather[0].main,
+			detail: data.weather[0].description
 		};
 
 		AppDispatcher.dispatch({
