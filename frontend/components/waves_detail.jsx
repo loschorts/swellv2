@@ -7,16 +7,18 @@ var WavesDetail = React.createClass({
 	swellList: function(){
 		var list = [];
 		var i = 0; 
+		var swellIdx = 1;
 		while (this.props.swell[i]) {
 			var swell = this.props.swell[i];
 			if (swell.dir && swell.hs && swell.tp) {
-				list.push(this.swellItem(swell));
+				list.push(this.swellItem(swell, swellIdx));
+				swellIdx++;
 			}
 			i++;
 		}
 		return (<div id="waves-detail-list">{list}</div>);
 	},
-	swellItem: function(swell){
+	swellItem: function(swell, i){
 		// dir, hs, tp
 		var angle = (swell.dir + 180) % 360;
 		var rotate = {
@@ -25,9 +27,13 @@ var WavesDetail = React.createClass({
 		var card = Conversions.cardinal(angle);
 		var height = Conversions.imperial(swell.hs);
 		return (
-			<div className="waves-detail-item" key={"wdi" + swell.dir + swell.hs + swell.tp}>
-				<img src={arrowImg} className="swell-detail-arrow" style={rotate}/>
-				<div>{card} @ {height} ft, {swell.tp} sec</div>
+			<div className="waves-detail-item" key={"wdi" + i}>
+				<span className="waves-detail-item-index">{i}</span>
+				<img src={arrowImg} className="waves-detail-arrow" style={rotate}/>
+				<div classname="waves-detail-text">
+					<h2>{card}</h2>
+					<p>{height} ft, {swell.tp} sec</p>
+				</div>
 			</div>
 		);
 	},
