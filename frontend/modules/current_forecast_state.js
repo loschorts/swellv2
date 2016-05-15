@@ -34,6 +34,7 @@ var CurrentForecastState = {
 		WeatherActions.fetch(spot);
 		CountyForecastActions.fetchSwell(spot);
 		CountyForecastActions.fetchWaterTemp(spot);
+		CountyForecastActions.fetchTide(spot);
 	},
 	updateForecast: function(){
 		this.setState({ currentForecast: ForecastStore.getCurrent(this.spotId) });

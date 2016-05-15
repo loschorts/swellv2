@@ -19,6 +19,12 @@ CountyForecastStore.__onDispatch = function (payload) {
       this.ensure(payload.spot);
       this.setWaterTemp(payload.spot, payload.waterTemp);
       this.__emitChange();
+      break;
+    case "RECEIVE_COUNTY_TIDE":
+      this.ensure(payload.spot);
+      this.setTide(payload.spot, payload.tide);
+      this.__emitChange();
+      break;
   }
 };
 
@@ -33,7 +39,7 @@ CountyForecastStore.setSwell = function(spot, swellForecast){
 };
 
 CountyForecastStore.getCurrentSwell = function(spotId){
-  if (!_bySpot[spotId]) { return; }
+  if (!_bySpot[spotId].swell) { return; }
   var now = TimeHelper.convert(new Date());
   return _bySpot[spotId].swell.find(function(segment){
     return segment.hour == now;
@@ -49,6 +55,30 @@ CountyForecastStore.getWaterTemp = function(spotId) {
   return _bySpot[spotId].waterTemp;
 };
 
+CountyForecastStore.setTide = function(spot, tide){
+  _byCounty[spot.spitcast_county].tide = tide;
+  _bySpot[spot.id].tide = tide; 
+};
+
+CountyForecastStore.getTide = function(spotId) {
+  return _bySpot[spotId].tide;
+};
+
+CountyForecastStore.getCurrentTide = function(spotId){
+  if (!_bySpot[spotId].tide) { return; }
+  var now = TimeHelper.convert(new Date());
+  var nowIdx = _bySpot[spotId].tide.findIndex(function(segment){
+    return segment.hour == now;
+  });
+
+  var currentTide = _bySpot[spotId].tide[nowIdx];
+  var nextTide = _bySpot[spotId].tide[nowIdx + 1];
+
+  var direction = currentTide.tide <= nextTide.tide ? "rising" : "falling";
+  return {level: currentTide.tide, direction: direction};
+
+};
+
 CountyForecastStore.get = function(spotId) {
   return _bySpot[spotId];
 };
@@ -56,7 +86,8 @@ CountyForecastStore.get = function(spotId) {
 CountyForecastStore.getCurrent = function(spotId) {
   return {
     swell: this.getCurrentSwell(spotId),
-    waterTemp: this.getWaterTemp(spotId)
+    waterTemp: this.getWaterTemp(spotId),
+    tide: this.getCurrentTide(spotId)
   };
 };
 

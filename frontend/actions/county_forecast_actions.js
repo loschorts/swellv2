@@ -21,6 +21,16 @@ var CountyForecastActions = {
 			spot: spot,
 			waterTemp: waterTemp
 		});
+	},
+	fetchTide: function(spot){
+		CountyForecastApiUtil.fetchTide(spot, this.receiveTide);
+	},
+	receiveTide: function(spot, tide) {
+		AppDispatcher.dispatch({
+			actionType: "RECEIVE_COUNTY_TIDE",
+			spot: spot,
+			tide: tide
+		});
 	}
 
 
