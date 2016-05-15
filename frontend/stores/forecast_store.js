@@ -6,7 +6,6 @@ var TimeHelper = require("../helpers/time_helper");
 var ForecastStore = new Store(AppDispatcher);
 
 var _forecasts = {};
-var _countyForecasts = {};
 
 ForecastStore.__onDispatch = function (payload) {
   switch(payload.actionType) {

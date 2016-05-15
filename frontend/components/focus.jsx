@@ -5,11 +5,15 @@ var React = require("react");
 var Map = require("./map");
 var Wind = require("./wind");
 var Weather = require("./weather");
+var Waves = require("./waves");
 
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
 var CheckIfExists = require("../modules/check_if_exists");
+
+
+window.fcs = require("../stores/forecast_store");
 
 var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
@@ -20,6 +24,7 @@ var Focus = React.createClass({
 				<header id="focus-jumbotron">
 					<div id="focus-container">
 						<div id="focus-left">
+							<Waves/>
 						</div>
 						<div id="focus-center">
 							<div className="focus-blurb">
