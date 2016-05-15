@@ -31,10 +31,12 @@ var DailyTideChart = React.createClass({
 		if (!this.props.data) {	return (<div id="daily-tide-chart"/>); } 
 
 		var chartParams = this.configure();
+		var self = this;
 		var chartItems = chartParams.columns.map(function(col, i){
-			style = {
+			var style = {
+				width: "4%",
 				height: parseInt(col * 100) + "%",
-				color: DailyTideChart.options.color
+				background: self.options.color
 			};
 			return (
 				<div 

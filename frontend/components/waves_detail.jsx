@@ -30,7 +30,7 @@ var WavesDetail = React.createClass({
 			<div className="waves-detail-item" key={"wdi" + i}>
 				<span className="waves-detail-item-index">{i}</span>
 				<img src={arrowImg} className="waves-detail-arrow" style={rotate}/>
-				<div classname="waves-detail-text">
+				<div className="waves-detail-text">
 					<h2>{card}</h2>
 					<p>{height} ft, {swell.tp} sec</p>
 				</div>
