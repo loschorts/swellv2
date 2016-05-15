@@ -7,7 +7,6 @@ var cloudinaryURL = "http://res.cloudinary.com/swell/image/upload/";
 var Weather = React.createClass({
 	mixins: [CheckIfExists],
 	render: function(){
-		console.log(this.props);
 		if (this.props.temp && this.props.desc && this.props.tide) {
 			return (
 				<div className="weather-box">
@@ -16,7 +15,14 @@ var Weather = React.createClass({
 						<div className="weather-text">
 							<h3>Air Temp: {this.props.temp}°</h3>
 							<h3>Water Temp: {this.props.waterTemp}°</h3>
-							<h3>Tide: {this.props.tide.level}, {this.props.tide.direction}</h3>
+							<h3>
+								<span>
+								Tide: {this.props.tide.level}  
+								<img 
+									className="weather-tide-icon"
+									src={getURL(this.props.tide.direction)}/>
+								</span>
+							</h3>
 						</div>
 						<div className="weather-icon-container">
 							<img className="weather-icon" src={getURL(this.props.desc)}/>
@@ -45,6 +51,12 @@ function getURL(desc){
 		case "Clear":
 			var time = new Date(Date.now()).getHours();
 			filename = time > 6 && time < 20 ? "sun.png" : "moon.png";
+			break;
+		case "Rising":
+			filename = "up.png";
+			break;
+		case "Falling":
+			filename = "down.png";
 			break;
 	}
 	return cloudinaryURL + filename;
