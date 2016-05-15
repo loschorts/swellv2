@@ -7,7 +7,7 @@ var _directions = [
 
 var Conversions = {
 	cardinal: function(degrees){
-		var idx = parseInt((degrees / 360).toFixed());
+		var idx = parseInt((degrees / 360 * 16).toFixed());
 		return _directions[idx];
 	},
 	imperial: function(meters){

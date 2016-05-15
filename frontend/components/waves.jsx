@@ -3,6 +3,7 @@ var Conversions = require("../helpers/conversions");
 
 var Waves = React.createClass({
 	render: function(){
+		console.log(this.props.swell);
 		if ( this.props.swell ) {
 			return (
 				<div className="waves-box">
