@@ -12,9 +12,6 @@ var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
 var CheckIfExists = require("../modules/check_if_exists");
 
-
-window.fcs = require("../stores/forecast_store");
-
 var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
 	render: function(){

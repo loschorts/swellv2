@@ -39,7 +39,6 @@ function getURL(desc){
 			filename = time > 6 && time < 20 ? "sun.png" : "moon.png";
 			break;
 	}
-	console.log(desc, filename);
 	return cloudinaryURL + filename;
 };
 

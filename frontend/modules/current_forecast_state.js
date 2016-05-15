@@ -9,6 +9,8 @@ var ForecastActions = require("../actions/forecast_actions");
 var WeatherActions = require("../actions/weather_actions");
 var CountyForecastActions = require("../actions/county_forecast_actions");
 
+window.cfs = CountyForecastStore;
+
 var CurrentForecastState = {
 	componentDidMount: function(){
 		this.spotId = this.props.spotId || this.props.params.spotId;

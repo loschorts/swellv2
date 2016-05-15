@@ -28,6 +28,14 @@ CountyForecastStore.setSwell = function(spot, swellForecast){
   _bySpot[spot.id].swell = swellForecast;
 };
 
+CountyForecastStore.getCurrentSwell = function(spotId){
+  if (!_bySpot[spotId]) { return; }
+  var now = TimeHelper.convert(new Date());
+  return _bySpot[spotId].swell.find(function(segment){
+    return segment.hour == now;
+  });
+};
+
 CountyForecastStore.get = function(spotId) {
   return _bySpot[spotId];
 };
