@@ -40,6 +40,12 @@ CountyForecastStore.get = function(spotId) {
   return _bySpot[spotId];
 };
 
+CountyForecastStore.getCurrent = function(spotId) {
+  return {
+    swell: this.getCurrentSwell(spotId)
+  };
+};
+
 CountyForecastStore.getCounty = function(spitcastCounty){
   return _byCounty[spitcastCounty];
 };

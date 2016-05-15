@@ -41,7 +41,7 @@ var CurrentForecastState = {
 		this.setState({ weather: WeatherStore.get(this.spotId)});
 	},
 	updateCountyForecast: function(){
-		this.setState({countyForecast: CountyForecastStore.get(this.spotId)});
+		this.setState({currentCountyForecast: CountyForecastStore.getCurrent(this.spotId)});
 	}
 };
 
