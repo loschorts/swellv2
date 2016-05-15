@@ -6,6 +6,7 @@ var Map = require("./map");
 var Wind = require("./wind");
 var Weather = require("./weather");
 var Waves = require("./waves");
+var WavesDetail = require("./waves_detail");
 
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
@@ -51,11 +52,7 @@ var Focus = React.createClass({
 				</header>
 				
 				<main id="focus-main" >
-					<section className="detail swell-detail"/>
-					<section className="detail spot-detail"/>	
-					<section className="detail chart swell-chart"/>
-					<section className="detail chart wind-chart"/>
-					<section className="detail chart tide-chart"/>
+					<WavesDetail swell={this.returnIf("state.currentCountyForecast.swell")}/>
 				</main>
 			</div>
 		);

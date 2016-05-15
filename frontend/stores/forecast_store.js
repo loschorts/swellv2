@@ -27,7 +27,6 @@ ForecastStore.getFull = function(id){
 ForecastStore.getCurrent = function(id){
 	if (!_forecasts[id]) { return; }
 	var now = TimeHelper.convert(new Date());
-  debugger
 	return _forecasts[id].find(function(segment){
 		return segment.hour == now;
 	});

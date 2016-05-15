@@ -52,8 +52,13 @@
 	border: 1px solid black;
 }
 
-#focus-jumbotron + main {
+#focus-main {
 	margin-top: 40px;
+	min-height: 100px;
+	display: flex;
+}
+
+#focus-main > * {
 	background: white;
 }
 
