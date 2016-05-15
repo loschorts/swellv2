@@ -44,6 +44,7 @@ var CurrentForecastState = {
 	},
 	updateCountyForecast: function(){
 		this.setState({currentCountyForecast: CountyForecastStore.getCurrent(this.spotId)});
+		this.setState({dailyCountyForecast: CountyForecastStore.getDaily(this.spotId)});
 	}
 };
 

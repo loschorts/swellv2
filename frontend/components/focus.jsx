@@ -7,7 +7,7 @@ var Wind = require("./wind");
 var Weather = require("./weather");
 var Waves = require("./waves");
 var WavesDetail = require("./waves_detail");
-
+var DailyTideChart = require("./daily_tide_chart");
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
@@ -15,6 +15,9 @@ var CheckIfExists = require("../modules/check_if_exists");
 
 var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
+	componentWillReceiveProps: function(){
+		alert();
+	},
 	render: function(){
 		return (
 			<div id="focus">
@@ -53,6 +56,7 @@ var Focus = React.createClass({
 				
 				<main id="focus-main" >
 					<WavesDetail swell={this.returnIf("state.currentCountyForecast.swell")}/>
+					<DailyTideChart data={this.returnIf("state.dailyCountyForecast.tide")}/>
 				</main>
 			</div>
 		);

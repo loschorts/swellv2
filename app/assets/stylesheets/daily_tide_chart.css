@@ -1,0 +1,5 @@
+#daily-tide-chart {
+	height: 200px;
+	width: 50%;
+	display: flex;
+}

@@ -101,6 +101,12 @@ CountyForecastStore.getCurrent = function(spotId) {
   };
 };
 
+CountyForecastStore.getDaily = function(spotId) {
+  return {
+    tide: this.getDailyTide(spotId)
+  };
+};
+
 CountyForecastStore.getCounty = function(spitcastCounty){
   return _byCounty[spitcastCounty];
 };
