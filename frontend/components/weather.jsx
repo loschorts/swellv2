@@ -13,7 +13,10 @@ var Weather = React.createClass({
 					<h2>Weather</h2>
 					<div className="weather-components">
 						<h3>Temp: {this.props.temp}°</h3>
+						<div classname="weather-icon-container">
 						<img className="weather-icon" src={getURL(this.props.desc)}/>
+						<div>{this.props.desc}</div>
+						</div>
 					</div>
 				</div>
 				);

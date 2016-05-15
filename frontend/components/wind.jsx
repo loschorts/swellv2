@@ -1,7 +1,7 @@
 var React = require("react");
 
 var Conversions = require("../helpers/conversions");
-var compassImg = "http://res.cloudinary.com/swell/image/upload/e_negate/v1463266720/1463284607_icon-56-compass-south_n9fort_jfo5yb.png"
+var compassImg = "http://res.cloudinary.com/swell/image/upload/v1463278396/compass.png";
 
 var Wind = React.createClass({
 

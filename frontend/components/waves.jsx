@@ -1,37 +1,33 @@
 var React = require("react");
 var Conversions = require("../helpers/conversions");
 
+var compassImg = "http://res.cloudinary.com/swell/image/upload/v1463278396/compass.png";
+
 var Waves = React.createClass({
 	render: function(){
 		console.log(this.props.swell);
 		if ( this.props.swell ) {
+			var mainSwell = this.props.swell[0]
+			var dir = Conversions.cardinal(mainSwell.dir);
+			var height = Conversions.imperial(mainSwell.hs);
+			var period = mainSwell.tp;
+			var style = {
+				transform: "rotate(" + (mainSwell.dir) + "deg)"
+			};
 			return (
 				<div className="waves-box">
-					<h2>Swell</h2>
-					{this.list()}
+					<h2>Primary Swell</h2>
+					<img className="swell-arrow" src={compassImg} style={style}/>
+					<div className="swell-item-info"> {dir} @ {height}ft, {period} sec </div>
 				</div>
 			);
 		} else {
 			return <div className="waves-box"/>;
 		}
 	},
-	list: function(){
-		var swellList = [];
-		var i = 0;
-		while (this.props.swell[i]) {
-			swellList.push(this.swellItem(this.props.swell[i]));
-			i++;
-		}
-		return <div className="swell-list">{swellList}</div>;
-	},
-	swellItem: function(swellInfo){
-		var dir = Conversions.cardinal(swellInfo.dir);
-		var height = Conversions.imperial(swellInfo.hs);
-		var period = swellInfo.tp;
 
-		return (
-			<div>{dir} @ {height}ft, {period} sec</div>
-			);
+	swellItem: function(swellInfo){
+
 	}
 });
 
