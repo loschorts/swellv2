@@ -11,7 +11,18 @@ var CountyForecastActions = {
 			spot: spot,
 			swellForecast: swellForecast
 		});
+	},
+	fetchWaterTemp: function(spot){
+		CountyForecastApiUtil.fetchWaterTemp(spot, this.receiveWaterTemp);
+	},
+	receiveWaterTemp: function(spot, waterTemp) {
+		AppDispatcher.dispatch({
+			actionType: "RECEIVE_COUNTY_WATER_TEMP",
+			spot: spot,
+			waterTemp: waterTemp
+		});
 	}
+
 
 };
 

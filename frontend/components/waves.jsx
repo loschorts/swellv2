@@ -5,7 +5,6 @@ var compassImg = "http://res.cloudinary.com/swell/image/upload/v1463278396/compa
 
 var Waves = React.createClass({
 	render: function(){
-		console.log(this.props.swell);
 		if ( this.props.swell ) {
 			var mainSwell = this.props.swell[0]
 			var dir = Conversions.cardinal(mainSwell.dir + 180);

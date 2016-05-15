@@ -14,7 +14,6 @@ var SearchActions = {
 		window.scrollTo(0, 0);
 	},
 	error: function(error){
-		console.log(error.responseJSON.message);
 		alert(JSON.stringify(error.responseJSON.message));
 	}
 };

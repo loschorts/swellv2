@@ -12,10 +12,13 @@ var Weather = React.createClass({
 				<div className="weather-box">
 					<h2>Weather</h2>
 					<div className="weather-components">
-						<h3>Temp: {this.props.temp}°</h3>
-						<div classname="weather-icon-container">
-						<img className="weather-icon" src={getURL(this.props.desc)}/>
-						<div>{this.props.detail}</div>
+						<div className="weather-text">
+							<h3>Air Temp: {this.props.temp}°</h3>
+							<h3>Water Temp: {this.props.waterTemp}°</h3>
+						</div>
+						<div className="weather-icon-container">
+							<img className="weather-icon" src={getURL(this.props.desc)}/>
+							<div>{this.props.detail}</div>
 						</div>
 					</div>
 				</div>

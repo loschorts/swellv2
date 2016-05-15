@@ -15,6 +15,7 @@ var CheckIfExists = require("../modules/check_if_exists");
 var Focus = React.createClass({
 	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
 	render: function(){
+		console.log(this.state);
 		return (
 			<div id="focus">
 				<header id="focus-jumbotron">
@@ -32,6 +33,7 @@ var Focus = React.createClass({
 							</div>
 							<Weather
 								temp={this.returnIf("state.weather.temp")}
+								waterTemp={this.returnIf("state.currentCountyForecast.waterTemp.fahrenheit")}
 								desc={this.returnIf("state.weather.desc")}
 								detail={this.returnIf("state.weather.detail")}
 							/>
@@ -49,13 +51,11 @@ var Focus = React.createClass({
 				</header>
 				
 				<main id="focus-main" >
-					<p>"Hello"</p>
-					<p>"Hello"</p>
-					<p>"Hello"</p>
-					<p>"Hello"</p>
-					<p>"Hello"</p>
-					<p>"Hello"</p>
-					<p>"Hello"</p>				
+					<section className="detail swell-detail"/>
+					<section className="detail spot-detail"/>	
+					<section className="detail chart swell-chart"/>
+					<section className="detail chart wind-chart"/>
+					<section className="detail chart tide-chart"/>
 				</main>
 			</div>
 		);

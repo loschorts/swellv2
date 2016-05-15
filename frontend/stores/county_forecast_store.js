@@ -15,6 +15,10 @@ CountyForecastStore.__onDispatch = function (payload) {
       this.setSwell(payload.spot, payload.swellForecast);
     	this.__emitChange();
       break;
+    case "RECEIVE_COUNTY_WATER_TEMP":
+      this.ensure(payload.spot);
+      this.setWaterTemp(payload.spot, payload.waterTemp);
+      this.__emitChange();
   }
 };
 
@@ -36,13 +40,23 @@ CountyForecastStore.getCurrentSwell = function(spotId){
   });
 };
 
+CountyForecastStore.setWaterTemp = function(spot, waterTemp){
+  _byCounty[spot.spitcast_county].waterTemp = waterTemp;
+  _bySpot[spot.id].waterTemp = waterTemp;  
+};
+
+CountyForecastStore.getWaterTemp = function(spotId) {
+  return _bySpot[spotId].waterTemp;
+};
+
 CountyForecastStore.get = function(spotId) {
   return _bySpot[spotId];
 };
 
 CountyForecastStore.getCurrent = function(spotId) {
   return {
-    swell: this.getCurrentSwell(spotId)
+    swell: this.getCurrentSwell(spotId),
+    waterTemp: this.getWaterTemp(spotId)
   };
 };
 
