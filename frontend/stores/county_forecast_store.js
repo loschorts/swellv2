@@ -8,6 +8,9 @@ var CountyForecastStore = new Store(AppDispatcher);
 var _byCounty = {};
 var _bySpot = {};
 
+window.bySpot = _bySpot;
+window.cfs = CountyForecastStore;
+
 CountyForecastStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "RECEIVE_COUNTY_SWELL":
@@ -76,6 +79,14 @@ CountyForecastStore.getCurrentTide = function(spotId){
 
   var direction = currentTide.tide <= nextTide.tide ? "Rising" : "Falling";
   return {level: currentTide.tide.toFixed(1) + "ft", direction: direction};
+};
+
+CountyForecastStore.getDailyTide = function(spotId) {
+  if (!_bySpot[spotId].tide) { return; }
+  var tides = _bySpot[spotId].tide;
+  return tides.map(function(hour){
+    return hour.tide;
+  });
 };
 
 CountyForecastStore.get = function(spotId) {
