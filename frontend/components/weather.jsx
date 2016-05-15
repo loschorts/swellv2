@@ -7,7 +7,8 @@ var cloudinaryURL = "http://res.cloudinary.com/swell/image/upload/";
 var Weather = React.createClass({
 	mixins: [CheckIfExists],
 	render: function(){
-		if (this.exists("props.temp") && this.exists("props.desc")) {
+		console.log(this.props);
+		if (this.props.temp && this.props.desc && this.props.tide) {
 			return (
 				<div className="weather-box">
 					<h2>Weather</h2>
@@ -15,6 +16,7 @@ var Weather = React.createClass({
 						<div className="weather-text">
 							<h3>Air Temp: {this.props.temp}°</h3>
 							<h3>Water Temp: {this.props.waterTemp}°</h3>
+							<h3>Tide: {this.props.tide.level}, {this.props.tide.direction}</h3>
 						</div>
 						<div className="weather-icon-container">
 							<img className="weather-icon" src={getURL(this.props.desc)}/>

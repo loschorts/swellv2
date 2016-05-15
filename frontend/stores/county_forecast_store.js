@@ -75,8 +75,7 @@ CountyForecastStore.getCurrentTide = function(spotId){
   var nextTide = _bySpot[spotId].tide[nowIdx + 1];
 
   var direction = currentTide.tide <= nextTide.tide ? "rising" : "falling";
-  return {level: currentTide.tide, direction: direction};
-
+  return {level: currentTide.tide.toFixed(1) + "ft", direction: direction};
 };
 
 CountyForecastStore.get = function(spotId) {

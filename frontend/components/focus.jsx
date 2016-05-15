@@ -36,6 +36,7 @@ var Focus = React.createClass({
 								waterTemp={this.returnIf("state.currentCountyForecast.waterTemp.fahrenheit")}
 								desc={this.returnIf("state.weather.desc")}
 								detail={this.returnIf("state.weather.detail")}
+								tide={this.returnIf("state.currentCountyForecast.tide")}
 							/>
 						</div>
 						<div id="focus-right">
