@@ -1,7 +1,7 @@
 var React = require("react");
 var Conversions = require("../helpers/conversions");
 
-var compassImg = "http://res.cloudinary.com/swell/image/upload/v1463278396/compass.png";
+var compassImg = "http://res.cloudinary.com/swell/compass.png";
 
 var Waves = React.createClass({
 	render: function(){
@@ -17,7 +17,7 @@ var Waves = React.createClass({
 				<div className="waves-box">
 					<h2>Primary Swell</h2>
 					<img className="swell-arrow" src={compassImg} style={style}/>
-					<div className="swell-item-info"> {dir} @ {height}ft, {period} sec </div>
+					<div className="swell-item-info"> {dir} @ {height} ft, {period} sec </div>
 				</div>
 			);
 		} else {

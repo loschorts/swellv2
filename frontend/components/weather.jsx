@@ -2,7 +2,7 @@ var React = require("react");
 
 
 var CheckIfExists = require("../modules/check_if_exists");
-var cloudinaryURL = "http://res.cloudinary.com/swell/image/upload/";
+var cloudinaryURL = "http://res.cloudinary.com/swell/";
 
 var Weather = React.createClass({
 	mixins: [CheckIfExists],

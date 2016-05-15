@@ -1,6 +1,7 @@
 var React = require("react");
 
-var cardinal = require("../helpers/conversions").cardinal;
+var Conversions = require("../helpers/conversions");
+var arrowImg = "http://res.cloudinary.com/swell/compass_color.png";
 
 var WavesDetail = React.createClass({
 	swellList: function(){
@@ -17,12 +18,18 @@ var WavesDetail = React.createClass({
 	},
 	swellItem: function(swell){
 		// dir, hs, tp
-
+		var angle = (swell.dir + 180) % 360;
+		var rotate = {
+			transform: "rotate(" + angle + "deg)" 
+		};
+		var card = Conversions.cardinal(angle);
+		var height = Conversions.imperial(swell.hs);
 		return (
-			<div className="waves-detail-item">
-			{swell.dir} {swell.hs} {swell.tp}
+			<div className="waves-detail-item" key={"wdi" + swell.dir + swell.hs + swell.tp}>
+				<img src={arrowImg} className="swell-detail-arrow" style={rotate}/>
+				<div>{card} @ {height} ft, {swell.tp} sec</div>
 			</div>
-			);
+		);
 	},
 	render: function(){
 		console.log(this.props);
