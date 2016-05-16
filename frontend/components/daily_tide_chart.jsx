@@ -3,7 +3,7 @@ var React = require("React");
 var DailyTideChart = React.createClass({
 	getInitialState: function(){
 		this.options = {
-			color: "blue"
+			color: "#1F7794"
 		};
 		return null;
 	},
@@ -16,7 +16,7 @@ var DailyTideChart = React.createClass({
 
 		var relativeHeights = this.props.data.map(function(el){
 			el = el || (min + (delta / 2));
-			return (el / max);
+			return (el / (max * 1.25));
 		});	
 
 		return {
@@ -34,21 +34,25 @@ var DailyTideChart = React.createClass({
 		var self = this;
 		var chartItems = chartParams.columns.map(function(col, i){
 			var style = {
-				width: "4%",
-				height: parseInt(col * 100) + "%",
-				background: self.options.color
+				width: "3%",
+				height: parseInt(col * 90) + "%",
 			};
 			return (
 				<div 
 				key={"dtc" + i}
 				className="daily-tide-chart-column"
-				style={style} />
+				style={style} >
+				<span className="daily-tide-chart-hover-span" title="hover"/>
+				</div>
 			);
 		});
 
 		return (
-			<div id="daily-tide-chart">
-			{chartItems}
+			<div id="daily-tide-chart-wrapper">
+				<h1>Today's Tides</h1>
+				<div id="daily-tide-chart">
+				{chartItems}
+				</div>
 			</div>
 		);
 	}
