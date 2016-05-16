@@ -5,7 +5,15 @@
 	justify-content: space-between;
 	display: flex;
 	align-items: flex-end;
-	background: #ffff80;
+	background: #c2f0f0;
+}
+
+#daily-tide-chart-index {
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	align-items: flex-end;
+	color: black;
 }
 
 #daily-tide-chart-wrapper {
@@ -26,12 +34,8 @@
 }
 
 .daily-tide-chart-column {
-	background: #0E5269;
+	background: #2db9b9;
 	transition: height 2s;
-}
-
-.daily-tide-chart-column:hover {
-	background: #000;
 }
 
 .daily-tide-chart-hover-span {
