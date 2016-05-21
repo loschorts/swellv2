@@ -38,7 +38,6 @@ var WavesDetail = React.createClass({
 		);
 	},
 	render: function(){
-		console.log(this.props);
 		if (this.props.swell) {
 			return (
 				<div id="waves-detail">

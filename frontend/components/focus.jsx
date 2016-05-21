@@ -21,8 +21,8 @@ var Focus = React.createClass({
 	render: function(){
 		return (
 			<div id="focus">
-				<header id="focus-jumbotron">
-					<div id="focus-container">
+				<div id="focus-jumbotron">
+					<div id="focus-header">
 						<div id="focus-left">
 							<Waves swell={this.returnIf("state.currentCountyForecast.swell")}/>
 						</div>
@@ -52,7 +52,7 @@ var Focus = React.createClass({
 						lat={this.returnIf("state.spot.lat")} 
 						lng={this.returnIf("state.spot.lng")}
 					/>
-				</header>
+				</div>
 				
 				<main id="focus-main" >
 					<WavesDetail swell={this.returnIf("state.currentCountyForecast.swell")}/>

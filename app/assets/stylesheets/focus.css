@@ -12,19 +12,16 @@
 	height: 650px;
 }
 
-#focus-container {
-	position: absolute;
-	top: 0; 
-	left: 0;
+#focus-header {
 	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	background: rgba(0,0,0,0);
 }
 
-#focus-container > * {
-	z-index: 1;
+#focus-header > * {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -45,7 +42,6 @@
 }
 
 #focus-map {
-	z-index: 0;
 	height: 100%;
 	width: 100%;
 	flex: 1;
