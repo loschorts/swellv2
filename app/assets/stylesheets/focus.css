@@ -18,7 +18,8 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background: rgba(0,0,0,0);
+	background: transparent;
+	z-index: 1;
 }
 
 #focus-header > * {
@@ -42,10 +43,13 @@
 }
 
 #focus-map {
-	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 650px;
 	width: 100%;
 	flex: 1;
-	border: 1px solid black;
+	z-index: 0;
 }
 
 #focus-main {
