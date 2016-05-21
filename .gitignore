@@ -13,6 +13,7 @@
 /tmp
 /node_modules/*
 **/bundle.js
+**/bundle.js.map
 
 /public/images
 # Ignore application configuration
