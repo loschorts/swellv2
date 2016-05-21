@@ -41,8 +41,8 @@ var WavesDetail = React.createClass({
 		if (this.props.swell) {
 			return (
 				<div id="waves-detail">
-				<h1>Swell Detail</h1>
-				{this.swellList()}
+					<h1>Swell Detail</h1>
+					{this.swellList()}
 				</div>
 				);
 		} else {

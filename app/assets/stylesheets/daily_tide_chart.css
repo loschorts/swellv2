@@ -1,13 +1,15 @@
 #daily-tide-chart-wrapper {
-	width: 100%;
+  width: -moz-calc(100% - 120px);
+  width: -webkit-calc(100% - 120px);
+  width: calc(100% - 120px);
 	height : 250px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 0 40px 40px;
 	max-width: 1200px;
 	padding: 20px;
+	margin-bottom: 40px;
 }
 
 #daily-tide-chart-wrapper > h1 {

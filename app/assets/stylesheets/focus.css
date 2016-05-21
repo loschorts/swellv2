@@ -2,6 +2,7 @@
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 #focus-jumbotron {
@@ -65,12 +66,31 @@
 }
 
 #focus-main {
-	margin-top: 40px;
 	min-height: 100px;
 	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 40px;
+	justify-content: space-between;
+	overflow: hidden;
+	align-content: center;
 }
 
-#focus-main > * {
+#focus-main-left {
+	display: flex;
+	height: 100%;
+	flex: 2;
+}
+
+#focus-main-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 7;
+	margin: 0 0 0 40px;
+}
+
+#focus-main-left > *, #focus-main-right > * {
 	background: white;
 }
 
