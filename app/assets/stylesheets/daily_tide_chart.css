@@ -1,4 +1,4 @@
-#daily-tide-chart-wrapper {
+.daily-chart-wrapper {
   width: -moz-calc(100% - 120px);
   width: -webkit-calc(100% - 120px);
   width: calc(100% - 120px);
@@ -12,12 +12,12 @@
 	margin-bottom: 40px;
 }
 
-#daily-tide-chart-wrapper > h1 {
+.daily-chart-wrapper > h1 {
 	align-self: flex-start;
 	margin-top: 0;
 }
 
-#daily-tide-chart {
+.daily-chart {
 	height: 80%;
 	width: 100%;
 	justify-content: space-between;
@@ -26,18 +26,18 @@
 	background: #c2f0f0;
 }
 
-.daily-tide-chart-column {
+.daily-chart-column {
 	height: 0%;
 	width: 3%;
 	background: #2db9b9;
 	transition: height 2s;
 }
 
-.daily-tide-chart-column.now {
+.daily-chart-column.now {
 	background: #1e7b7b;	
 }
 
-.daily-tide-chart-hover-span {
+.daily-chart-hover-span {
 	display: inline-block;
 	height: 100%;
 	width: 100%;

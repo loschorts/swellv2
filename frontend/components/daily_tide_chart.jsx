@@ -3,12 +3,6 @@ var React = require("react");
 var TimeHelper = require("../helpers/time_helper");
 
 var DailyTideChart = React.createClass({
-	getInitialState: function(){
-		this.options = {
-			color: "#1F7794"
-		};
-		return null;
-	},
 	configure: function(){
 
 		var heights = this.props.data.map(function(el){
@@ -28,14 +22,14 @@ var DailyTideChart = React.createClass({
 		return {
 			max: max,
 			min: min,
-			data: heights,
+			heights: heights,
 			columns: relativeHeights,
 			hours: hours
 		};
 	},
 	render: function(){
 		if (!this.props.data) {	
-			return (<div id="daily-tide-chart"/>);
+			return (<div className="daily-chart"/>);
 		}
 
 		var chartParams = this.configure();
@@ -50,22 +44,22 @@ var DailyTideChart = React.createClass({
 				height: col,
 			};
 
-			var hoverText = chartParams.data[i].toFixed(2) + "ft @ " + chartParams.hours[i];
+			var hoverText = chartParams.heights[i].toFixed(2) + "ft @ " + chartParams.hours[i];
 			
 			return (
 				<div 
 				key={"dtc" + i}
-				className={"daily-tide-chart-column" + now}
+				className={"daily-chart-column" + now}
 				style={style} >
-				<span className="daily-tide-chart-hover-span" title={hoverText}/>
+				<span className="daily-chart-hover-span" title={hoverText}/>
 				</div>
 			);
 		});
 
 		return (
-			<div id="daily-tide-chart-wrapper">
+			<div className="daily-chart-wrapper">
 				<h1><span>Today's Tides</span></h1>
-				<div id="daily-tide-chart">
+				<div className="daily-chart">
 					{chartItems}
 				</div>
 			</div>
