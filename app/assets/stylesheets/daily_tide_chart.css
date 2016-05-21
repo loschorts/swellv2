@@ -1,41 +1,38 @@
-#daily-tide-chart {
-	height: 100%;
-	width: 100%;
-	height: 80%;
-	justify-content: space-between;
-	display: flex;
-	align-items: flex-end;
-	background: #c2f0f0;
-}
-
-#daily-tide-chart-index {
-	width: 100%;
-	justify-content: space-between;
-	display: flex;
-	align-items: flex-end;
-	color: black;
-}
-
 #daily-tide-chart-wrapper {
-	padding: 20px;
 	width: 100%;
-	height: 200px;
+	height : 250px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 0 40px 40px;
 	max-width: 1200px;
+	padding: 20px;
 }
 
 #daily-tide-chart-wrapper > h1 {
-	margin-top: 0;
 	align-self: flex-start;
+	margin-top: 0;
+}
+
+#daily-tide-chart {
+	height: 80%;
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	align-items: flex-end;
+	background: #c2f0f0;
 }
 
 .daily-tide-chart-column {
+	height: 0%;
+	width: 3%;
 	background: #2db9b9;
 	transition: height 2s;
+}
+
+.daily-tide-chart-column.now {
+	background: #1e7b7b;	
 }
 
 .daily-tide-chart-hover-span {

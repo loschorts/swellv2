@@ -83,10 +83,7 @@ CountyForecastStore.getCurrentTide = function(spotId){
 
 CountyForecastStore.getDailyTide = function(spotId) {
   if (!_bySpot[spotId].tide) { return; }
-  var tides = _bySpot[spotId].tide;
-  return tides.map(function(hour){
-    return {hour: hour.hour, tide: hour.tide};
-  });
+  return _bySpot[spotId].tide;
 };
 
 CountyForecastStore.get = function(spotId) {

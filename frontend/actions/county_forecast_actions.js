@@ -26,6 +26,10 @@ var CountyForecastActions = {
 		CountyForecastApiUtil.fetchTide(spot, this.receiveTide);
 	},
 	receiveTide: function(spot, tide) {
+		tide = tide.map(function(hour){
+    	return {hour: hour.hour, tide: hour.tide};
+    });
+
 		AppDispatcher.dispatch({
 			actionType: "RECEIVE_COUNTY_TIDE",
 			spot: spot,
