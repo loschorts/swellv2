@@ -62,18 +62,21 @@ var Focus = React.createClass({
 							field="size_ft"
 							title="Today's Wave Forecast"
 							cssClass="wave"
+							unit="ft"
 						/>
 						<DailyChart 
 							data={this.returnIf("state.dailyCountyForecast.tide")}
 							field="tide"
 							title="Today's Tide Forecast"
 							cssClass="tide"
+							unit="ft"
 						/>
 						<DailyChart 
 							data={this.returnIf("state.dailyCountyForecast.wind")}
 							field="speed_mph"
 							title="Today's Wind Forecast"
 							cssClass="wind"
+							unit="mph"
 						/>
 					</div>
 				</main>

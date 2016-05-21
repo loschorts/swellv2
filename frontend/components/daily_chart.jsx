@@ -46,7 +46,7 @@ var DailyChart = React.createClass({
 				height: col,
 			};
 
-			var hoverText = chartParams.values[i].toFixed(2) + "ft @ " + chartParams.hours[i];
+			var hoverText = chartParams.values[i].toFixed(2) + self.props.unit + " @ " + chartParams.hours[i];
 			
 			return (
 				<div 
@@ -61,7 +61,7 @@ var DailyChart = React.createClass({
 		return (
 			<div className="daily-chart-wrapper">
 				<h1><span>{self.props.title}</span></h1>
-				<div className={"daily-chart " + this.props.cssClass}>
+				<div className={"daily-chart " + self.props.cssClass}>
 					{chartItems}
 				</div>
 			</div>
