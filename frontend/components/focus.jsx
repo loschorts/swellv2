@@ -7,7 +7,7 @@ var Wind = require("./wind");
 var Weather = require("./weather");
 var Waves = require("./waves");
 var WavesDetail = require("./waves_detail");
-var DailyTideChart = require("./daily_tide_chart");
+var DailyChart = require("./daily_chart");
 
 // mixins
 var CurrentUserState = require("../modules/current_user_state");
@@ -57,9 +57,24 @@ var Focus = React.createClass({
 						<WavesDetail swell={this.returnIf("state.currentCountyForecast.swell")}/>
 					</div>
 					<div id="focus-main-right">
-						<DailyTideChart data={this.returnIf("state.dailyCountyForecast.tide")}/>
-						<DailyTideChart data={this.returnIf("state.dailyCountyForecast.tide")}/>
-						<DailyTideChart data={this.returnIf("state.dailyCountyForecast.tide")}/>
+						<DailyChart 
+							data={this.returnIf("state.fullForecast")}
+							field="size_ft"
+							title="Today's Wave Forecast"
+							cssClass="wave"
+						/>
+						<DailyChart 
+							data={this.returnIf("state.dailyCountyForecast.tide")}
+							field="tide"
+							title="Today's Tide Forecast"
+							cssClass="tide"
+						/>
+						<DailyChart 
+							data={this.returnIf("state.dailyCountyForecast.tide")}
+							field="tide"
+							title="Today's Wind Forecast"
+							cssClass="wind"
+						/>
 					</div>
 				</main>
 			</div>

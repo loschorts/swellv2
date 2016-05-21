@@ -2,7 +2,7 @@
   width: -moz-calc(100% - 120px);
   width: -webkit-calc(100% - 120px);
   width: calc(100% - 120px);
-	height : 250px;
+	height : 200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -23,18 +23,11 @@
 	justify-content: space-between;
 	display: flex;
 	align-items: flex-end;
-	background: #c2f0f0;
 }
 
 .daily-chart-column {
 	height: 0%;
 	width: 3%;
-	background: #2db9b9;
-	transition: height 2s;
-}
-
-.daily-chart-column.now {
-	background: #1e7b7b;	
 }
 
 .daily-chart-hover-span {
@@ -42,4 +35,41 @@
 	height: 100%;
 	width: 100%;
 	z-index: 1;
+}
+
+.daily-chart.wave {
+	background: #c2f0f0;
+}
+
+.daily-chart-column.wave {
+	background: #2db9b9;
+}
+
+.daily-chart-column.now.wave {
+	background: #1e7b7b;	
+}
+
+
+.daily-chart.tide {
+	background: #b3cccc;
+}
+
+.daily-chart-column.tide {
+	background: #5c8a8a;
+}
+
+.daily-chart-column.now.tide {
+	background: #476b6b;	
+}
+
+.daily-chart.wind {
+	background:  #ffecb3;
+}
+
+.daily-chart-column.wind {
+	background: #ffc61a;
+}
+
+.daily-chart-column.now.wind {
+	background: #e6ac00;	
 }
