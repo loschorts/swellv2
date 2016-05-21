@@ -70,8 +70,8 @@ var Focus = React.createClass({
 							cssClass="tide"
 						/>
 						<DailyChart 
-							data={this.returnIf("state.dailyCountyForecast.tide")}
-							field="tide"
+							data={this.returnIf("state.dailyCountyForecast.wind")}
+							field="speed_mph"
 							title="Today's Wind Forecast"
 							cssClass="wind"
 						/>

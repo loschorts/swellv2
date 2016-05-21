@@ -2,7 +2,7 @@ var React = require("react");
 
 var TimeHelper = require("../helpers/time_helper");
 
-var DailyWaveChart = React.createClass({
+var DailyChart = React.createClass({
 	configure: function(){
 		var self = this;
 		var values = this.props.data.map(function(el){
@@ -69,4 +69,4 @@ var DailyWaveChart = React.createClass({
 	}
 });
 
-module.exports = DailyWaveChart;
+module.exports = DailyChart;

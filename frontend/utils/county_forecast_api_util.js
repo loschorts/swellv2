@@ -26,6 +26,16 @@ var CountyForecastApiUtil = {
 			}
 		});				
 	},
+	fetchWind: function(spot, callback){
+		$.ajax({
+			url: "http://api.spitcast.com/api/county/wind/" + spot.spitcast_county + "/",
+			type: "GET",
+			success: function(wind){
+				console.log(wind);
+				callback(spot, wind);
+			}
+		});				
+	},
 
 };
 

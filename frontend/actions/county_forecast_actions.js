@@ -35,7 +35,17 @@ var CountyForecastActions = {
 			spot: spot,
 			tide: tide
 		});
-	}
+	},
+	fetchWind: function(spot){
+		CountyForecastApiUtil.fetchWind(spot, this.receiveWind);
+	},
+	receiveWind: function(spot, windForecast){
+		AppDispatcher.dispatch({
+			actionType: "RECEIVE_COUNTY_WIND",
+			spot: spot,
+			wind: windForecast
+		});
+	},
 
 
 };

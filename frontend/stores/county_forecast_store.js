@@ -28,6 +28,11 @@ CountyForecastStore.__onDispatch = function (payload) {
       this.setTide(payload.spot, payload.tide);
       this.__emitChange();
       break;
+    case "RECEIVE_COUNTY_WIND":
+      this.ensure(payload.spot);
+      this.setWind(payload.spot, payload.wind);
+      this.__emitChange();
+      break;
   }
 };
 
@@ -67,6 +72,20 @@ CountyForecastStore.getTide = function(spotId) {
   return _bySpot[spotId].tide;
 };
 
+CountyForecastStore.setWind = function(spot, wind){
+  _byCounty[spot.spitcast_county].wind = wind;
+  _bySpot[spot.id].wind = wind; 
+};
+
+CountyForecastStore.getWind = function(spotId) {
+  return _bySpot[spotId].wind;
+};
+
+CountyForecastStore.getDailyWind = function(spotId) {
+  if (!_bySpot[spotId].wind) { return; }
+  return _bySpot[spotId].wind;
+};
+
 CountyForecastStore.getCurrentTide = function(spotId){
   if (!_bySpot[spotId].tide) { return; }
   var now = TimeHelper.convert(new Date());
@@ -100,7 +119,8 @@ CountyForecastStore.getCurrent = function(spotId) {
 
 CountyForecastStore.getDaily = function(spotId) {
   return {
-    tide: this.getDailyTide(spotId)
+    tide: this.getDailyTide(spotId),
+    wind: this.getDailyWind(spotId)
   };
 };
 
