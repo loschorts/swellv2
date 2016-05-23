@@ -18,11 +18,7 @@ class Api::SessionsController < ApplicationController
 
 	def show
 		@user = current_user
-		if @user
-			render 'api/users/show' 
-		else
-			render json: {error: 'no one logged in'}, status: 404
-		end
+		@user ? render('api/users/show') : render(json: {} )
 	end
 
 end

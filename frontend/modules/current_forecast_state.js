@@ -3,7 +3,6 @@ var ForecastStore = require("../stores/forecast_store");
 var WeatherStore = require("../stores/weather_store");
 var CountyForecastStore = require("../stores/county_forecast_store");
 
-
 var SpotActions = require("../actions/spot_actions");
 var ForecastActions = require("../actions/forecast_actions");
 var WeatherActions = require("../actions/weather_actions");
@@ -25,8 +24,8 @@ var CurrentForecastState = {
 	componentWillUnmount: function(){
 		this.CurrentForecastStateSpotStoreListener.remove();
 		this.CurrentForecastStateForecastStoreListener.remove();
-		this.CurrentForecastStateWeatherStoreListener = WeatherStore.addListener(this.updateWeather);
-		this.CurrentForecastStateCountyForecastStoreListener = CountyForecastStore.addListener(this.updateCountyForecast);
+		this.CurrentForecastStateWeatherStoreListener.remove();
+		this.CurrentForecastStateCountyForecastStoreListener.remove();
 	},
 	updateSpot: function(){
 		var spot = SpotStore.get(this.spotId);

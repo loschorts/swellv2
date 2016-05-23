@@ -1,6 +1,4 @@
 var React = require("react");
-var CurrentUserState = require("../modules/current_user_state");
-var UserApiUtil = require("../utils/user_api_util");
 var Menu = require("./menu");
 
 var NavBar = React.createClass({

@@ -1,4 +1,5 @@
 var React = require("react");
+var SessionActions = require("../actions/session_actions");
 
 var Menu = React.createClass({
 	getInitialState: function(){
