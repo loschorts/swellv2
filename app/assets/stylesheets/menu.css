@@ -37,11 +37,11 @@
 	padding: 10px 0;
 }
 
-#auth-form input {
+.auth-form-input {
 	color: black;
 }
 
-#submit {
+#submit{
 	box-shadow: 1px 1px gray;
 	cursor: pointer;
 	padding: 5px;

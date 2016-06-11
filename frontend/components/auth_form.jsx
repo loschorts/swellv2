@@ -58,7 +58,6 @@ var AuthForm = React.createClass({
 		}
 	},	
 	render: function(){
-		console.log(this.state.errors);
 		var confirm;
 		var match = (this.state.password === this.state.confirm);
 
@@ -72,7 +71,7 @@ var AuthForm = React.createClass({
 				{this.fieldFor("username", icon("user_icon.svg"), "text")}
 				{this.fieldFor("password", icon("lock_icon.svg"), "password")}
 				{confirm}
-				<div id="submit" onClick={this.handleSubmit}>{pretty(this.props.action)}</div>
+				<input type="submit" id="submit" onClick={this.handleSubmit} value={pretty(this.props.action)}/>
 			</form>
 		);
 	},
@@ -81,11 +80,10 @@ var AuthForm = React.createClass({
 		if (this.props.action === "signup" && 
 			this.state.password !== this.state.confirm) {
 			this.setState({errors: ["passwords do not match"]});
-			return;
 		} else {
 			this.setState({errors: []})
+			SessionActions[(this.props.action)](this.state);
 		}
-		SessionActions[(this.props.action)](this.state);
 	}
 });
 
