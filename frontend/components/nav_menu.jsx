@@ -28,9 +28,12 @@ var NavMenu = React.createClass({
 	form: function(){
 		return (
 			<div className="menu-drop-down">
-				<AuthForm action={this.state.formAction}/>
+				<AuthForm action={this.state.formAction} onSubmit={this.closeDropDown}/>
 		 	</div>
 		);
+	},
+	closeDropDown: function(){
+		this.setState({showing: false});
 	},
 	dropDown: function(){
 		if (this.state.showing){

@@ -42,11 +42,11 @@
 }
 
 #submit {
-	box-shadow: 1px 1px black;
+	box-shadow: 1px 1px gray;
 	cursor: pointer;
 	padding: 5px;
 	color: white;
-	background: gray;
+	background: black;
 	border-radius: 5px;
 }
 

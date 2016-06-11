@@ -26,7 +26,7 @@ var SessionActions = {
 	error: function(response){
 		AppDispatcher.dispatch({
 			actionType: "RESET_SESSION_ERROR",
-			errors: response.responseJSON
+			errors: response.responseJSON.errors
 		});
 	}
 };

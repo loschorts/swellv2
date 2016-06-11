@@ -1,18 +1,24 @@
 var React = require("react");
 var SessionActions = require("../actions/session_actions.js");
-
-function icon(image){
-	var url = "http://res.cloudinary.com/swell/" + image;
-	return (
-		<img 
-			className="auth-icon"
-			src={url}/>
-		);
-}
+var SessionStore = require("../stores/session_store.js");
 
 var AuthForm = React.createClass({
 	getInitialState: function(){
-		return({username: "", password: "", confirm: ""})
+		return({username: "", password: "", confirm: "", errors: []});
+	},
+	componentDidMount: function(){
+		this.errorListener = SessionStore.addListener(this.update);
+	},
+	componentWillUnmount: function(){
+		this.errorListener.remove();
+	},
+	update: function(){
+		var errors = SessionStore.errors();
+		if (errors){
+			this.setState({errors: SessionStore.errors()});
+		} else {
+			this.props.onSubmit();
+		}
 	},
 	handle: function(field){
 		return function(e){
@@ -28,56 +34,67 @@ var AuthForm = React.createClass({
 			return icon("x_icon.svg");
 		}
 	},
+	fieldFor: function(field, icon, type){
+		return (
+				<label className="auth-form-field">
+				{icon}
+				<input type={type}
+					className="auth-form-input" 
+					placeholder={field}
+					value={this.state[field]} 
+					onChange={this.handle(field)}/>
+				</label>			
+			);
+	},
+	errors: function(){
+		if (this.state.errors.length > 0) {
+			return <ul id="auth-errors">
+			{
+				this.state.errors.map(function(error){
+					return (<li key={error}>{error}</li>);
+				})
+			}
+			</ul>
+		}
+	},	
 	render: function(){
+		console.log(this.state.errors);
 		var confirm;
 		var match = (this.state.password === this.state.confirm);
 
 		if (this.props.action === "signup"){
-			confirm = ( 
-				<label className="auth-form-field">
-				{this.confirmIcon(match)}
-				<input type="password"
-					className="auth-form-input" 
-					placeholder="confirm password"
-					value={this.state.confirm} 
-					onChange={this.handle("confirm")}/>
-				</label>
-				 );
+			confirm = this.fieldFor("confirm", this.confirmIcon(match), "password");
 		}
-		
+
 		return (
 			<form id="auth-form">
-
-				<label  className="auth-form-field">
-					{icon("user_icon.svg")}
-					<input 
-						className="auth-form-input"
-						placeholder="username"
-						type="text"
-						value={this.state.username} 
-						onChange={this.handle("username")}/>
-				</label>
-
-				<label  className="auth-form-field">
-					{icon("lock_icon.svg")}
-					<input 
-						className="auth-form-input"
-						placeholder="password"
-						type="password" 
-						value={this.state.password} 
-						onChange={this.handle("password")}/>
-				</label>
-
+				{this.errors()}
+				{this.fieldFor("username", icon("user_icon.svg"), "text")}
+				{this.fieldFor("password", icon("lock_icon.svg"), "password")}
 				{confirm}
-
 				<div id="submit" onClick={this.handleSubmit}>Submit</div>
 			</form>
 		);
 	},
 	handleSubmit: function(e){
 		e.preventDefault();
+		if (this.props.action === "signup" && 
+			this.state.password !== this.state.confirm) {
+			this.setState({errors: ["passwords do not match"]});
+			return;
+		} else {
+			this.setState({errors: []})
+		}
 		SessionActions[(this.props.action)](this.state);
 	}
 });
 
+function icon(image){
+	var url = "http://res.cloudinary.com/swell/" + image;
+	return (
+		<img 
+			className="auth-icon"
+			src={url}/>
+		);
+}
 module.exports = AuthForm;
