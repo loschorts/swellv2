@@ -7,10 +7,10 @@ var AuthForm = React.createClass({
 		return({username: "", password: "", confirm: "", errors: []});
 	},
 	componentDidMount: function(){
-		this.errorListener = SessionStore.addListener(this.update);
+		this.sessionListener = SessionStore.addListener(this.update);
 	},
 	componentWillUnmount: function(){
-		this.errorListener.remove();
+		this.sessionListener.remove();
 	},
 	update: function(){
 		var errors = SessionStore.errors();

@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
 
 	def valid_username
 		if self.username == 'guest' && !self.guest
-			self.errors[:username] << "#{self.username} is not a valid username"
+			self.errors[:username] << "cannot be '#{self.username}'"
 		end
 	end
 
