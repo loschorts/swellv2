@@ -5,6 +5,9 @@ var SessionActions = {
 	query: function(){
 		SessionApiUtil.query(this.update, this.error);
 	},
+	signup: function(user){
+		SessionApiUtil.signup(user, this.update, this.error);
+	},
 	login: function(user){
 		SessionApiUtil.login(user, this.update, this.error);
 	},

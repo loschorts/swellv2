@@ -2,7 +2,7 @@ var SessionStore = require("../stores/session_store");
 var AppDispatcher = require('../stores/dispatcher');
 
 var SessionApiUtil = {
-	createUser: function(user, success, error){
+	signup: function(user, success, error){
 		$.ajax({
 			url: '/api/users',
 			method: 'post',
