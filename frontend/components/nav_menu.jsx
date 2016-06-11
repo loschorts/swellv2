@@ -10,21 +10,26 @@ var NavMenu = React.createClass({
 		this.setState({showing: !this.state.showing});
 	},
 	menuItems: function(){
-		if (this.state.showing) {			
-			return(
-				<div className="menu-list">
-					<NavMenuItem text="Sign up" action={this.signup}/>
-					<NavMenuItem text="Login" action={this.login}/>
-					<NavMenuItem text="Logout" action={this.logout}/>
-					<NavMenuItem text="Guest Login" action={this.guest}/>
-				</div>
-				);
+		if (this.state.showing) {	
+			if (this.props.title === "menu") {
+				var items = [
+					<NavMenuItem key="nav-1" text="Sign up" action={this.signup}/>,
+					<NavMenuItem key="nav-2" text="Login" action={this.login}/>,
+					<NavMenuItem key="nav-3" text="Guest Login" action={this.guest}/>
+				]
+			} else {
+				var items = [
+					<NavMenuItem key="nav-1" text="Logout" action={this.logout}/>
+					]
+			}
+			return <div className="menu-list"> {items} </div>;
 		}
 	},
 	render: function(){
+
 		return(
 			<div className="menu">
-				<div className="menu-button" onClick={this.toggleMenu}>{this.props.username}</div>
+				<div className="menu-button" onClick={this.toggleMenu}>{this.props.title}</div>
 				{this.menuItems()}
 			</div>
 			);

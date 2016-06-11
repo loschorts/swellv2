@@ -8,7 +8,6 @@ module.exports = {
 		}
 
 		for (var x in levels) {
-			console.log(levels[x], result);
 			var level = levels[x];
 			if (typeof result[level] === 'undefined') {
 				return false;
