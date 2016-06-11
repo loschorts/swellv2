@@ -9,7 +9,7 @@ var SessionActions = {
 		SessionApiUtil.login(user, this.update, this.error);
 	},
 	logout: function(){
-		SessionApiUtil.logout(user, this.update, this.error);
+		SessionApiUtil.logout(this.update, this.error);
 	},
 	guest: function(){
 		SessionApiUtil.guest(this.update, this.error);

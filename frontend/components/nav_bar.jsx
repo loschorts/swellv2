@@ -1,5 +1,5 @@
 var React = require("react");
-var Menu = require("./nav_menu");
+var NavMenu = require("./nav_menu");
 
 var NavBar = React.createClass({
 	getInitialState: function(){
@@ -22,7 +22,7 @@ var NavBar = React.createClass({
 		return (
 			<nav id="nav-bar" className={this.state.scrolled}>
 				<div id="nav-logo"><a href="/">Logo</a></div>
-				<Menu/>
+				<NavMenu/>
 			</nav>
 			);
 	}

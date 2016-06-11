@@ -38,7 +38,7 @@ var SessionApiUtil = {
 	},
 	guest: function(success, error){
 		$.ajax({
-			url: '/api/session/guest',
+			url: '/api/users/guest',
 			method: 'get',
 			success: success,
 			error: error

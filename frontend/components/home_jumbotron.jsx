@@ -10,7 +10,7 @@ var HomeJumbotron = React.createClass({
 		return {search: null};
 	},
 	componentDidMount: function(){
-		this.refs.focus.getDOMNode().focus();
+		document.getElementById("search").focus();
 	},
 	handleChange: function(e){
 		e.preventDefault();
@@ -21,7 +21,6 @@ var HomeJumbotron = React.createClass({
 		SearchActions.fetch(this.state.search);
 	},
 	render: function(){
-		console.log(this.state);
 		return (
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>

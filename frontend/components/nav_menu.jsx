@@ -16,6 +16,7 @@ var NavMenu = React.createClass({
 					<NavMenuItem text="Login" action={this.login}/>
 					<NavMenuItem text="Sign up" action={this.signup}/>
 					<NavMenuItem text="Guest Login" action={this.guest}/>
+					<NavMenuItem text="Logout" action={this.logout}/>
 				</div>
 				);
 		}
@@ -37,6 +38,9 @@ var NavMenu = React.createClass({
 	guest: function(){
 		SessionActions.guest();
 	},
+	logout: function(){
+		SessionActions.logout();
+	}
 });
 
 module.exports = NavMenu;

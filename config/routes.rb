@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to: "pages#app"
+
+  get "api/users/guest", to: "api/users#guest", defaults: {format: :json}
+  get "spot/:id", to: "pages#app"
+
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create, :show, :destroy]
     resource :session, only: [:create, :show, :destroy]
@@ -6,11 +11,6 @@ Rails.application.routes.draw do
     resources :counties, only: [:show, :index]
     resources :regions, only: [:show, :index]
   end
-
-  root to: "pages#app"
-
-  get "spot/:id", to: "pages#app"
-  get "api/users/guest", to: "users#guest"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
