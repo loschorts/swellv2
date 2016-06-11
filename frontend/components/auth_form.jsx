@@ -72,7 +72,7 @@ var AuthForm = React.createClass({
 				{this.fieldFor("username", icon("user_icon.svg"), "text")}
 				{this.fieldFor("password", icon("lock_icon.svg"), "password")}
 				{confirm}
-				<div id="submit" onClick={this.handleSubmit}>Submit</div>
+				<div id="submit" onClick={this.handleSubmit}>{pretty(this.props.action)}</div>
 			</form>
 		);
 	},
@@ -96,5 +96,16 @@ function icon(image){
 			className="auth-icon"
 			src={url}/>
 		);
+}
+
+function pretty(action){
+	switch(action){
+		case "signup":
+			return "Sign up!";
+			break;
+		case "login":
+			return "Log in";
+			break;
+	}
 }
 module.exports = AuthForm;
