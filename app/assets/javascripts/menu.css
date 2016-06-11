@@ -1,4 +1,4 @@
-.menu > .menu-list {
+.menu > .menu-drop-down {
 	list-style: none;
 	z-index: -1;
 	position: absolute;
@@ -10,7 +10,7 @@
 	border-radius: 10px 0;
 }
 
-.menu-list > .menu-item {
+.menu-drop-down > .menu-item {
 	color: gray;
 	width: 250px;
 	border-bottom: 1px dashed black;
@@ -22,4 +22,17 @@
 .menu-item:hover {
 	transform: translate(2px, 0);
 	transition: transform .5s;
+}
+
+#auth-form {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+	color: black;
+}
+
+#auth-form > * {
+	padding: 10px;
 }
