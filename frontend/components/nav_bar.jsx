@@ -1,5 +1,5 @@
 var React = require("react");
-var Menu = require("./menu");
+var Menu = require("./nav_menu");
 
 var NavBar = React.createClass({
 	getInitialState: function(){

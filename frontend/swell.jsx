@@ -11,9 +11,7 @@ var Dash = require("./components/dash");
 var Home = require("./components/home");
 var Focus = require("./components/focus");
 
-window.WeatherActions = require("./actions/weather_actions");
-
-var routes = (
+var Router = (
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home}/>
@@ -25,6 +23,6 @@ var routes = (
 document.addEventListener("DOMContentLoaded", function(){
 	var hook = document.getElementById("swell");
 	if (hook){
-		ReactDOM.render(routes, hook);
+		ReactDOM.render(Router, hook);
 	}
 });

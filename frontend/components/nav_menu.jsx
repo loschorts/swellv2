@@ -1,7 +1,8 @@
 var React = require("react");
 var SessionActions = require("../actions/session_actions");
+var NavMenuItem = require("./nav_menu_item");
 
-var Menu = React.createClass({
+var NavMenu = React.createClass({
 	getInitialState: function(){
 		return {showing: false};
 	},
@@ -12,8 +13,9 @@ var Menu = React.createClass({
 		if (this.state.showing) {			
 			return(
 				<div className="menu-list">
-					<div className="menu-item">Login</div>
-					<div className="menu-item">Sign Up</div>
+					<NavMenuItem text="Login" action={this.login}/>
+					<NavMenuItem text="Sign up" action={this.signup}/>
+					<NavMenuItem text="Guest Login" action={this.guest}/>
 				</div>
 				);
 		}
@@ -25,7 +27,16 @@ var Menu = React.createClass({
 				{this.menuItems()}
 			</div>
 			);
-	}
+	},
+	login: function(){
+		console.log("login");
+	},
+	signup: function(){
+		console.log("signup");
+	},
+	guest: function(){
+		console.log("guest");
+	},
 });
 
-module.exports = Menu;
+module.exports = NavMenu;

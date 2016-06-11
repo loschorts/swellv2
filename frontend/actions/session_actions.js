@@ -1,5 +1,6 @@
 var SessionApiUtil = require("../utils/session_api_util");
 var AppDispatcher = require("../stores/dispatcher");
+
 var SessionActions = {
 	query: function(){
 		SessionApiUtil.query(this.update, this.error);

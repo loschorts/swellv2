@@ -15,7 +15,10 @@ SessionStore.__onDispatch = function (payload) {
     case "RESET_SESSION_ERROR":
       this.setError(payload.errors);
       this.__emitChange();
-      break;  
+      break; 
+    case "SET_ALREADY_FETCHED":
+      this.setAlreadyFetched();
+      this.__emitChange(); 
     }
 };
 
