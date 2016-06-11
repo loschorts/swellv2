@@ -13,10 +13,10 @@ var NavMenu = React.createClass({
 		if (this.state.showing) {			
 			return(
 				<div className="menu-list">
-					<NavMenuItem text="Login" action={this.login}/>
 					<NavMenuItem text="Sign up" action={this.signup}/>
-					<NavMenuItem text="Guest Login" action={this.guest}/>
+					<NavMenuItem text="Login" action={this.login}/>
 					<NavMenuItem text="Logout" action={this.logout}/>
+					<NavMenuItem text="Guest Login" action={this.guest}/>
 				</div>
 				);
 		}
@@ -24,7 +24,7 @@ var NavMenu = React.createClass({
 	render: function(){
 		return(
 			<div className="menu">
-				<div className="menu-button" onClick={this.toggleMenu} >Menu</div>
+				<div className="menu-button" onClick={this.toggleMenu}>{this.props.username}</div>
 				{this.menuItems()}
 			</div>
 			);

@@ -1,7 +1,10 @@
 var React = require("react");
 var NavMenu = require("./nav_menu");
 
+var CheckIfExists = require("../modules/check_if_exists");
+
 var NavBar = React.createClass({
+	mixins: [CheckIfExists],
 	getInitialState: function(){
 		return {scrolled: ""};
 	},
@@ -19,10 +22,12 @@ var NavBar = React.createClass({
 		this.scrollEvent.off();
 	},
 	render: function(){
+		console.log(this.props.currentUser);
+		console.log(this.exists("this.props.currentUser.username"));
 		return (
 			<nav id="nav-bar" className={this.state.scrolled}>
 				<div id="nav-logo"><a href="/">Logo</a></div>
-				<NavMenu/>
+				<NavMenu username={this.returnIf("this.props.currentUser.username", "menu")}/>
 			</nav>
 			);
 	}

@@ -6,7 +6,6 @@ var CurrentUserState = require('../modules/current_user_state');
 var App = React.createClass({
 	mixins: [CurrentUserState],
 	render: function(){
-		console.log(this.state.currentUser);
 		return (
 			<div id="app">
 			<NavBar currentUser={this.state.currentUser}/>

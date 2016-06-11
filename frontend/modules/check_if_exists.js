@@ -1,47 +1,38 @@
-// Caution: This module breaks if null values are involved! Use undefined instead!!!
-
 module.exports = {
-	exists: function(objectNameAsString){
-		var scope = this;
-		var result = true;
-		var levels = objectNameAsString.split(".");
+	exists: function(property){
+		var result = this;
+		var levels = property.split(".");
 
 		if (levels[0] === "this") {
 			levels = levels.slice(1);
 		}
 
-		levels.some(function(level){
-			if (typeof scope[level] === 'undefined') {
-				result = false;
-				return true;
-			} else {
-				scope = scope[level];
+		for (var x in levels) {
+			console.log(levels[x], result);
+			var level = levels[x];
+			if (typeof result[level] === 'undefined') {
+				return false;
 			}
-		});
+			result = result[level];
+		}
 
-		return result;
+		return true;
 	},
-	returnIf: function(objectNameAsString, valueIfUndefined = undefined){
-		var scope = this;
-		var result;
-		var levels = objectNameAsString.split(".");
+	returnIf: function(property, defaultValue){
+		var result = this;
+		var levels = property.split(".");
 
 		if (levels[0] === "this") {
 			levels = levels.slice(1);
 		}
 
-		levels.some(function(level){
-			if (typeof scope[level] === 'undefined') {
-				result = undefined;
-				return true;
-			} else {
-				scope = scope[level];
-				result = scope;
+		for (var x in levels) {
+			var level = levels[x];
+			if (typeof result[level] === "undefined"){
+				return defaultValue;
+			} else {	
+				result = result[level];
 			}
-		});
-
-		if (typeof result === 'undefined') {
-			result = valueIfUndefined;
 		}
 
 		return result;
