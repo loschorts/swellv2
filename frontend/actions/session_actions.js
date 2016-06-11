@@ -11,6 +11,9 @@ var SessionActions = {
 	logout: function(){
 		SessionApiUtil.logout(user, this.update, this.error);
 	},
+	guest: function(){
+		SessionApiUtil.guest(this.update, this.error);
+	},
 	update: function(response){
 		AppDispatcher.dispatch({
 			actionType: "RESET_SESSION_USER",

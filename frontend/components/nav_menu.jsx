@@ -35,7 +35,7 @@ var NavMenu = React.createClass({
 		console.log("signup");
 	},
 	guest: function(){
-		console.log("guest");
+		SessionActions.guest();
 	},
 });
 

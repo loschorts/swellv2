@@ -16,7 +16,7 @@ var NavMenuItem = React.createClass({
 			);
 	},
 	handleClick: function(e){
-		e.preventDefault()
+		e.preventDefault();
 		this.props.action();
 	}
 });

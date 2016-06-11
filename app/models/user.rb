@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
 
 	attr_reader :password
+	attr_accessor :guest
 
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true
 	validates :password, length: {minimum: 6}, allow_nil: :true
+	validate :valid_username
 	
-	after_initialize :ensure_session_token
+	after_initialize :ensure_session_token, :ensure_guest_status
 	before_validation :ensure_session_token_uniqueness
 
 	def password= password
@@ -31,6 +33,14 @@ class User < ActiveRecord::Base
 		self.session_token
 	end
 
+	def self.new_guest
+		User.find_by(username: 'guest').destroy
+		User.create(
+			username: 'guest',
+			password: 'password',
+			guest: true)
+	end
+
 	private
 
 	def ensure_session_token
@@ -44,6 +54,16 @@ class User < ActiveRecord::Base
 	def ensure_session_token_uniqueness
 		while User.find_by(session_token: self.session_token)
 			self.session_token = new_session_token
+		end
+	end
+
+	def ensure_guest_status
+		self.guest ||= false
+	end
+
+	def valid_username
+		if self.username == 'guest' && !self.guest
+			self.errors[:username] << "#{self.username} is not a valid username"
 		end
 	end
 

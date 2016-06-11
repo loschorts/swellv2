@@ -36,8 +36,13 @@ var SessionApiUtil = {
 			error: error
 		});
 	},
-	guestLogin: function(success, error){
-		this.login({username: "guest", password: "password"}, success, error);
+	guest: function(success, error){
+		$.ajax({
+			url: '/api/session/guest',
+			method: 'get',
+			success: success,
+			error: error
+		});
 	}
 };
 
