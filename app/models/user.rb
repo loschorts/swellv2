@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token, :ensure_guest_status
 	before_validation :ensure_session_token_uniqueness
 
+	has_many :favorites
+
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)
 		@password = password
@@ -35,10 +37,12 @@ class User < ActiveRecord::Base
 
 	def self.new_guest
 		User.find_by(username: 'guest').destroy
-		User.create(
-			username: 'guest',
-			password: 'password',
-			guest: true)
+		guest_params = {username: 'guest', password: 'password', guest: true}
+		user = User.create(guest_params)
+		(13..54).each do |spot_id|
+			Favorite.create(user_id: user.id, spot_id: spot_id)
+		end
+		user
 	end
 
 	private

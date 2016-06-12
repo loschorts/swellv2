@@ -34,9 +34,7 @@ ActiveRecord::Schema.define(version: 20160612013708) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "favorites", ["spot_id"], name: "index_favorites_on_spot_id", unique: true, using: :btree
   add_index "favorites", ["user_id", "spot_id"], name: "index_favorites_on_user_id_and_spot_id", unique: true, using: :btree
-  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", unique: true, using: :btree
 
   create_table "regions", force: :cascade do |t|
     t.string   "name",        null: false
