@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :spots, only: [:show, :index]
     resources :counties, only: [:show, :index]
     resources :regions, only: [:show, :index]
+    resources :favorites, only: [:create, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
