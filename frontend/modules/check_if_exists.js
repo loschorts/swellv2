@@ -28,7 +28,7 @@ module.exports = {
 		for (var x in levels) {
 			var level = levels[x];
 			if (typeof result[level] === "undefined"){
-				return defaultValue;
+					return defaultValue;
 			} else {	
 				result = result[level];
 			}

@@ -11,6 +11,9 @@ var Dash = require("./components/dash");
 var Home = require("./components/home");
 var Focus = require("./components/focus");
 
+window.fa = require("./actions/favorite_actions");
+window.fs = require("./stores/favorite_store");
+
 var Router = (
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>

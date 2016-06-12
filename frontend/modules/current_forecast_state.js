@@ -8,9 +8,16 @@ var ForecastActions = require("../actions/forecast_actions");
 var WeatherActions = require("../actions/weather_actions");
 var CountyForecastActions = require("../actions/county_forecast_actions");
 
-window.cfs = CountyForecastStore;
-
 var CurrentForecastState = {
+	getInitialState: function(){
+		return ({			
+			currentForecast: undefined,
+			fullForecast: undefined,
+			weather: undefined,
+			currentCountyForecast: undefined,
+			dailyCountyForecast: undefined
+		});
+	},
 	componentDidMount: function(){
 		this.spotId = this.props.spotId || this.props.params.spotId;
 		this.CurrentForecastStateSpotStoreListener = SpotStore.addListener(this.updateSpot);

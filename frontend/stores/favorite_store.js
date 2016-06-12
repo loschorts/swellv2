@@ -6,7 +6,7 @@ var FavoriteStore = new Store(AppDispatcher);
 var _favorites = {};
 
 FavoriteStore.__onDispatch = function(payload){
-	switch(payload){
+	switch(payload.actionType){
 		case "RECEIVE_FAVORITES":
 			this.set(payload.favorites);
     	this.__emitChange();
@@ -23,7 +23,6 @@ FavoriteStore.__onDispatch = function(payload){
 };
 
 FavoriteStore.set = function(favorites) {
-
 	_favorites = {};
 
 	favorites.forEach(function(fav){

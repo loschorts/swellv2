@@ -10,12 +10,13 @@ var WavesDetail = require("./waves_detail");
 var DailyChart = require("./daily_chart");
 
 // mixins
-var CurrentUserState = require("../modules/current_user_state");
 var CurrentForecastState = require("../modules/current_forecast_state");
 var CheckIfExists = require("../modules/check_if_exists");
 
+var _fetchedFavorites = false;
+
 var Focus = React.createClass({
-	mixins: [CurrentUserState, CurrentForecastState, CheckIfExists],
+	mixins: [CurrentForecastState, CheckIfExists],
 	render: function(){
 		return (
 			<div id="focus">
