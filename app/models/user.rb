@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
 		user
 	end
 
+	def add_favorite(spot_id)
+		Favorite.create(user: self, spot_id: spot_id)
+	end
+
+	def favorited? spot
+		self.favorites.exists?(spot_id: spot.id)
+	end
+
 	private
 
 	def ensure_session_token

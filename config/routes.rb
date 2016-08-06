@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   get "api/users/guest", to: "api/users#guest", defaults: {format: :json}
   get "spot/:id", to: "pages#app"
 
+  get "api/spots/feed", to: "api/spots#feed", defaults: {format: :json}
+
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create, :show, :destroy]
     resource :session, only: [:create, :show, :destroy]
     resources :spots, only: [:show, :index]
     resources :counties, only: [:show, :index]
     resources :regions, only: [:show, :index]
-    resources :favorites, only: [:create, :index]
+    resources :favorites, only: [:create, :index, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

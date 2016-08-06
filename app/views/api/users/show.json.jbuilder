@@ -1,1 +1,1 @@
-json.user { json.extract! @user, :username }
+json.user { json.extract! @user, :username, :id }

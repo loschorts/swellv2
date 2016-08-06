@@ -19,7 +19,7 @@ var CurrentForecastState = {
 		});
 	},
 	componentDidMount: function(){
-		this.spotId = this.props.spotId || this.props.params.spotId;
+		this.spotId = this.props.spotId || parseInt(this.props.params.spotId);
 		this.CurrentForecastStateSpotStoreListener = SpotStore.addListener(this.updateSpot);
 		this.CurrentForecastStateForecastStoreListener = ForecastStore.addListener(this.updateForecast);
 		this.CurrentForecastStateWeatherStoreListener = WeatherStore.addListener(this.updateWeather);

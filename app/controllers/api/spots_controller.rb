@@ -14,6 +14,9 @@ class Api::SpotsController < ApplicationController
 		end
 	end
 
+	def feed
+	end
+
 	def show
 		@item = Spot.find(params[:id])
 		render 'api/show'

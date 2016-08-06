@@ -2,7 +2,7 @@ require_relative './seeds_helper'
 
 reset_tables
 
-fetch_spots_remote(true) #change to true to hit the spitcast API for spots
+fetch_spots_remote(false) #change to true to hit the spitcast API for spots
 
 create_regions
 create_counties
@@ -15,4 +15,3 @@ create_spots
 # set_neighbors
 
 create_guest_account
-

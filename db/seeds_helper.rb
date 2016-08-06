@@ -122,10 +122,10 @@ end
 
 def create_guest_account
 	guest = User.create(username: "guest", password: "guestguest")
-	# guest.add_favorite(11)
-	# guest.add_favorite(30)
-	# guest.add_favorite(47)
-	# guest.add_favorite(15)
+	guest.add_favorite(11)
+	guest.add_favorite(30)
+	guest.add_favorite(47)
+	guest.add_favorite(15)
 end	
 
 def forecast_exists?(spot)

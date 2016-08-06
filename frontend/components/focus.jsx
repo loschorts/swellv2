@@ -8,6 +8,7 @@ var Weather = require("./weather");
 var Waves = require("./waves");
 var WavesDetail = require("./waves_detail");
 var DailyChart = require("./daily_chart");
+var Star = require("./star");
 
 // mixins
 var CurrentForecastState = require("../modules/current_forecast_state");
@@ -23,15 +24,22 @@ var Focus = React.createClass({
 				<div id="focus-jumbotron">
 					<div id="focus-header">
 						<div id="focus-left">
-							<Waves swell={this.returnIf("state.currentCountyForecast.swell")}/>
+							<Waves 
+								swell={this.returnIf("state.currentCountyForecast.swell")}/>
 						</div>
 						<div id="focus-center">
 							<div className="focus-blurb">
-								<h1 className="spot-name" onClick={this.recenter}>
-										{this.returnIf("state.spot.name")}
-								</h1>
-								<h2 className="shape-full">{this.returnIf("state.currentForecast.shape_full")}</h2>
-								<h2 className="size">{this.returnIf("state.currentForecast.size")} ft</h2>	
+								<div/>
+								<div>
+									<h1 className="spot-name" onClick={this.recenter}>
+											{this.returnIf("state.spot.name")}
+									</h1>
+									<h2 className="shape-full">{this.returnIf("state.currentForecast.shape_full")}</h2>
+									<h2 className="size">
+										{this.returnIf("state.currentForecast.size")} ft
+									</h2>
+									<Star spotId={parseInt(this.props.params.spotId)} />
+								</div>
 							</div>
 							<Weather
 								temp={this.returnIf("state.weather.temp")}

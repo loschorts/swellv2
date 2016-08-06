@@ -3,30 +3,34 @@ var AppDispatcher = require("../stores/dispatcher");
 
 var FavoriteActions = {
 	fetch: function(){
-		FavoriteApiUtil.fetch(this.receive);
+		FavoriteApiUtil.fetch(this._receive);
 	},
-	create: function(){
-		FavoriteApiUtil.create(this.add);
+	create: function(favorite){
+		FavoriteApiUtil.create(favorite, this._add, this.error);
 	},
-	destroy: function(){
-		FavoriteApiUtil.destroy(this.remove);
+	destroy: function(favorite){
+		FavoriteApiUtil.destroy(favorite, this._remove, this.error);
 	},
-	receive: function(favorites){
+	error: function(response){
+		console.log("error", response);
+	},
+	_receive: function(favorites){
+		debugger
 		AppDispatcher.dispatch({
 			actionType: "RECEIVE_FAVORITES",
 			favorites: favorites
 		});
 	},
-	add: function(favorite){
+	_add: function(favorite){
 		AppDispatcher.dispatch({
 			actionType: "ADD_FAVORITE",
-			favorite: favorite
+			favorites: favorites
 		});
 	},
-	remove: function(favorite){
+	_remove: function(favorite){
 		AppDispatcher.dispatch({
 			actionType: "REMOVE_FAVORITE",
-			favorite: favorite
+			favorites: favorites
 		});
 	},
 
