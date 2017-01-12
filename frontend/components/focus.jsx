@@ -14,8 +14,6 @@ var Star = require("./star");
 var CurrentForecastState = require("../modules/current_forecast_state");
 var CheckIfExists = require("../modules/check_if_exists");
 
-var _fetchedFavorites = false;
-
 var Focus = React.createClass({
 	mixins: [CurrentForecastState, CheckIfExists],
 	render: function(){

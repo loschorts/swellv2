@@ -25,12 +25,11 @@ var HomeJumbotron = React.createClass({
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
 				<div id="header">
+					<img src="assets/swell-logo.png" className="invert"/>
 					<h1> 
-						Surf better waves. 
+						SWELL
 					</h1>
-					<h2> 
-						Find forecasts for your favorite spots and know before you go.
-					</h2>
+					<h2> Better forecasts. Better surf. </h2>
 				</div>
 				<div id="search-container">
 					<form onSubmit={this.handleSubmit}>

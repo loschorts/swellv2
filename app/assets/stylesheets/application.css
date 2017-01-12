@@ -37,3 +37,8 @@ a:link, a:visited, a:hover, a:active {
 	text-decoration: none;
 	color: inherit;
 }
+
+.invert {
+	-webkit-filter: invert(100%); 
+	filter: invert(100%);
+}

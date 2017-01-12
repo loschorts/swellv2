@@ -4,7 +4,6 @@ var FavoriteApiUtil = {
 			url: "/api/favorites",
 			method: "GET",
 			success: function(response){
-				debugger
 				success(response);
 			},
 			error: function(response){
