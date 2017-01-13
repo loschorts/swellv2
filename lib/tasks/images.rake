@@ -1,5 +1,3 @@
-require "httparty"
-require 'set'
 namespace :spot_images do 
 
 	task search: :environment do |refresh|

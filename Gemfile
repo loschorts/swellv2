@@ -27,7 +27,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bundler'
 
-gem 'figaro'
+# for image scraping
+gem 'scrapix'
+gem 'poltergeist'
+gem 'capybara'
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -45,10 +49,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
 	gem 'sprockets_better_errors'
-	gem 'scrapix'
-	gem 'poltergeist'
-	gem 'capybara'
-	gem 'httparty'
 
 end
 
