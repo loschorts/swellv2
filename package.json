@@ -28,6 +28,7 @@
     "babel-preset-react": "^6.5.0",
     "bootstrap": "^3.3.6",
     "cloudinary": "^1.5.0",
+    "deep-freeze": "0.0.1",
     "flux": "^2.1.1",
     "images-scraper": "^2.0.11",
     "install": "^0.6.1",
@@ -37,7 +38,11 @@
     "react-dom": "^0.14.8",
     "react-flux-store": "^1.3.0",
     "react-loaders": "^2.0.0",
+    "react-redux": "^5.0.2",
     "react-router": "^2.1.1",
+    "react-router-redux": "^4.0.7",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
     "webpack": "^1.12.15"
   },
   "engines": {

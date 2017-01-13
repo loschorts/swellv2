@@ -6,11 +6,20 @@ Rails.application.routes.draw do
 
   get "api/spots/feed", to: "api/spots#feed", defaults: {format: :json}
 
+  concern :location do
+    member do 
+      get :forecast
+      get :photos
+    end
+  end
+
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create, :show, :destroy]
     resource :session, only: [:create, :show, :destroy]
-    resources :spots, only: [:show, :index]
-    resources :counties, only: [:show, :index]
+    resources :spots, only: [:show, :index], concerns: :location do 
+      member { get :weather }
+    end
+    resources :counties, only: [:show, :index], concerns: :location
     resources :regions, only: [:show, :index]
     resources :favorites, only: [:create, :index, :destroy]
   end

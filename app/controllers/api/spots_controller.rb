@@ -1,24 +1,29 @@
 class Api::SpotsController < ApplicationController
 	def index
-		if params[:name]
-			name = params[:name].split.map(&:capitalize).join(" ")
-			@item = Spot.find_by(name: name)
-			if @item 
-				render 'api/show'
-			else
-				render json: {message: "Spot not found. Ken: make this better"}, status: 404
-			end
-		else
-			@collection = Spot.all
-			render 'api/index'
-		end
-	end
-
-	def feed
+		render json: Spot.includes(:images).as_json(include: :images)
 	end
 
 	def show
-		@item = Spot.find(params[:id])
-		render 'api/show'
+		render json: this_spot
 	end
+
+	def forecast
+		render json: this_spot.forecast
+	end
+
+	def weather
+		render json: this_spot.weather
+	end
+
+	def photos
+		render json: this_spot.images
+	end
+
+
+	private
+
+	def this_spot
+		Spot.find(params[:id])
+	end
+
 end

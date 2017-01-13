@@ -1,31 +1,19 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
+//React
+import React from 'react';
+import ReactDOM from 'react-dom';
+//Components
+import Root from './components/root';
+import configureStore from './store/store';
 
-var Router = require("react-router").Router;
-var Route = require("react-router").Route;
-var IndexRoute = require("react-router").IndexRoute;
-var browserHistory = require("react-router").browserHistory;
+document.addEventListener('DOMContentLoaded', () => {
+  let store;
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
 
-var App = require("./components/app");
-var Dash = require("./components/dash");
-var Home = require("./components/home");
-var Focus = require("./components/focus");
-
-window.fa = require("./actions/favorite_actions");
-window.fs = require("./stores/favorite_store");
-
-var Router = (
-	<Router history={browserHistory}>
-		<Route path="/" component={App}>
-			<IndexRoute component={Home}/>
-			<Route path="spot/:spotId" component={Focus}/>
-		</Route>
-	</Router>
-	);
-
-document.addEventListener("DOMContentLoaded", function(){
-	var hook = document.getElementById("swell");
-	if (hook){
-		ReactDOM.render(Router, hook);
-	}
+  const root = document.getElementById('root');
+  ReactDOM.render(<Root store={store}/>, root);
 });
