@@ -18,7 +18,6 @@ namespace :spot_images do
 		list = to_fetch.map {|n| "\"" + n + "\" "}.join 
 
 		puts "attempting to fetch #{to_fetch.count}..."
-		debugger
 		system "node lib/image_scraper.js #{list}"
 	end
 
