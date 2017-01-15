@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 // react components
-import App from './app';
-import Home from "./components/home";
-import Focus from "./components/focus";
+// import App from './app';
+// import Home from "./components/home";
+// import Focus from "./components/focus";
 
 const Root = ({ store }) => {
 
@@ -27,14 +27,15 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={store}>
-			<Router history={browserHistory}>
-				<Route path="/" component={App}>
-					<IndexRoute component={Home}/>
-					<Route path="spot/:spotId" component={Focus}/>
-				</Route>
+			<Router history={hashHistory}>
 			</Router>
     </Provider>
   );
 };
 
 export default Root;
+
+// <Route path="/" component={App}>
+//   <IndexRoute component={Home}/>
+//   <Route path="spot/:spotId" component={Focus}/>
+// </Route>

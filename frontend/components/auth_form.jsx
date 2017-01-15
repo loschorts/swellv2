@@ -1,40 +1,27 @@
-var React = require("react");
-var SessionActions = require("../actions/session_actions.js");
-var SessionStore = require("../stores/session_store.js");
+import React from 'react';
+import {connect} from 'react-redux';
+import autoBind from 'react-autobind';
 
-var AuthForm = React.createClass({
-	getInitialState: function(){
-		return({username: "", password: "", confirm: "", errors: []});
-	},
-	componentDidMount: function(){
-		this.sessionListener = SessionStore.addListener(this.update);
-	},
-	componentWillUnmount: function(){
-		this.sessionListener.remove();
-	},
-	update: function(){
-		var errors = SessionStore.errors();
-		if (errors){
-			this.setState({errors: SessionStore.errors()});
-		} else {
-			this.props.onSubmit();
-		}
-	},
-	handle: function(field){
-		return function(e){
-			var state = {};
-			state[field] = e.target.value;
-			this.setState(state);
-		}.bind(this);	
-	},
-	confirmIcon: function(match){
-		if (match){
-			return icon("check_icon.svg");
-		}else {
-			return icon("x_icon.svg");
-		}
-	},
-	fieldFor: function(field, icon, type){
+import { login, signup, receiveAuthErrors } from '../actions/session'
+
+class AuthForm extends React.Component {
+
+	constructor() {
+		super();
+		this.state = {username: "", password: "", confirm: ""};
+		autoBind(this);
+	}
+
+	handleChange(field){
+		return e => this.setState({[field]: e.target.value });
+	}
+
+	confirmIcon(){
+		const {password, confirm} = this.state;
+		return (password === confirm) ? icon("check_icon.svg") : icon("x_icon.svg");
+	}
+
+	fieldFor(field, icon, type){
 		return (
 				<label className="auth-form-field">
 				{icon}
@@ -42,27 +29,30 @@ var AuthForm = React.createClass({
 					className="auth-form-input" 
 					placeholder={field}
 					value={this.state[field]} 
-					onChange={this.handle(field)}/>
+					onChange={this.handleChange(field)}/>
 				</label>			
 			);
-	},
-	errors: function(){
-		if (this.state.errors.length > 0) {
+	}
+
+	errors(){
+		const { errors } = this.props;
+
+		if (errors.length > 0) {
 			return <ul id="auth-errors">
 			{
-				this.state.errors.map(function(error){
+				errors.map(function(error){
 					return (<li key={error}>{error}</li>);
 				})
 			}
 			</ul>
 		}
-	},	
-	render: function(){
-		var confirm;
-		var match = (this.state.password === this.state.confirm);
+	}
+
+	render(){
+		let confirm;
 
 		if (this.props.action === "signup"){
-			confirm = this.fieldFor("confirm", this.confirmIcon(match), "password");
+			confirm = this.fieldFor("confirm", this.confirmIcon(), "password");
 		}
 
 		return (
@@ -74,18 +64,23 @@ var AuthForm = React.createClass({
 				<input type="submit" id="submit" onClick={this.handleSubmit} value={pretty(this.props.action)}/>
 			</form>
 		);
-	},
-	handleSubmit: function(e){
+	}
+
+	handleSubmit(e){
 		e.preventDefault();
-		if (this.props.action === "signup" && 
-			this.state.password !== this.state.confirm) {
-			this.setState({errors: ["passwords do not match"]});
+		const { username, password, confirm } = this.state;
+		const { action, signup, login, receiveAuthErrors } = this.props;
+
+		if (action === "signup" && password !== confirm) {
+			receiveAuthErrors(["passwords do not match"]);
 		} else {
-			this.setState({errors: []})
-			SessionActions[(this.props.action)](this.state);
+			this.setState({errors: []});
+			(action === "signup") ? 
+				signup({username, password}) 
+				: login({username, password})
 		}
 	}
-});
+};
 
 function icon(image){
 	var url = "http://res.cloudinary.com/swell/" + image;
@@ -106,4 +101,8 @@ function pretty(action){
 			break;
 	}
 }
-module.exports = AuthForm;
+
+const mapState = ({Session: {errors}}) => ({ errors });
+const mapDispatch = { login, signup, receiveAuthErrors };
+
+export default connect(mapState, mapDispatch)(AuthForm);

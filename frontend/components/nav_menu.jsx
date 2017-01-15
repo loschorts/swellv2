@@ -1,70 +1,90 @@
-var React = require("react");
-var SessionActions = require("../actions/session_actions");
+import React from 'react';
+import { connect } from 'react-redux';
+import autoBind from 'react-autobind';
 
-var NavMenuItem = require("./nav_menu_item");
-var AuthForm = require("./auth_form");
 
-var NavMenu = React.createClass({
-	getInitialState: function(){
-		return {showing: false, formAction: undefined};
-	},
-	toggleMenu: function(){
-		this.setState({showing: !this.state.showing, formAction: undefined});
-	},
-	menuItems: function(){
-		if (this.props.title === "menu") {
-			var items = [
-				<NavMenuItem key="nav-1" text="Sign up" action={this.signup}/>,
-				<NavMenuItem key="nav-2" text="Login" action={this.login}/>,
-				<NavMenuItem key="nav-3" text="Guest Login" action={this.guest}/>
+import NavMenuItem from "./nav_menu_item";
+import AuthForm from "./auth_form";
+
+import { login, logout } from '../actions/session';
+
+class NavMenu extends React.Component {
+	constructor() {
+		super();
+		this.state = {showing: false, formAction: undefined};
+
+		autoBind(this);
+	}
+
+	render () {
+		const { showing, formAction } = this.state;
+		const { currentUser } = this.props;
+
+		const title = currentUser ? currentUser.username : "menu";
+
+		let dropDown;
+
+		if (showing) dropDown = formAction ? this.form() : this.menuItems();
+
+		return(
+			<div className="menu">
+				<div className="menu-button" onClick={this.toggleMenu}>
+					{title}
+				</div>
+				{dropDown}
+			</div>
+			);
+	}
+
+	menuItems (){
+		const { login, logout, currentUser } = this.props;
+
+		let items;
+
+		if (!currentUser) {
+			items = [
+				<NavMenuItem key="nav-1" text="Sign up" action={this.show("signup")}/>,
+				<NavMenuItem key="nav-2" text="Login" action={this.show("login")}/>,
+				<NavMenuItem key="nav-3" text="Guest Login" 
+					action={login.bind(null, {username: "guest", password: "password"})}/>
 			]
 		} else {
-			var items = [
-				<NavMenuItem key="nav-1" text="Logout" action={this.logout}/>
+			items = [
+				<NavMenuItem key="nav-1" text="Logout" action={logout}/>
 				]
 		}
+
 		return <div className="menu-drop-down"> {items} </div>;
-	},
-	form: function(){
+	}
+
+	form (){
 		return (
 			<div className="menu-drop-down">
 				<AuthForm action={this.state.formAction} onSubmit={this.closeDropDown}/>
 		 	</div>
 		);
-	},
-	closeDropDown: function(){
-		this.setState({showing: false});
-	},
-	dropDown: function(){
-		if (this.state.showing){
-			if (this.state.formAction){
-				return this.form();
-			} else {
-				return this.menuItems();
-			}
-		}
-	},
-	render: function(){
-
-		return(
-			<div className="menu">
-				<div className="menu-button" onClick={this.toggleMenu}>{this.props.title}</div>
-				{this.dropDown()}
-			</div>
-			);
-	},
-	login: function(){
-		this.setState({formAction: "login"});
-	},
-	signup: function(){
-		this.setState({formAction: "signup"});
-	},
-	guest: function(){
-		SessionActions.guest();
-	},
-	logout: function(){
-		SessionActions.logout();
 	}
+
+	toggleMenu (){
+		this.setState({showing: !this.state.showing, formAction: undefined});
+	}
+
+	show(form){
+		return () => this.setState({formAction: form});
+	}
+
+	closeDropDown (){
+		this.setState({showing: false});
+	}
+
+}
+
+const mapState = ({ Session: {currentUser} }) => ({
+	currentUser
 });
 
-module.exports = NavMenu;
+const mapDispatch = {
+	login, logout
+};
+
+export default connect(mapState, mapDispatch)(NavMenu);

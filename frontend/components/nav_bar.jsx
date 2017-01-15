@@ -1,35 +1,39 @@
-var React = require("react");
-var NavMenu = require("./nav_menu");
+import React from 'react';
+import NavMenu from './nav_menu';
+import autoBind from 'react-autobind';
 
-var CheckIfExists = require("../modules/check_if_exists");
 
-var NavBar = React.createClass({
-	mixins: [CheckIfExists],
-	getInitialState: function(){
-		return {scrolled: ""};
-	},
-	componentDidMount: function(){
-		var self = this;
-		this.scrollEvent = $(document).scroll( function(){
-			if ($(window).scrollTop() !== 0) {
-				self.setState({scrolled: "scrolled"});
-			} else {
-				self.setState({scrolled: ""});
-			}
-		});
-	},
-	componentWillUnmount: function(){
-		this.scrollEvent.off();
-	},
-	render: function(){
-		return (
-			<nav id="nav-bar" className={this.state.scrolled}>
-				<div id="nav-logo"><a href="/">swell</a></div>
-				<NavMenu title={this.returnIf("this.props.currentUser.username", "menu")}/>
-			</nav>
-			);
+class NavBar extends React.Component {
+	constructor() {
+		super();
+		this.state = {scrolled: ""};
+		autoBind(this);
 	}
 
-});
+	componentDidMount(){
+		this.scrollEvent = $(document).scroll(() => {
+			if ($(window).scrollTop() !== 0) {
+				this.setState({scrolled: "scrolled"});
+			} else {
+				this.setState({scrolled: ""});
+			}
+		});
+	}
 
-module.exports = NavBar;
+	componentWillUnmount(){
+		this.scrollEvent.off();
+	}
+
+	render(){
+		const { scrolled } = this.state;
+
+		return (
+			<nav id="nav-bar" className={scrolled}>
+				<div id="nav-logo"><a href="/">swell</a></div>
+				<NavMenu/>
+			</nav>
+		);
+	}
+}
+
+export default NavBar;

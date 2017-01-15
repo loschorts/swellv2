@@ -9,7 +9,7 @@ const Counties = (state = {}, action) => {
   const newState = merge({}, state);
 
   switch(action.type) {
-  case: RECEIVE_COUNTY_FORECAST: 
+  case RECEIVE_COUNTY_FORECAST: 
     newState[action.county].forecast = action.forecast;
     return newState;
   default: 

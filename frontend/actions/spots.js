@@ -29,12 +29,12 @@ export const receiveSpotWeather = weather => ({
 	forecast
 });
 
-export const fetchSpotForecast = spot => dispatch => (
-  API.fetchSpotForecast({lng: spot.lng, lat: spot.lat})
+export const fetchSpotForecast = id => dispatch => (
+  API.fetchSpotForecast(id)
     .then(forecast => dispatch(receiveSpotForecast(forecast));
 );
 
-export const fetchSpotWeather = spot => dispatch => (
-  API.fetchSpotWeather(spot.spitcast_id)
+export const fetchSpotWeather = id => dispatch => (
+  API.fetchSpotWeather(id)
     .then(weather => dispatch(receiveSpotWeather(weather));
 );

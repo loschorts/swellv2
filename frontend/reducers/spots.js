@@ -10,10 +10,10 @@ const Spots = (state = {}, action) => {
   const newState = merge({}, state);
 
   switch(action.type) {
-  case: RECEIVE_SPOT_FORECAST: 
+  case RECEIVE_SPOT_FORECAST: 
     newState[action.spotId].forecast = action.forecast;
     return newState;
-  case: RECEIVE_SPOT_WEATHER: 
+  case RECEIVE_SPOT_WEATHER: 
     newState[action.spotId].weather = action.weather;
     return newState;
   default: 
