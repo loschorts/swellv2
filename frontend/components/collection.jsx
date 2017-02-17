@@ -1,7 +1,7 @@
-var React = require("react");
+import React from 'react';
 
-var Collection = React.createClass({
-	render: function(){
+class Collection extends React.Component {
+	render(){
 		var style ={
 			backgroundImage: "url(http://res.cloudinary.com/swell/image/upload/v1462428381/WY8DhvF_x4z6k7.jpg)"
 		};
@@ -38,6 +38,6 @@ var Collection = React.createClass({
 			</section>
 			);
 	}
-});
+}
 
-module.exports = Collection;
+export default Collection;

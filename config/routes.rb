@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :destroy]
     resource :session, only: [:create, :show, :destroy]
     resources :spots, only: [:show, :index], concerns: :location do 
+      collection { get :search }
       member { get :weather }
     end
     resources :counties, only: [:show, :index], concerns: :location

@@ -1,7 +1,7 @@
-var React = require("react");
+import React from 'react';
 
-var Spotlight = React.createClass({
-	render: function(){
+class Spotlight extends React.Component{
+	render(){
 		return (
 			<section id="spotlight">
 				<div id="image-container">
@@ -18,6 +18,6 @@ var Spotlight = React.createClass({
 			</section>
 			);
 	}
-});
+}
 
-module.exports = Spotlight;
+export default Spotlight;

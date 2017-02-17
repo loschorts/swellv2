@@ -19,6 +19,11 @@ class Api::SpotsController < ApplicationController
 		render json: this_spot.images
 	end
 
+	def search
+		matcher = "%#{params[:name]}%"
+		render json: Spot.where("upper(name) like upper(?)", matcher).pluck(:name, :id)
+	end
+
 
 	private
 

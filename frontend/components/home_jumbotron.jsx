@@ -1,26 +1,26 @@
-var React = require("react");
-var NavBar = require("./nav_bar");
-var SessionStore = require("../stores/session_store");
-var CurrentUserState = require("../modules/current_user_state");
+import React from "react";
+import autoBind from 'react-autobind';
 
-var SearchActions = require("../actions/search_actions");
-
-var HomeJumbotron = React.createClass({
-	getInitialState: function(){
-		return {search: null};
-	},
-	componentDidMount: function(){
+class HomeJumbotron extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			search: null
+		}
+		autoBind(this);
+	}
+	componentDidMount(){
 		document.getElementById("search").focus();
-	},
-	handleChange: function(e){
+	}
+	handleChange(e){
 		e.preventDefault();
 		this.setState({search: e.target.value});
-	},
-	handleSubmit: function(e){
+	}
+	handleSubmit(e){
 		e.preventDefault();
-		SearchActions.fetch(this.state.search);
-	},
-	render: function(){
+		alert(this.state.search);
+	}
+	render(){
 		return (
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
@@ -45,6 +45,6 @@ var HomeJumbotron = React.createClass({
 			</div>
 			);
 	}
-});
+}
 
-module.exports = HomeJumbotron;
+export default HomeJumbotron;

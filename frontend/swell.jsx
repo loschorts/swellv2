@@ -13,13 +13,14 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 // Components
 import App from "./components/app";
-// import Home from "./components/home";
+import Home from "./components/home";
 // import Focus from "./components/focus";
 
 const Root = ({ store }) => (
   <Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
+				<IndexRoute component={Home}/>
 			</Route>
 		</Router>
   </Provider>
