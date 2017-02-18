@@ -1,12 +1,13 @@
-import { SEARCH_SPOT_NAME } from '../constants';
+import { RECEIVE_SEARCH_RESULTS } from '../constants';
 import * as API from '../utils/api';
 
-export const searchSpotName name => dispatch => {
-	API
+export const searchSpotName = name => dispatch => {
+	API.searchSpotName(name).then(results => {
+		dispatch(receiveSearchResults(results))
+	});
 }
 
-export const login = ({ username, password }) => dispatch => {
-	API.login({ username, password })
-		.then(user => dispatch(receiveCurrentUser(user)),
-			e => dispatch(receiveAuthErrors(e.responseJSON)));
-};
+export const receiveSearchResults = results => ({
+	type: RECEIVE_SEARCH_RESULTS,
+	results
+});

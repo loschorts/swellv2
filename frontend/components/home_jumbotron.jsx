@@ -1,6 +1,8 @@
 import React from "react";
 import autoBind from 'react-autobind';
-
+import {connect} from "react-redux";
+import {searchSpotName} from '../actions/search';
+import { Link } from 'react-router'
 class HomeJumbotron extends React.Component {
 	constructor(props){
 		super(props);
@@ -13,14 +15,18 @@ class HomeJumbotron extends React.Component {
 		document.getElementById("search").focus();
 	}
 	handleChange(e){
-		e.preventDefault();
+		this.props.searchSpotName(e.target.value);
 		this.setState({search: e.target.value});
 	}
 	handleSubmit(e){
 		e.preventDefault();
-		alert(this.state.search);
+		this.setState({showResults: true})
+	}
+	goTo(spotId){
+
 	}
 	render(){
+		const showing = this.props.results.length > 0 ? "" : "hidden"
 		return (
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
@@ -35,16 +41,30 @@ class HomeJumbotron extends React.Component {
 					<form onSubmit={this.handleSubmit}>
 						<input
 							id="search" 
-							placeholder="Search for a spot, e.g. Mavericks"
+							placeholder="Search for a spot, e.g. 'mavericks'"
 							value={this.state.search}
 							onChange={this.handleChange}
+							autoComplete="off"
 							ref="focus">
 						</input>
 					</form>
+					<div id="search-results" className={showing}>
+						{
+							this.props.results.map((r, i) =>{
+								return (
+									<p key={i}><Link to={`spots/${r.id}`}>{r.name}</Link></p>
+								);
+							})
+						}
+					</div>
 				</div>
 			</div>
 			);
 	}
 }
 
-export default HomeJumbotron;
+const mapState = ({Search: {results}}) => ({results});
+
+const mapDispatch = {searchSpotName}
+
+export default connect(mapState, mapDispatch)(HomeJumbotron);

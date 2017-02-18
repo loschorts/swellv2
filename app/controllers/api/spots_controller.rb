@@ -20,8 +20,13 @@ class Api::SpotsController < ApplicationController
 	end
 
 	def search
-		matcher = "%#{params[:name]}%"
-		render json: Spot.where("upper(name) like upper(?)", matcher).pluck(:name, :id)
+		if !params[:name].empty?
+			matcher = "%#{params[:name]}%"
+			render json: Spot.where("upper(name) like upper(?)", matcher)
+			.select(:name, :id).limit(5)
+		else
+			render json: []
+		end
 	end
 
 
