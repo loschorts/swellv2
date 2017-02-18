@@ -21,72 +21,71 @@ class Focus extends React.Component {
 	render(){
 		const {params: {id}, spots, counties} = this.props;
 		const spot = getBy(spots, "id", parseInt(id));
-		window.spot = spot;
-		if (!spot.forecast) return <div className="center"> loading... </div>
-		console.log(now(spot.forecast.swell));
-		return <div className="center">Forecast received</div>;
+		const forecast = spot.forecast;
+
+		if (!forecast) return <div className="center"> loading... </div>
+
 		return (
 			<div id="focus">
 				<div id="focus-jumbotron">
 					<div id="focus-header">
 						<div id="focus-left">
-							<Waves overview={now(spot.forecast.overview)}/>
+							<Waves swell={now(forecast.swell).detail[0]}/>
 						</div>
 						<div id="focus-center">
 							<div className="focus-blurb">
 								<div/>
 								<div>
 									<h1 className="spot-name" onClick={this.recenter}>
-											{this.returnIf("state.spot.name")}
+											{spot.name}
 									</h1>
-									<h2 className="shape-full">{this.returnIf("state.currentForecast.shape_full")}</h2>
+									<h2 className="shape-full">{now(forecast.overview).overall}</h2>
 									<h2 className="size">
-										{this.returnIf("state.currentForecast.size")} ft
+										{now(forecast.overview).size} ft
 									</h2>
-									<Star spotId={parseInt(this.props.params.spotId)} />
 								</div>
 							</div>
 							<Weather
-								temp={this.returnIf("state.weather.temp")}
-								waterTemp={this.returnIf("state.currentCountyForecast.waterTemp.fahrenheit")}
-								desc={this.returnIf("state.weather.desc")}
-								detail={this.returnIf("state.weather.detail")}
-								tide={this.returnIf("state.currentCountyForecast.tide")}
+								temp={forecast.weather.temp}
+								waterTemp={forecast.water_temp.temp}
+								main={forecast.weather.main}
+								desc={forecast.weather.desc}
+								tide={now(forecast.tide).height}
 							/>
 						</div>
 						<div id="focus-right">
 							<Wind
-								speed={this.returnIf("state.weather.wind.speed")}
-								dir={this.returnIf("state.weather.wind.dir")}/>
+								speed={now(forecast.wind).speed)}
+								dir={now(forecast.wind).dir)}/>
 						</div>
 					</div>
 					<Map 
-						lat={this.returnIf("state.spot.lat")} 
-						lng={this.returnIf("state.spot.lng")}
+						lat={spot.lat} 
+						lng={spot.lng}
 					/>
 				</div>
 				
 				<main id="focus-main" >
 					<div id="focus-main-left">
-						<WavesDetail swell={this.returnIf("state.currentCountyForecast.swell")}/>
+						<WavesDetail swell={now(forecast.swell).detail}/>
 					</div>
 					<div id="focus-main-right">
 						<DailyChart 
-							data={this.returnIf("state.fullForecast")}
+							data={forecast.swell.map(e => e.hst)}
 							field="size_ft"
 							title="Today's Wave Forecast"
 							cssClass="wave"
 							unit="ft"
 						/>
 						<DailyChart 
-							data={this.returnIf("state.dailyCountyForecast.tide")}
+							data={forecast.tide.map(e => e.height)}
 							field="tide"
 							title="Today's Tide Forecast"
 							cssClass="tide"
 							unit="ft"
 						/>
 						<DailyChart 
-							data={this.returnIf("state.dailyCountyForecast.wind")}
+							data={forecast.wind.map(e => e.mph)}
 							field="speed_mph"
 							title="Today's Wind Forecast"
 							cssClass="wind"

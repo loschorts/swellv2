@@ -9,12 +9,12 @@ class Spot < ActiveRecord::Base
 
 	def forecast
 		{
-			overview: self.overview,
-			swell: self.swell,
-			wind: self.wind,
-			tide: self.tide,
-			weather: self.weather,
-			water_temp: self.water_temp
+			overview: overview,
+			swell: swell,
+			wind: wind,
+			tide: tide,
+			weather: weather,
+			water_temp: water_temp
 		}
 	end
 
@@ -26,7 +26,7 @@ class Spot < ActiveRecord::Base
 				swell: hr["shape_detail"]["swell"],
 				wind: hr["shape_detail"]["wind"],
 				tide: hr["shape_detail"]["tide"],
-				size: hr["size_ft"]
+				size: hr["size_ft"].round(1)
 			}
 		end
 	end
@@ -34,7 +34,7 @@ class Spot < ActiveRecord::Base
 	def weather
 		key = Figaro.env.weather_app_id
 		
-		HTTParty.get(url(:weather),
+		res = HTTParty.get(url(:weather),
 			{
 				query: {
 					appid: Figaro.env.weather_app_id,
@@ -43,6 +43,16 @@ class Spot < ActiveRecord::Base
 					units: "imperial"
 				}
 			})
+		{
+			temp: res["main"]["temp"].to_i,
+			main: res["weather"][0] ? res["weather"][0]["main"]: "",
+			desc: res["weather"][0] ? res["weather"][0]["description"]: "",
+			wind: {
+				deg: res["wind"]["deg"].to_i,
+				dir: text(res["wind"]["deg"]),
+				speed: res["wind"]["speed"].round(1)
+			}
+		}
 	end
 
 	def swell
@@ -52,12 +62,17 @@ class Spot < ActiveRecord::Base
 				detail: (0..5).map do |sw|
 					swell = hr[sw.to_s]
 					if swell["dir"] && swell["hs"] && swell["tp"]
-						{dir: swell["dir"], hs: swell["hs"], tp: swell["tp"]}
+						{
+							deg: (swell["dir"] + 180) % 360, #flip
+							dir: text((swell["dir"] + 180) % 360), # text dir, e.g. 'WNW'
+							hs: (swell["hs"] * 3.28).round(1), #covert to ft
+							tp: swell["tp"]
+						}
 					else
 						nil
 					end
 				end.compact,
-				hst: hr["hst"]
+				hst: (hr["hst"] * 3.28).to_i
 			}
 		end
 	end
@@ -68,18 +83,25 @@ class Spot < ActiveRecord::Base
 				time: hr["hour"],
 				deg: hr["direction_degrees"],
 				dir: hr["direction_text"],
-				speed: hr["speed_mph"]
+				speed: hr["speed_mph"].round(1)
 			}
 		end
 	end
 
 	def tide
-		HTTParty.get(url(:tide)).map do |hr|
+		res = HTTParty.get(url(:tide))
+
+		res = res.each_with_index.map do |hr, i| 
 			{
 				time: hr["hour"],
-				height: hr["tide"],
+				height: hr["tide"].round(1),
+				dir: hr["tide"] > res[i-1]["tide"] ? "rising" : "falling"
 			}
 		end
+
+		res[0][:dir] = res[1][:dir] # add default value to the first hour
+
+		res
 	end
 
 	def water_temp
@@ -91,6 +113,11 @@ class Spot < ActiveRecord::Base
 	end
 
 	private
+
+	def text(deg)
+		dirs = %w("N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW")
+		dirs[(deg / 22.5).to_i]
+	end
 
 	def url(request) 
 		case request

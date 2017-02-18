@@ -1,45 +1,38 @@
-var React = require("react");
+import React from 'react';
 
-
-var CheckIfExists = require("../modules/check_if_exists");
-var cloudinaryURL = "http://res.cloudinary.com/swell/";
-
-var Weather = React.createClass({
-	mixins: [CheckIfExists],
-	render: function(){
-		if (this.props.temp && this.props.desc && this.props.tide) {
-			return (
-				<div className="weather-box">
-					<h2>Weather</h2>
-					<div className="weather-components">
-						<div className="weather-text">
-							<h3>Air Temp: {this.props.temp}°</h3>
-							<h3>Water Temp: {this.props.waterTemp}°</h3>
-							<h3>
-								<span>
-								Tide: {this.props.tide.level}  
-								<img 
-									className="weather-tide-icon"
-									src={getURL(this.props.tide.direction)}/>
-								</span>
-							</h3>
-						</div>
-						<div className="weather-icon-container">
-							<img className="weather-icon" src={getURL(this.props.desc)}/>
-							<div>{this.props.detail}</div>
-						</div>
+class Weather extends React.Component {
+	render(){
+		const { temp, waterTemp, tide, main, desc } = this.props;
+		return (
+			<div className="weather-box">
+				<h2>Weather</h2>
+				<div className="weather-components">
+					<div className="weather-text">
+						<h3>Air Temp: {temp}°</h3>
+						<h3>Water Temp: {waterTemp}°</h3>
+						<h3>
+							<span>
+							Tide: {tide.height} ft 
+							<img 
+								className="weather-tide-icon"
+								src={getURL(tide.dir)}/>
+							</span>
+						</h3>
+					</div>
+					<div className="weather-icon-container">
+						<img className="weather-icon" src={getURL(main)}/>
+						<div>{desc}</div>
 					</div>
 				</div>
-				);
-		} else {
-			return <div className="weather-box"/>
+			</div>
+			);
 		}
-	},
-	conditions: function(){
 	}
-});
+}
 
-function getURL(desc){
+const cloudinaryURL = "http://res.cloudinary.com/swell/";
+
+const getURL => desc {
 	var filename;
 	switch(desc){
 		case "Clouds":
@@ -62,4 +55,4 @@ function getURL(desc){
 	return cloudinaryURL + filename;
 };
 
-module.exports = Weather;
+export default Weather;
