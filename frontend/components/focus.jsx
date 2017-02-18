@@ -56,6 +56,7 @@ class Focus extends React.Component {
 						<div id="focus-right">
 							<Wind
 								speed={now(forecast.wind).speed}
+								deg={now(forecast.wind).deg}
 								dir={now(forecast.wind).dir}/>
 						</div>
 					</div>
@@ -71,8 +72,8 @@ class Focus extends React.Component {
 					</div>
 					<div id="focus-main-right">
 						<DailyChart 
-							data={forecast.swell}
-							field="hst"
+							data={forecast.overview}
+							field="size"
 							title="Today's Wave Forecast"
 							cssClass="wave"
 							unit="ft"
@@ -80,7 +81,7 @@ class Focus extends React.Component {
 						<DailyChart 
 							data={forecast.tide}
 							field="height"
-							title="Today's Tide Forecast"
+							title="Today's Tide"
 							cssClass="tide"
 							unit="ft"
 						/>

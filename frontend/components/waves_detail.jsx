@@ -1,38 +1,26 @@
 var React = require("react");
 
-var Conversions = require("../helpers/conversions");
 var arrowImg = "http://res.cloudinary.com/swell/compass_color.png";
 
 var WavesDetail = React.createClass({
 	swellList: function(){
-		var list = [];
-		var i = 0; 
-		var swellIdx = 1;
-		while (this.props.swell[i]) {
-			var swell = this.props.swell[i];
-			if (swell.dir && swell.hs && swell.tp) {
-				list.push(this.swellItem(swell, swellIdx));
-				swellIdx++;
-			}
-			i++;
-		}
+		const {swell} = this.props;
+		const list = swell.map((e, i) => this.swellItem(e, i+1))		
 		return (<div id="waves-detail-list">{list}</div>);
 	},
 	swellItem: function(swell, i){
-		// dir, hs, tp
-		var angle = (swell.dir + 180) % 360;
-		var rotate = {
-			transform: "rotate(" + angle + "deg)" 
+		const {dir, deg, hs, tp} = swell;
+		// deg, hs, tp
+		const rotate = {
+			transform: "rotate(" + deg + "deg)" 
 		};
-		var card = Conversions.cardinal(angle);
-		var height = Conversions.imperial(swell.hs);
 		return (
 			<div className="waves-detail-item" key={"wdi" + i}>
 				<span className="waves-detail-item-index">{i}</span>
 				<img src={arrowImg} className="waves-detail-arrow" style={rotate}/>
 				<div className="waves-detail-text">
-					<h2>{card}</h2>
-					<p>{height} ft, {swell.tp} sec</p>
+					<h2>{dir}</h2>
+					<p>{hs} ft @ {tp} sec</p>
 				</div>
 			</div>
 		);

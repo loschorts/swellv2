@@ -1,7 +1,5 @@
 var React = require("react");
 
-var TimeHelper = require("../helpers/time_helper");
-
 var DailyChart = React.createClass({
 	configure: function(){
 		var self = this;
@@ -18,7 +16,7 @@ var DailyChart = React.createClass({
 		});
 
 		var hours = this.props.data.map(function(el){
-			return el.hour;
+			return el.time;
 		});
 
 		return {
@@ -39,14 +37,13 @@ var DailyChart = React.createClass({
 		var chartParams = this.configure();
 		
 		var chartItems = chartParams.columns.map(function(col, i){
-			var now = TimeHelper.convert(new Date());
-			var now = chartParams.hours[i] == now ? " now" : "";
+			var now = (i == new Date().getHours()) ? " now" : "";
 
 			var style = {
 				height: col,
 			};
 
-			var hoverText = chartParams.values[i].toFixed(2) + self.props.unit + " @ " + chartParams.hours[i];
+			var hoverText = chartParams.values[i] + self.props.unit + " @ " + chartParams.hours[i];
 			
 			return (
 				<div 
