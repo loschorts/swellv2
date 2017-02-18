@@ -95,7 +95,7 @@ class Spot < ActiveRecord::Base
 			{
 				time: hr["hour"],
 				height: hr["tide"].round(1),
-				dir: hr["tide"] > res[i-1]["tide"] ? "rising" : "falling"
+				dir: hr["tide"] > res[i-1]["tide"] ? "Rising" : "Falling"
 			}
 		end
 

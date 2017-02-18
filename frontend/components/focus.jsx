@@ -50,13 +50,13 @@ class Focus extends React.Component {
 								waterTemp={forecast.water_temp.temp}
 								main={forecast.weather.main}
 								desc={forecast.weather.desc}
-								tide={now(forecast.tide).height}
+								tide={now(forecast.tide)}
 							/>
 						</div>
 						<div id="focus-right">
 							<Wind
-								speed={now(forecast.wind).speed)}
-								dir={now(forecast.wind).dir)}/>
+								speed={now(forecast.wind).speed}
+								dir={now(forecast.wind).dir}/>
 						</div>
 					</div>
 					<Map 
@@ -71,22 +71,22 @@ class Focus extends React.Component {
 					</div>
 					<div id="focus-main-right">
 						<DailyChart 
-							data={forecast.swell.map(e => e.hst)}
-							field="size_ft"
+							data={forecast.swell}
+							field="hst"
 							title="Today's Wave Forecast"
 							cssClass="wave"
 							unit="ft"
 						/>
 						<DailyChart 
-							data={forecast.tide.map(e => e.height)}
-							field="tide"
+							data={forecast.tide}
+							field="height"
 							title="Today's Tide Forecast"
 							cssClass="tide"
 							unit="ft"
 						/>
 						<DailyChart 
-							data={forecast.wind.map(e => e.mph)}
-							field="speed_mph"
+							data={forecast.wind}
+							field="speed"
 							title="Today's Wind Forecast"
 							cssClass="wind"
 							unit="mph"

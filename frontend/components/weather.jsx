@@ -15,25 +15,24 @@ class Weather extends React.Component {
 							Tide: {tide.height} ft 
 							<img 
 								className="weather-tide-icon"
-								src={getURL(tide.dir)}/>
+								src={iconFor(tide.dir)}/>
 							</span>
 						</h3>
 					</div>
 					<div className="weather-icon-container">
-						<img className="weather-icon" src={getURL(main)}/>
+						<img className="weather-icon" src={iconFor(main)}/>
 						<div>{desc}</div>
 					</div>
 				</div>
 			</div>
-			);
-		}
+		);
 	}
 }
 
 const cloudinaryURL = "http://res.cloudinary.com/swell/";
 
-const getURL => desc {
-	var filename;
+const iconFor = desc => {
+	let filename;
 	switch(desc){
 		case "Clouds":
 			filename = "clouds.png"
@@ -42,7 +41,7 @@ const getURL => desc {
 			filename = "rain.png"
 			break;
 		case "Clear":
-			var time = new Date(Date.now()).getHours();
+			const time = new Date(Date.now()).getHours();
 			filename = time > 6 && time < 20 ? "sun.png" : "moon.png";
 			break;
 		case "Rising":
