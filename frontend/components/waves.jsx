@@ -1,16 +1,17 @@
-var React = require("react");
-var Conversions = require("../helpers/conversions");
+import React from "react";
+import Conversions from "../helpers/conversions";
 
-var compassImg = "http://res.cloudinary.com/swell/compass.png";
+const compassImg = "http://res.cloudinary.com/swell/compass.png";
 
-var Waves = React.createClass({
-	render: function(){
-		if ( this.props.swell ) {
-			var mainSwell = this.props.swell[0];
-			var dir = Conversions.cardinal(mainSwell.dir + 180);
-			var height = Conversions.imperial(mainSwell.hs);
-			var period = mainSwell.tp;
-			var style = {
+class Waves extends React.Component {
+	render(){
+		const {overview} = this.props;
+		if ( overview ) {
+			const mainSwell = overview[0];
+			const dir = Conversions.cardinal(mainSwell.dir + 180);
+			const height = Conversions.imperial(mainSwell.hs);
+			const period = mainSwell.tp;
+			const style = {
 				transform: "rotate(" + (mainSwell.dir + 180) + "deg)"
 			};
 			return (
@@ -23,11 +24,11 @@ var Waves = React.createClass({
 		} else {
 			return <div className="waves-box"/>;
 		}
-	},
+	}
 
-	swellItem: function(swellInfo){
+	swellItem(swellInfo){
 
 	}
-});
+}
 
-module.exports = Waves;
+export default Waves;

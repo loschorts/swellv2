@@ -11,7 +11,7 @@ import WavesDetail from "./waves_detail";
 import DailyChart from "./daily_chart";
 
 import {fetchSpotForecast, fetchSpotWeather} from '../actions/spots';
-import {getBy} from '../utils/selectors';
+import {getBy, now} from '../utils/selectors';
 
 class Focus extends React.Component {
 	componentDidMount(){
@@ -21,14 +21,16 @@ class Focus extends React.Component {
 	render(){
 		const {params: {id}, spots, counties} = this.props;
 		const spot = getBy(spots, "id", parseInt(id));
-		return <div/>;
+		window.spot = spot;
+		if (!spot.forecast) return <div className="center"> loading... </div>
+		console.log(now(spot.forecast.swell));
+		return <div className="center">Forecast received</div>;
 		return (
 			<div id="focus">
 				<div id="focus-jumbotron">
 					<div id="focus-header">
 						<div id="focus-left">
-							<Waves 
-								swell={this.returnIf("state.currentCountyForecast.swell")}/>
+							<Waves overview={now(spot.forecast.overview)}/>
 						</div>
 						<div id="focus-center">
 							<div className="focus-blurb">
