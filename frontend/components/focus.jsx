@@ -1,22 +1,27 @@
 // libraries
-var React = require("react");
+import React from "react";
+import {connect} from 'react-redux';
 
 // components
-var Map = require("./map");
-var Wind = require("./wind");
-var Weather = require("./weather");
-var Waves = require("./waves");
-var WavesDetail = require("./waves_detail");
-var DailyChart = require("./daily_chart");
-var Star = require("./star");
+import Map from "./map";
+import Wind from "./wind";
+import Weather from "./weather";
+import Waves from "./waves";
+import WavesDetail from "./waves_detail";
+import DailyChart from "./daily_chart";
 
-// mixins
-var CurrentForecastState = require("../modules/current_forecast_state");
-var CheckIfExists = require("../modules/check_if_exists");
+import {fetchSpotForecast, fetchSpotWeather} from '../actions/spots';
+import {getBy} from '../utils/selectors';
 
-var Focus = React.createClass({
-	mixins: [CurrentForecastState, CheckIfExists],
-	render: function(){
+class Focus extends React.Component {
+	componentDidMount(){
+		const {id} = this.props.params;
+		this.props.fetchSpotForecast(parseInt(id));
+	}
+	render(){
+		const {params: {id}, spots, counties} = this.props;
+		const spot = getBy(spots, "id", parseInt(id));
+		return <div/>;
 		return (
 			<div id="focus">
 				<div id="focus-jumbotron">
@@ -89,10 +94,12 @@ var Focus = React.createClass({
 				</main>
 			</div>
 		);
-	},
-	recenter: function(){
+	}
+	recenter(){
 		this.forceUpdate();
 	}
-})
+}
+const mapState = ({Spots, Counties}) => ({ spots: Spots, counties: Counties });
+const mapDispatch = ({fetchSpotForecast, fetchSpotWeather});
 
-module.exports = Focus;
+export default connect(mapState, mapDispatch)(Focus);

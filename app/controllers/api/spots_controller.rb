@@ -11,10 +11,6 @@ class Api::SpotsController < ApplicationController
 		render json: this_spot.forecast
 	end
 
-	def weather
-		render json: this_spot.weather
-	end
-
 	def photos
 		render json: this_spot.images
 	end

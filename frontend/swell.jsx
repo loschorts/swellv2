@@ -14,13 +14,14 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // Components
 import App from "./components/app";
 import Home from "./components/home";
-// import Focus from "./components/focus";
+import Focus from "./components/focus";
 
 const Root = ({ store }) => (
   <Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Home}/>
+				<Route path="spots/:id" component={Focus}/>
 			</Route>
 		</Router>
   </Provider>
@@ -33,7 +34,12 @@ function fetchInitialState() {
 			$.ajax({
 				url: "api/spots",
 				success: function(Spots) {
-					load({Session: { currentUser, errors: [] }, Spots});
+					$.ajax({
+						url: "api/counties",
+						success: function(Counties) {
+							load({Session: { currentUser, errors: [] }, Spots, Counties});
+						}
+					})
 				}
 			})
 		}

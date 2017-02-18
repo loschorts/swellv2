@@ -7,7 +7,7 @@ import {
 	FETCH_SPOT_WEATHER
 } from '../constants';
 
-import API from '../util/api'
+import * as API from '../utils/api'
 
 export const receiveSpot = spot => ({
 	type: RECEIVE_SPOT,
@@ -19,22 +19,13 @@ export const receiveSpots = spots => ({
 	spots
 });
 
-export const receiveSpotForecast = forecast => ({
+export const receiveSpotForecast = (id, forecast) => ({
 	type: RECEIVE_SPOT_FORECAST,
-	forecast
-});
-
-export const receiveSpotWeather = weather => ({
-	type: RECEIVE_SPOT_WEATHER,
+	id,
 	forecast
 });
 
 export const fetchSpotForecast = id => dispatch => (
   API.fetchSpotForecast(id)
-    .then(forecast => dispatch(receiveSpotForecast(forecast));
-);
-
-export const fetchSpotWeather = id => dispatch => (
-  API.fetchSpotWeather(id)
-    .then(weather => dispatch(receiveSpotWeather(weather));
+    .then(forecast => dispatch(receiveSpotForecast(id, forecast)))
 );

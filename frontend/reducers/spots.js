@@ -5,16 +5,15 @@ import {
 
 import merge from 'lodash/merge';
 
-const Spots = (state = {}, action) => {
+import {getBy} from '../utils/selectors';
 
-  const newState = merge({}, state);
+const Spots = (state = [], action) => {
+
+  const newState = state.slice(0);
 
   switch(action.type) {
   case RECEIVE_SPOT_FORECAST: 
-    newState[action.spotId].forecast = action.forecast;
-    return newState;
-  case RECEIVE_SPOT_WEATHER: 
-    newState[action.spotId].weather = action.weather;
+    getBy(newState, "id", action.id).forecast = action.forecast;
     return newState;
   default: 
     return state;

@@ -4,9 +4,9 @@ import {
 
 import merge from 'lodash/merge';
 
-const Counties = (state = {}, action) => {
+const Counties = (state = [], action) => {
 
-  const newState = merge({}, state);
+  const newState = state.slice(0);
 
   switch(action.type) {
   case RECEIVE_COUNTY_FORECAST: 

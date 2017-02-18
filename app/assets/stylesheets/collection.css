@@ -15,6 +15,11 @@
 	margin: 0 10px;
 }
 
+.thumbnail h3 {
+	background: rgba(0,0,0,.5);
+	padding: 10px;
+}
+
 
 .thumbnail {
 	flex: 2;
