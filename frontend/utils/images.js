@@ -1,0 +1,1 @@
+export const randomImage = () => $.get("/api/images/random");

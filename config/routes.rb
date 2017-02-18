@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :counties, only: [:show, :index], concerns: :location
     resources :regions, only: [:show, :index]
     resources :favorites, only: [:create, :index, :destroy]
+    resources :images, only: [] do
+      collection {get :random}
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

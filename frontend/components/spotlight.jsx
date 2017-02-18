@@ -1,11 +1,23 @@
 import React from 'react';
+import { randomImage } from '../utils/api';
+window.randomImage = randomImage;
 
 class Spotlight extends React.Component{
+	constructor(){
+		super()
+		this.state = {src: ""}
+	}
+	componentDidMount(){
+		randomImage().then(({path}) => this.setState({
+			src: `http://res.cloudinary.com/swell/image/upload/c_scale,h_400/${path}`
+		}))
+	}
 	render(){
+		console.log(this.state.src)
 		return (
 			<section id="spotlight">
-				<div id="image-container">
-					<img src="http://res.cloudinary.com/swell/image/upload/v1462425167/ruKkhOq_efxdug.jpg"/>
+				<div className="image-container">
+					<img src={this.state.src}/>
 				</div>
 				<div className="blurb">
 					<h2> 
