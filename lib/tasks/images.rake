@@ -37,9 +37,11 @@ namespace :images do
 	end
 
 	task fixnames: :environment do
-		Image.where("position(' ' in path) > 0").each do |path|
-			puts path
-			puts path.gsub(/[ -]*/, "_")
+		Image.where("position(' ' in path) > 0").each do |image|
+			from_public_id = image[:path]
+			to_public_id = image[:path].gsub(/[ -]+/, "_")
+			Cloudinary::Uploader.rename(from_public_id, to_public_id, options = {})
+			image.update(path: to_public_id)
 		end
 
 	end
