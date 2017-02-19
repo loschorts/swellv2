@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
 		self.favorites.exists?(spot_id: spot.id)
 	end
 
+	def favorite_spots
+		favorites.map {|x| x[:spot_id]}
+	end
+
 	private
 
 	def ensure_session_token
