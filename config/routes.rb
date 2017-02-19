@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do 
-    resources :users, only: [:create, :show, :destroy]
+    resources :users, only: [:create, :show, :destroy] do 
+      collection { post :guest }
+    end
     resource :session, only: [:create, :show, :destroy]
     resources :spots, only: [:show, :index], concerns: :location do 
       collection { get :search }

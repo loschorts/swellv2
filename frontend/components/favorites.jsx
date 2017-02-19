@@ -41,7 +41,7 @@ class Favorites extends React.Component {
 					<h2>{title}</h2>
 					<p>{desc}</p>
 				</div>
-				<div className="fluid-container">
+				<div className="favorites">
 					{this.thumbnails()}
 				</div>
 

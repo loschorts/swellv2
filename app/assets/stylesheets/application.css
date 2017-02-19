@@ -41,21 +41,3 @@ a:link, a:visited, a:hover, a:active {
 	-webkit-filter: invert(100%); 
 	filter: invert(100%);
 }
-
-.fluid-container {
-	display: flex;
-	flex-direction: row;
-	flex-flow: wrap;
-}
-
-#favorites {
-	padding: 40px;
-}
-
-.fluid-container > * {
-	flex: 1;
-	height: 200px;
-	width: 200px;
-  min-height: 200px;
-  min-width: 200px;
-}

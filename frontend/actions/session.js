@@ -28,6 +28,12 @@ export const signup = ({ username, password }) => dispatch => {
 			e => dispatch(receiveAuthErrors(e.responseJSON)));
 };
 
+export const guest = () => dispatch => {
+	API.guest()
+		.then(user => dispatch(receiveCurrentUser(user)),
+		e => dispatch(receiveAuthErrors(e.responseJSON)));
+}
+
 export const login = ({ username, password }) => dispatch => {
 	API.login({ username, password })
 		.then(user => dispatch(receiveCurrentUser(user)),

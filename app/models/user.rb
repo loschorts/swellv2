@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
 	validates :username, :password_digest, :session_token, presence: true
 	validates :username, uniqueness: true
 	validates :password, length: {minimum: 6}, allow_nil: :true
-	validate :valid_username
 	
 	after_initialize :ensure_session_token, :ensure_guest_status
 	before_validation :ensure_session_token_uniqueness
@@ -29,19 +28,23 @@ class User < ActiveRecord::Base
 	end
 
 	def reset_session_token!
-		self.session_token = new_session_token
-		ensure_session_token_uniqueness
-		self.save
+		# self.session_token = new_session_token
+		# ensure_session_token_uniqueness
+		# self.save
+		# self.session_token
+		self.update!(session_token: new_session_token)
 		self.session_token
 	end
 
 	def self.new_guest
-		User.find_by(username: 'guest').destroy
-		guest_params = {username: 'guest', password: 'password', guest: true}
+		guest_count = User.where("username like 'guest%'").count
+		guest_params = {username: "guest_no_#{guest_count}", password: 'password', guest: true}
 		user = User.create(guest_params)
-		(13..54).each do |spot_id|
-			Favorite.create(user_id: user.id, spot_id: spot_id)
+
+		Spot.order("RANDOM()").limit(10).each do |spot|
+			Favorite.create(user_id: user.id, spot_id: spot.id)
 		end
+
 		user
 	end
 
@@ -71,12 +74,6 @@ class User < ActiveRecord::Base
 
 	def ensure_guest_status
 		self.guest ||= false
-	end
-
-	def valid_username
-		if self.username == 'guest' && !self.guest
-			self.errors[:username] << "cannot be '#{self.username}'"
-		end
 	end
 
 end

@@ -6,7 +6,7 @@ import autoBind from 'react-autobind';
 import NavMenuItem from "./nav_menu_item";
 import AuthForm from "./auth_form";
 
-import { login, logout } from '../actions/session';
+import { login, logout, guest } from '../actions/session';
 
 class NavMenu extends React.Component {
 	constructor() {
@@ -37,7 +37,7 @@ class NavMenu extends React.Component {
 	}
 
 	menuItems (){
-		const { login, logout, currentUser } = this.props;
+		const { login, logout, currentUser, guest } = this.props;
 
 		let items;
 
@@ -46,7 +46,7 @@ class NavMenu extends React.Component {
 				<NavMenuItem key="nav-1" text="Sign up" action={this.show("signup")}/>,
 				<NavMenuItem key="nav-2" text="Login" action={this.show("login")}/>,
 				<NavMenuItem key="nav-3" text="Guest Login" 
-					action={login.bind(null, {username: "guest", password: "password"})}/>
+					action={guest}/>
 			]
 		} else {
 			items = [
@@ -84,7 +84,7 @@ const mapState = ({ Session: {currentUser} }) => ({
 });
 
 const mapDispatch = {
-	login, logout
+	login, logout, guest
 };
 
 export default connect(mapState, mapDispatch)(NavMenu);

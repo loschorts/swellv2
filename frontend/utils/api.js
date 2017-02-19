@@ -10,6 +10,8 @@ export const login = user => $.post("api/session", {user});
 
 export const signup = user => $.post("api/users", {user});
 
+export const guest = () => $.post("api/users/guest");
+
 export const logout = () => $.ajax({ url: "api/session", type: "DELETE" });
 
 export const searchSpotName = name => $.get("api/spots/search", {name});

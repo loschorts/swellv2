@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bundler'
 
+gem 'faker'
+
 # for image scraping
 gem 'scrapix'
 gem 'poltergeist'
