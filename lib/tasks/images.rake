@@ -36,6 +36,14 @@ namespace :images do
 		puts result, result.count { |x| x.include? "spots" }
 	end
 
+	task fixnames: :environment do
+		Image.where("position(' ' in path) > 0").each do |path|
+			puts path
+			puts path.gsub(/[ -]*/, "_")
+		end
+
+	end
+
 end
 
 

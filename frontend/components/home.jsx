@@ -20,17 +20,16 @@ class Home extends React.Component {
 			<div id="home">
 				<HomeJumbotron/>
 				<main>
-					<Spotlight/>
 					<Collection
 						title="Highlights"
 						desc="Find a new spot to explore."
-						collection={this.props.highlights} />
+						collection={this.props.spots} />
 				</main>
 			</div>
 		);
 	}
 }
 
-const mapState = ({Spots}) => ({highlights: shuffle(Spots).slice(0,6)})
+const mapState = ({Spots}) => ({spots: shuffle(Spots)})
 
 export default connect(mapState)(Home);
