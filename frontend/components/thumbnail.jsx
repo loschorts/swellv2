@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 const Thumbnail = ({spot, img, double}) => (
 	<div 
 		className={`thumbnail ${double ? "double" : ""}`} 
-		style={{background: img}}>
+		style={{backgroundImage: img, backgroundSize: "cover"}}>
 		<h3><Link to={`/spots/${spot.id}`}>{spot.name}</Link></h3>
 	</div>	
 );

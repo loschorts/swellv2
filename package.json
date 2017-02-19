@@ -32,6 +32,7 @@
     "flux": "^2.1.1",
     "images-scraper": "^2.0.11",
     "install": "^0.6.1",
+    "lodash": "^4.17.4",
     "npm": "^3.8.6",
     "react": "^0.14.8",
     "react-addons-linked-state-mixin": "^0.14.8",
