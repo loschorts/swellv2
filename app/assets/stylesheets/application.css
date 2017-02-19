@@ -41,3 +41,15 @@ a:link, a:visited, a:hover, a:active {
 	-webkit-filter: invert(100%); 
 	filter: invert(100%);
 }
+
+.fluid-container {
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+}
+
+.fluid-container > * {
+		flex: 1;
+    height: 300px;
+    min-width: 300px;
+}

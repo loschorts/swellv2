@@ -4,6 +4,9 @@ import {fetchSpotOverview} from '../actions/spots'
 import {Link} from 'react-router';
 
 class Thumbnail extends React.Component {
+	componentDidMount(){
+		if (this.props.onMount) this.props.onMount();
+	}
 	render() {
 		const {spot, img, double} = this.props;
 		return (

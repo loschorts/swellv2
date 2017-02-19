@@ -4,17 +4,29 @@ import {connect} from 'react-redux';
 import HomeJumbotron from "./home_jumbotron" ; 
 import Navbar from "./nav_bar" ; 
 import Spotlight from "./spotlight" ; 
-import Collection from "./collection" ; 
+import Collection from "./collection" ;
+import Favorites from "./favorites" ;
+
+import {getBy} from '../utils/selectors'; 
 
 class Home extends React.Component {
 	render(){
+		console.log(this.props.favorites)
 		return(
 			<div id="home">
 				<HomeJumbotron/>
 				<main>
+					<Favorites
+						title="Favorites"
+						desc="Keep an eye on the spots you like the most."
+						shouldFetchOverview={true}
+						paginate={false}
+						collection={this.props.favorites} />
 					<Collection
 						title="Highlights"
 						desc="Find a new spot to explore."
+						paginate={true}
+						shouldFetchOverview={false}
 						collection={this.props.spots} />
 				</main>
 			</div>
@@ -36,6 +48,10 @@ const randomList = spots => {
 	return list ? list : list = shuffle(spots);
 }
 
-const mapState = ({Spots}) => ({spots: randomList(Spots)})
+const mapState = ({Session: {currentUser}, Spots}) => {
+	return ({
+	favorites: currentUser ? getBy(Spots, "id", currentUser.favorites): [],
+	spots: randomList(Spots)})
+}
 
 export default connect(mapState)(Home);

@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router';
 import Thumbnail from './thumbnail';
 
+import {imageFor} from '../utils/selectors';
+
 class Collection extends React.Component {
 	constructor(props) {
 		super(props);
@@ -51,12 +53,6 @@ class Collection extends React.Component {
 		return rows;
 	}
 	render(){
-		console.log(window.images = this.images, window.collection = this.props.collection)
-		for (let x = 0; x < window.images.length; x++) {
-			if (!window.collection[x].images.find(i => i !== window.images[x])) {
-				console.log(window.collection[x].name, x)
-			}
-		}
 		const {title, desc, collection} = this.props;
 		return (
 			<section className="collection">
@@ -72,15 +68,5 @@ class Collection extends React.Component {
 		);
 	}
 }
-
-const randomFrom = array => array[Math.floor(Math.random() * array.length)];
-
-const url = img => `url(http://res.cloudinary.com/swell/image/upload/c_scale,h_600/${img.path})`;
-
-const imageFor = spot => {
-	const randImg = randomFrom(spot.images);
-	return randImg ? url(randImg) : console.log(`${spot.name} has no pics`);
-};
-
 
 export default Collection;
