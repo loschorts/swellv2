@@ -11,8 +11,7 @@ class Api::UsersController < ApplicationController
 	end
 
 	def show
-		user = User.find(params[:id])
-		render json: user.as_json.merge({favorites: user.favorite_spots})
+		@user = User.find(params[:id])
 	end
 
 	def guest
