@@ -19,10 +19,21 @@ namespace :images do
 
 	task attach: :environment do
 		get_image_list.each do |path|
-			spot = /^spots\/(.*)\//.match(path)
-			if spot
-				name = spot[1].gsub("_", " ")
-				Image.create!(path: path, imageable: Spot.find_by(name: name))
+			spotname = /^spots\/(.*)\//.match(path)
+			if spotname
+				name = spotname[1].gsub("_", " ")
+				spot = Spot.find_by(name: name)
+				Image.create(path: path, imageable: Spot.find_by(name: name))
+			end
+		end
+	end
+
+	task cleanup_attach: :environment do 
+		list = get_image_list
+		Spot.includes(:images).select { |x| x.images.empty? }.each do |spot|
+			cloud_name = spot.name.gsub(/[ -]+/, " ")
+			list.select { |path| path.include? cloud_name }.each do |path|
+				spot.images.create!(path: path)
 			end
 		end
 	end
