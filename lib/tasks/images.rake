@@ -1,5 +1,4 @@
 require 'httparty'
-require 'byebug'
 
 namespace :images do 
 
