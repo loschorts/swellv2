@@ -6,8 +6,10 @@ import {now} from '../utils/selectors';
 const colors = forecast => {
 	if (forecast.indexOf("Poor") >= 0) return "blue";
 	if (forecast.indexOf("Fair") >= 0) return "green";
+	if (forecast.indexOf("Good") === 0) return "epic";
 	if (forecast.indexOf("Good") >= 0) return "gold";
-	return "epic";
+	if (forecast.indexOf("Epic") >= 0) return "epic";
+	return "";
 }
 
 class Thumbnail extends React.Component {

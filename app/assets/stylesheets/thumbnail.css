@@ -22,15 +22,15 @@
 }
 
 .thumbnail h3.blue {
-	background: blue;
+	background: rgba(63, 127, 191, .5);
 }
 
 .thumbnail h3.green {
-	background: green;
+	background: rgba(44, 234, 31, .5);
 }
 
 .thumbnail h3.gold {
-	background: gold;
+	background: rgba(234, 221, 35, .5);
 }
 
 .thumbnail h3.epic {
