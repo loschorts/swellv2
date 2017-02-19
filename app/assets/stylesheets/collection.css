@@ -14,26 +14,3 @@
 	flex-flow: wrap;
 	margin: 0 10px;
 }
-
-.thumbnail h3 {
-	background: rgba(0,0,0,.5);
-	padding: 10px;
-}
-
-
-.thumbnail {
-	flex: 2;
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-	background-size: cover;
-	overflow: hidden;
-	height: 300px;
-	margin: 10px;
-	color: white;
-}
-
-.thumbnail.double {
-	flex: 3;
-}

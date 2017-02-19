@@ -19,14 +19,12 @@ class Home extends React.Component {
 					<Favorites
 						title="Favorites"
 						desc="Keep an eye on the spots you like the most."
-						shouldFetchOverview={true}
 						paginate={false}
 						collection={this.props.favorites} />
 					<Collection
 						title="Highlights"
 						desc="Find a new spot to explore."
 						paginate={true}
-						shouldFetchOverview={false}
 						collection={this.props.spots} />
 				</main>
 			</div>

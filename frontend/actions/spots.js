@@ -38,6 +38,6 @@ export const fetchSpotForecast = id => dispatch => (
 );
 
 export const fetchSpotOverview = id => dispatch => (
-  API.fetchSpotForecast(id)
+  API.fetchSpotOverview(id)
     .then(overview => dispatch(receiveSpotOverview(id, overview)))
 );
