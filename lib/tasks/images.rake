@@ -37,38 +37,6 @@ namespace :images do
 		puts result, result.count { |x| x.include? "spots" }
 	end
 
-	task fixnames: :environment do
-		Image.where("position(' ' in path) > 0").each do |image|
-			from_public_id = image[:path]
-			to_public_id = image[:path].gsub(/[ -]+/, "_")
-			Cloudinary::Uploader.rename(from_public_id, to_public_id, options = {})
-			image.update(path: to_public_id)
-		end
-	end
-
-	task fix17thst: :environment do 
-		# get_image_list.select{|x| x.include? "17th_street"}.each do |path|
-		# 	Cloudinary::Uploader.rename(path, "temp", options = {})
-		# 	Cloudinary::Uploader.rename("temp", path.gsub("17th_street", "17th_Street"), options = {})
-		# end
-
-		puts get_image_list.select{|x| x.include? "17th_Street"}
-	end
-
-	task addmissing: :environment do 
-		list = "17th_Street"
-		# system "node lib/image_scraper.js #{list}"
-
-		images = get_image_list
-		list.split(" ").each do |name|
-			spot = Spot.find_by(name: name.gsub("_"," "))
-			images.select {|n| n.include? name.split("_").map(&:downcase).join("_") }.each do |path|
-				spot.images.create!(path: path)
-			end
-		end
-
-	end
-
 end
 
 
