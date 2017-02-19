@@ -37,6 +37,26 @@ namespace :images do
 		puts result, result.count { |x| x.include? "spots" }
 	end
 
+	task countyline: :environment do 
+		# get_image_list.select{|x| x.include? "County_Line"}.each do |path|
+		# 	Cloudinary::Uploader.destroy(path)
+		# end
+		
+		# cls = ["'County Line Santa Cruz'", "'County Line Los Angeles'"]
+		# system "node lib/image_scraper.js #{cls.join(" ")}"
+		
+		cls = ["County Line Santa Cruz", "County Line Los Angeles"]
+
+		list = get_image_list
+		cls.each do |cl|
+			spot = Spot.find_by(name: cl)
+			list.select {|x| x.include? spot.name.gsub(" ", "_")}.each do |path|
+				spot.images.create!(path: path)
+			end
+		end
+
+	end
+
 end
 
 
