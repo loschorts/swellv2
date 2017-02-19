@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :show, :destroy]
     resources :spots, only: [:show, :index], concerns: :location do 
       collection { get :search }
-      member { get :weather }
+      member { 
+        get :weather
+        get :overview
+      }
     end
     resources :counties, only: [:show, :index], concerns: :location
     resources :regions, only: [:show, :index]

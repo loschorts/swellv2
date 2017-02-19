@@ -15,6 +15,10 @@ class Api::SpotsController < ApplicationController
 		render json: this_spot.images
 	end
 
+	def overview
+		render json: this_spot.overview
+	end
+
 	def search
 		if !params[:name].empty?
 			matcher = "%#{params[:name]}%"

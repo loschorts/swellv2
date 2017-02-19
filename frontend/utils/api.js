@@ -1,5 +1,7 @@
 export const fetchSpotForecast = id => $.get(`api/spots/${id}/forecast`);
 
+export const fetchSpotOverview = id => $.get(`api/spots/${id}/overview`);
+
 export const fetchSpotWeather = id => $.get(`api/spots/${id}/weather`);
 
 export const fetchCountyForecast = county => $.get(`api/counties/${county}/forecast`);

@@ -6,14 +6,6 @@ import Navbar from "./nav_bar" ;
 import Spotlight from "./spotlight" ; 
 import Collection from "./collection" ; 
 
-const shuffle = a => {
-  for (let i = a.length; i; i--) {
-    let j = Math.floor(Math.random() * i);
-    [a[i - 1], a[j]] = [a[j], a[i - 1]];
-  }
-  return a;
-}
-
 class Home extends React.Component {
 	render(){
 		return(
@@ -30,6 +22,20 @@ class Home extends React.Component {
 	}
 }
 
-const mapState = ({Spots}) => ({spots: shuffle(Spots)})
+
+const shuffle = a => {
+  for (let i = a.length; i; i--) {
+    let j = Math.floor(Math.random() * i);
+    [a[i - 1], a[j]] = [a[j], a[i - 1]];
+  }
+  return a;
+}
+
+let list;
+const randomList = spots => {
+	return list ? list : list = shuffle(spots);
+}
+
+const mapState = ({Spots}) => ({spots: randomList(Spots)})
 
 export default connect(mapState)(Home);
