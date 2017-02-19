@@ -31,9 +31,9 @@ namespace :images do
 	task cleanup_attach: :environment do 
 		list = get_image_list
 		Spot.includes(:images).select { |x| x.images.empty? }.each do |spot|
-			cloud_name = spot.name.gsub(/[ -]+/, " ")
+			cloud_name = spot.name.gsub(/[ -]+/, "_")
 			list.select { |path| path.include? cloud_name }.each do |path|
-				spot.images.create!(path: path)
+				spot.images.create!(path: path)			
 			end
 		end
 	end
