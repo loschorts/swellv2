@@ -26,6 +26,21 @@ http://surfswell.herokuapp.com
 
 -	Single-page rendering via React/ReactRouter/ReactRedux.
 - Redux store with `Session`, `Spots`, `Search` reducers.
+- Entry file: [`swell.jsx`](./frontend/swell.jsx)
+- Major Components: 
+	- [`Focus`](./frontend/components/focus.jsx)
+		- [`Weather`](./frontend/components/weather.jsx)
+		- [`Wind`](./frontend/components/wind.jsx)
+		- [`WavesDetail`](./frontend/components/waves_detail.jsx)
+		- [`DailyChart`](./frontend/components/daily_chart.jsx)
+	- [`Home`](./frontend/components/home.jsx)
+		- [`Favorites`][favorites]
+		- [`Collection`][collection]
+		- [`Thumbnail`][thumbnail]
+- Key API files: 
+	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
+	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
+	- [`frontend/utils/api.js`](./frontend/actions/api.js)
 - **Feature Highlights**
 	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
 		```js
@@ -79,7 +94,7 @@ http://surfswell.herokuapp.com
 				return "";
 			}
 		```
-	- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
+- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
 
 	```js
 	// frontend/components/collection.jsx
@@ -106,25 +121,10 @@ http://surfswell.herokuapp.com
 		}
 	}
 	```
-- Entry file: [`swell.jsx`](./frontend/swell.jsx)
-- Page-Level Components: 
-	- [`Focus`](./frontend/components/focus.jsx)
-		- [`Weather`](./frontend/components/weather.jsx)
-		- [`Wind`](./frontend/components/wind.jsx)
-		- [`WavesDetail`](./frontend/components/waves_detail.jsx)
-		- [`DailyChart`](./frontend/components/daily_chart.jsx)
-	- [`Home`](./frontend/components/home.jsx)
-		- [`Favorites`][favorites]
-		- [`Collection`][collection]
-- Key API files: 
-	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
-	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
-	- [`frontend/utils/api.js`](./frontend/actions/api.js)
 
-[thumbnail][./frontend/components/favorites.jsx]
-[favorites][./frontend/components/favorites.jsx]
-[collection][./frontend/components/collection.jsx]
-
+[thumbnail]: ./frontend/components/favorites.jsx
+[favorites]: ./frontend/components/favorites.jsx
+[collection]: ./frontend/components/collection.jsx
 
 
 ## Backend Highlights
