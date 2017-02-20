@@ -17,7 +17,7 @@ http://surfswell.herokuapp.com
 - Built on Postgres/Rails/React/Redux.
 - Heroku Hosting, Cloudinary CDN.
 - Forecast data retrieved via Spitcast, Openweather APIs.
-- Internal JSON API serving 25+ endpoints ranging from session creation to image retrieval.
+- Internal JSON API serving 25+ endpoints ranging from session creation to forecast retrieval.
 - Automated seeding:
 	- Spot location data seeded from Spitcast.
 	- Custom scraper finds spot images via Google.
