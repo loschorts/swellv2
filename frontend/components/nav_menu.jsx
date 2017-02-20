@@ -57,6 +57,7 @@ class NavMenu extends React.Component {
 				<NavMenuItem 
 					key="nav-3" 
 					text="Guest Login" 
+					onClick={this.closeDropDown} 
 					action={guest}/>
 			]
 		} else {

@@ -3,6 +3,9 @@ import autoBind from 'react-autobind';
 import {connect} from "react-redux";
 import {searchSpotName} from '../actions/search';
 import { Link } from 'react-router'
+
+const logo = "http://res.cloudinary.com/swell/image/upload/v1487576412/swell-logo.png"
+
 class HomeJumbotron extends React.Component {
 	constructor(props){
 		super(props);
@@ -31,7 +34,7 @@ class HomeJumbotron extends React.Component {
 			<div id="home-jumbotron" className="group">
 				<div id="placeholder"/>
 				<div id="header">
-					<img src="assets/swell-logo.png" className="invert"/>
+					<img src={logo} className="invert"/>
 					<h1> 
 						SWELL
 					</h1>
