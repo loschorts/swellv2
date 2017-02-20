@@ -115,6 +115,7 @@ GEM
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     netrc (0.11.0)
+    newrelic_rpm (3.17.0.325)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     normalize-rails (3.0.3)
@@ -236,6 +237,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   json
+  newrelic_rpm
   normalize-rails
   pg (~> 0.18.4)
   poltergeist
