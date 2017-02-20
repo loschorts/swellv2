@@ -20,3 +20,8 @@
 	max-height: 20px;
 	max-width: 20px;
 }
+
+#favorites-message {
+	text-align: center;
+	margin: auto;
+}

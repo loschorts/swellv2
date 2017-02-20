@@ -20,7 +20,7 @@ class Favorites extends React.Component {
 	}
 	thumbnails(){
 		const {fetchSpotOverview, collection} = this.props;
-		return collection.map((spot, x) => {
+		const thumbs =  collection.map((spot, x) => {
 			const onMount = (spot.overview ? null : fetchSpotOverview.bind(this, spot.id));
 			return (
 				<Thumbnail 
@@ -31,6 +31,8 @@ class Favorites extends React.Component {
 					forecastColors={true} />
 			);
 		});
+
+		return <div className="favorites">{thumbs}</div>;
 	}
 	render(){
 		const {title, desc, collection, currentUser} = this.props;
@@ -43,7 +45,7 @@ class Favorites extends React.Component {
 			}
 		}
 
-
+		if (message) return <p id="favorites-message">{message}</p>;
 		return (
 			<section className="collection">
 
@@ -51,9 +53,8 @@ class Favorites extends React.Component {
 					<h2>{title}</h2>
 					<p>{desc}</p>
 				</div>
-				<div className="favorites">
-					{message ? message : this.thumbnails()}
-				</div>
+
+				{this.thumbnails()}
 
 			</section>
 		);
