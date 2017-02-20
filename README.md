@@ -26,10 +26,8 @@ http://surfswell.herokuapp.com
 
 -	Single-page rendering via React/ReactRouter/ReactRedux.
 - Redux store with `Session`, `Spots`, `Search` reducers.
-
 - **Feature Highlights**
 	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
-
 		```js
 			// frontend/components/favorites.jsx
 			class Favorites extends React.Component{
@@ -81,7 +79,6 @@ http://surfswell.herokuapp.com
 				return "";
 			}
 		```
-
 	- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
 
 	```js
@@ -109,9 +106,7 @@ http://surfswell.herokuapp.com
 		}
 	}
 	```
-	
 - Entry file: [`swell.jsx`](./frontend/swell.jsx)
-
 - Page-Level Components: 
 	- [`Focus`](./frontend/components/focus.jsx)
 		- [`Weather`](./frontend/components/weather.jsx)
@@ -121,7 +116,6 @@ http://surfswell.herokuapp.com
 	- [`Home`](./frontend/components/home.jsx)
 		- [`Favorites`][favorites]
 		- [`Collection`][collection]
-
 - Key API files: 
 	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
 	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
