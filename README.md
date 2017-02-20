@@ -122,10 +122,12 @@ class Collection extends React.Component {
 - Key Controllers:
 	- [`Spot`](./app/controllers/spots_controller.rb)
 	- [`User`](./app/controllers/user_controller.rb)
+
 #### Features
 ##### Seeding from Remote Data
-	- [`seeds.rb`](./db/seeds.rb)
-	- [`seeds_helper.rb`](./db/seeds_helper.rb)
+
+- [`seeds.rb`](./db/seeds.rb)
+- [`seeds_helper.rb`](./db/seeds_helper.rb)
 
 Spot information is seeded by `fetch_spots_remote` in `seeds.rb`. `fetch_spots_remote` requests spots from the external Spitcast API, verifies their forecast data, and writes them to a text file for later parsing by `create_spots` method call in the seed file. 
 
