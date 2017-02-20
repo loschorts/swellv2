@@ -74,33 +74,33 @@ http://surfswell.herokuapp.com
 				return "";
 			}
 		```
-- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
+	- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
 
-	```js
-	// frontend/components/collection.jsx
-	class Collection extends React.Component {
-		...
-		componentDidMount(){
-			this.scrollEvent = $(window).scroll( () => {
-			  if($(window).scrollTop() + $(window).height() == $(document).height()) {
-		      this.addRows();
-		   	}
-			});
-		}
-		addRows(){
-			const {show} = this.state;
-			const {collection} = this.props;
+		```js
+		// frontend/components/collection.jsx
+		class Collection extends React.Component {
+			...
+			componentDidMount(){
+				this.scrollEvent = $(window).scroll( () => {
+				  if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			      this.addRows();
+			   	}
+				});
+			}
+			addRows(){
+				const {show} = this.state;
+				const {collection} = this.props;
 
-			if (show === collection.length) return;
+				if (show === collection.length) return;
 
-			if (show + 9 <= collection.length){
-				this.setState({show: this.state.show + 9})
-			} else {
-				this.setState({show: collection.length})
+				if (show + 9 <= collection.length){
+					this.setState({show: this.state.show + 9})
+				} else {
+					this.setState({show: collection.length})
+				}
 			}
 		}
-	}
-	```
+		```
 
 [thumbnail]: ./frontend/components/favorites.jsx
 [favorites]: ./frontend/components/favorites.jsx
