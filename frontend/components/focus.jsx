@@ -13,6 +13,8 @@ import DailyChart from "./daily_chart";
 import {fetchSpotForecast, fetchSpotWeather} from '../actions/spots';
 import {getBy, now} from '../utils/selectors';
 
+const loader = "http://res.cloudinary.com/swell/image/upload/v1487570836/ripple.svg";
+
 class Focus extends React.Component {
 	componentDidMount(){
 		const {id} = this.props.params;
@@ -23,7 +25,7 @@ class Focus extends React.Component {
 		const spot = getBy(spots, "id", parseInt(id));
 		const forecast = spot.forecast;
 
-		if (!forecast) return <div className="center"> loading... </div>
+		if (!forecast) return <div className="center"><img src={loader}/></div>
 
 		return (
 			<div id="focus">

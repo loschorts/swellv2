@@ -11,7 +11,6 @@ import {getBy} from '../utils/selectors';
 
 class Home extends React.Component {
 	render(){
-		console.log(this.props.favorites)
 		return(
 			<div id="home">
 				<HomeJumbotron/>

@@ -5,6 +5,7 @@ import autoBind from 'react-autobind';
 
 import NavMenuItem from "./nav_menu_item";
 import AuthForm from "./auth_form";
+import clickOutside from 'react-click-outside';
 
 import { login, logout, guest } from '../actions/session';
 
@@ -15,7 +16,9 @@ class NavMenu extends React.Component {
 
 		autoBind(this);
 	}
-
+	handleClickOutside(){
+		this.closeDropDown();
+	}
 	render () {
 		const { showing, formAction } = this.state;
 		const { currentUser } = this.props;
@@ -43,14 +46,26 @@ class NavMenu extends React.Component {
 
 		if (!currentUser) {
 			items = [
-				<NavMenuItem key="nav-1" text="Sign up" action={this.show("signup")}/>,
-				<NavMenuItem key="nav-2" text="Login" action={this.show("login")}/>,
-				<NavMenuItem key="nav-3" text="Guest Login" 
+				<NavMenuItem 
+					key="nav-1" 
+					text="Sign up" 
+					action={this.show("signup")}/>,
+				<NavMenuItem 
+					key="nav-2" 
+					text="Login" 
+					action={this.show("login")}/>,
+				<NavMenuItem 
+					key="nav-3" 
+					text="Guest Login" 
 					action={guest}/>
 			]
 		} else {
 			items = [
-				<NavMenuItem key="nav-1" text="Logout" action={logout}/>
+				<NavMenuItem 
+					key="nav-1" 
+					text="Logout" 
+					onClick={this.closeDropDown} 
+					action={logout}/>
 				]
 		}
 
@@ -87,4 +102,4 @@ const mapDispatch = {
 	login, logout, guest
 };
 
-export default connect(mapState, mapDispatch)(NavMenu);
+export default connect(mapState, mapDispatch)(clickOutside(NavMenu));
