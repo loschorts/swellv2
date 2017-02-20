@@ -44,31 +44,10 @@ http://surfswell.herokuapp.com
 - **Feature Highlights**
 	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
 		```js
-			// frontend/components/favorites.jsx
-			class Favorites extends React.Component{
-				...
-				thumbnails(){
-						const {fetchSpotOverview, collection} = this.props;
-						const thumbs =  collection.map((spot, x) => {
-							const onMount = (spot.overview ? null : fetchSpotOverview.bind(this, spot.id));
-							return (
-								<Thumbnail 
-									onMount={onMount}
-									spot={spot} 
-									img={this.images[spot.id]} 
-									key={`favorite${x}`}
-									forecastColors={true} />
-							);
-						});
-					};
-					return <div className="favorites">{thumbs}</div>;
-				}
-			}
-
 			// frontend/components/thumbnail.jsx
 			class Thumbnail extends React.Component {
 				componentDidMount(){
-					if (this.props.onMount) this.props.onMount();
+					if (this.props.onMount) this.props.onMount(); // fetches spot overview
 				}
 				render() {
 					const {spot, img, double, forecastColors} = this.props;
@@ -126,7 +105,6 @@ http://surfswell.herokuapp.com
 [favorites]: ./frontend/components/favorites.jsx
 [collection]: ./frontend/components/collection.jsx
 
-
 ## Backend Highlights
 
 ## In Development
@@ -135,6 +113,7 @@ http://surfswell.herokuapp.com
 - Image Gallery / Image Upload
 - Recommendations / Best Spot Today
 - Wetsuit Recommendations
+- Forecast Widget for mixing into external sites.
 
 ## Known Issues
 
