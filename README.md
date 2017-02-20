@@ -122,6 +122,7 @@ http://surfswell.herokuapp.com
 	- [Automated Image Seeding](./lib/tasks/images.rake) 
 		- `images:search`: runs a [custom image scraper](./lib/image_scraper.js) that finds suitable google images and saves them to cloudinary CDN.
 		- `images:attach`: attaches cloudinary images to `Spot` models based on name
+		
 		```rb
 		namespace :images do 
 
