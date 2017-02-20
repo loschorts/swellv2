@@ -41,6 +41,12 @@ http://surfswell.herokuapp.com
 	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
 	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
 	- [`frontend/utils/api.js`](./frontend/actions/api.js)
+
+
+[thumbnail]: ./frontend/components/thumbnail.jsx
+[favorites]: ./frontend/components/favorites.jsx
+[collection]: ./frontend/components/collection.jsx
+
 #### Feature Highlights
 ##### Color-coded thumbnails based on spot forecast conditions. 
 `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
@@ -104,10 +110,6 @@ class Collection extends React.Component {
 	}
 }
 ```
-
-[thumbnail]: ./frontend/components/favorites.jsx
-[favorites]: ./frontend/components/favorites.jsx
-[collection]: ./frontend/components/collection.jsx
 
 ### Backend
 
