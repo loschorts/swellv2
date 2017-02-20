@@ -33,7 +33,17 @@ class Favorites extends React.Component {
 		});
 	}
 	render(){
-		const {title, desc, collection} = this.props;
+		const {title, desc, collection, currentUser} = this.props;
+		let message;
+		if (collection.length === 0) {
+			if (currentUser) {
+				message = "Add favorites to see them at a glance."
+			} else {
+				message = "Login to see your favorites at a glance."
+			}
+		}
+
+
 		return (
 			<section className="collection">
 
@@ -42,7 +52,7 @@ class Favorites extends React.Component {
 					<p>{desc}</p>
 				</div>
 				<div className="favorites">
-					{this.thumbnails()}
+					{message ? message : this.thumbnails()}
 				</div>
 
 			</section>
@@ -50,8 +60,9 @@ class Favorites extends React.Component {
 	}
 }
 
+const mapState = ({Session: {currentUser}}) => ({currentUser});
 const mapDispatch = {
 	fetchSpotOverview
 }
 
-export default connect(null, mapDispatch)(Favorites);
+export default connect(mapState, mapDispatch)(Favorites);
