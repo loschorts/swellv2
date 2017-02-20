@@ -28,29 +28,30 @@ http://surfswell.herokuapp.com
 - Redux store with `Session`, `Spots`, `Search` reducers.
 
 - **Feature Highlights**
-	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` fetches conditions and then changes header background to reflect condition quality.
+	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
 
 		```js
 			// frontend/components/favorites.jsx
 			class Favorites extends React.Component{
 				...
 				thumbnails(){
-				const {fetchSpotOverview, collection} = this.props;
-				const thumbs =  collection.map((spot, x) => {
-					const onMount = (spot.overview ? null : fetchSpotOverview.bind(this, spot.id));
-					return (
-						<Thumbnail 
-							onMount={onMount}
-							spot={spot} 
-							img={this.images[spot.id]} 
-							key={`favorite${x}`}
-							forecastColors={true} />
-					);
-				});
+						const {fetchSpotOverview, collection} = this.props;
+						const thumbs =  collection.map((spot, x) => {
+							const onMount = (spot.overview ? null : fetchSpotOverview.bind(this, spot.id));
+							return (
+								<Thumbnail 
+									onMount={onMount}
+									spot={spot} 
+									img={this.images[spot.id]} 
+									key={`favorite${x}`}
+									forecastColors={true} />
+							);
+						});
+					};
+					return <div className="favorites">{thumbs}</div>;
+				}
 			}
 
-		return <div className="favorites">{thumbs}</div>;
-	}
 			// frontend/components/thumbnail.jsx
 			class Thumbnail extends React.Component {
 				componentDidMount(){
@@ -81,7 +82,7 @@ http://surfswell.herokuapp.com
 			}
 		```
 
-	- Infinite scroll of spot thumbnails
+	- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
 
 	```js
 	// frontend/components/collection.jsx
@@ -108,8 +109,7 @@ http://surfswell.herokuapp.com
 		}
 	}
 	```
-
-
+	
 - Entry file: [`swell.jsx`](./frontend/swell.jsx)
 
 - Page-Level Components: 
