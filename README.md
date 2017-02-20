@@ -42,7 +42,6 @@ http://surfswell.herokuapp.com
 	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
 	- [`frontend/utils/api.js`](./frontend/utils/api.js)
 
-
 [thumbnail]: ./frontend/components/thumbnail.jsx
 [favorites]: ./frontend/components/favorites.jsx
 [collection]: ./frontend/components/collection.jsx
@@ -166,6 +165,8 @@ The current implementation solves all of these problems, but at a significant co
 - Recommendations / Best Spot Today
 - Wetsuit Recommendations
 - Forecast Widget for mixing into external sites.
+- Moveable Map on Focus page.
+- Index Map labeling Spots on Home page.
 
 ## Issues
 
