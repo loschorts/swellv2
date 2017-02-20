@@ -48,7 +48,7 @@ http://surfswell.herokuapp.com
 
 #### Feature Highlights
 ##### Color-coded thumbnails based on spot forecast conditions. 
-`Thumbnail` dispatches a request for conditions and then changes its header background to reflect condition quality.
+`Thumbnail` dispatches a request for spot conditions and then changes its header background to reflect condition quality.
 
 ```js
 	// frontend/components/thumbnail.jsx
