@@ -43,6 +43,7 @@ http://surfswell.herokuapp.com
 	- [`frontend/utils/api.js`](./frontend/actions/api.js)
 - **Feature Highlights**
 	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
+		
 		```js
 			// frontend/components/thumbnail.jsx
 			class Thumbnail extends React.Component {
