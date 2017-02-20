@@ -149,7 +149,7 @@ These image tasks completely automate the tedius and time-consuming task of find
 	- [`Spot`](./app/models/spot.rb)
 	- [`SpotsController`](./app/controllers/api/spots_controller.rb)
 
-Spot forecasts are fetched and packaged server-side into an easily digestible object that is return to the client. This provides a convenient API hook (`api/spots/:id/forecast`) for client-side code. 
+Spot forecasts are fetched and packaged server-side into an easily digestible object that is returned to the client. This provides a convenient API hook (`api/spots/:id/forecast`) for client-side code. 
 
 Prior to this implementation, forecast information was fetched client-side directly from the API. This had several drawbacks: 
 - Info received was not packaged for easy consumption by the application, creating high demand for boilerplate formatting.
