@@ -40,7 +40,7 @@ http://surfswell.herokuapp.com
 - Key API files: 
 	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
 	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
-	- [`frontend/utils/api.js`](./frontend/actions/api.js)
+	- [`frontend/utils/api.js`](./frontend/utils/api.js)
 
 
 [thumbnail]: ./frontend/components/thumbnail.jsx
