@@ -41,66 +41,69 @@ http://surfswell.herokuapp.com
 	- [`frontend/actions/spots.js`](./frontend/actions/spots.js)
 	- [`frontend/actions/session.js`](./frontend/actions/spots.js)
 	- [`frontend/utils/api.js`](./frontend/actions/api.js)
-- **Feature Highlights**
-	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
-		
-		```js
-			// frontend/components/thumbnail.jsx
-			class Thumbnail extends React.Component {
-				componentDidMount(){
-					if (this.props.onMount) this.props.onMount(); // fetches spot overview
-				}
-				render() {
-					const {spot, img, double, forecastColors} = this.props;
-					let color;
-					if (forecastColors && spot.overview) {
-						color = colors(now(spot.overview).overall)
-					}
-					return (
-						<div 
-							className={`thumbnail ${double ? "double" : ""}`} 
-							style={{backgroundImage: img, backgroundSize: "cover"}}>
-							<h3 className={color}><Link to={`/spots/${spot.id}`}>{spot.name}</Link></h3>
-						</div>	
-					);
-				}
-			}
-			const colors = forecast => {
-				if (forecast.indexOf("Poor") >= 0) return "blue";
-				if (forecast.indexOf("Fair") >= 0) return "green";
-				if (forecast.indexOf("Good") === 0) return "epic";
-				if (forecast.indexOf("Good") >= 0) return "gold";
-				if (forecast.indexOf("Epic") >= 0) return "epic";
-				return "";
-			}
-		```
-	- **Infinite highlights scroll:** `Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
+#### Feature Highlights
+##### Color-coded thumbnails based on spot forecast conditions. 
+`Thumbnail` dispatches request for conditions and then changes header background to reflect condition quality.
 
-		```js
-		// frontend/components/collection.jsx
-		class Collection extends React.Component {
-			...
-			componentDidMount(){
-				this.scrollEvent = $(window).scroll( () => {
-				  if($(window).scrollTop() + $(window).height() == $(document).height()) {
-			      this.addRows();
-			   	}
-				});
-			}
-			addRows(){
-				const {show} = this.state;
-				const {collection} = this.props;
-
-				if (show === collection.length) return;
-
-				if (show + 9 <= collection.length){
-					this.setState({show: this.state.show + 9})
-				} else {
-					this.setState({show: collection.length})
-				}
-			}
+```js
+	// frontend/components/thumbnail.jsx
+	class Thumbnail extends React.Component {
+		componentDidMount(){
+			if (this.props.onMount) this.props.onMount(); // fetches spot overview
 		}
-		```
+		render() {
+			const {spot, img, double, forecastColors} = this.props;
+			let color;
+			if (forecastColors && spot.overview) {
+				color = colors(now(spot.overview).overall)
+			}
+			return (
+				<div 
+					className={`thumbnail ${double ? "double" : ""}`} 
+					style={{backgroundImage: img, backgroundSize: "cover"}}>
+					<h3 className={color}><Link to={`/spots/${spot.id}`}>{spot.name}</Link></h3>
+				</div>	
+			);
+		}
+	}
+	const colors = forecast => {
+		if (forecast.indexOf("Poor") >= 0) return "blue";
+		if (forecast.indexOf("Fair") >= 0) return "green";
+		if (forecast.indexOf("Good") === 0) return "epic";
+		if (forecast.indexOf("Good") >= 0) return "gold";
+		if (forecast.indexOf("Epic") >= 0) return "epic";
+		return "";
+	}
+```
+##### Infinite highlights scroll
+
+`Collection` loads more thumbnails as the user scrolls to the bottom of the screen.
+
+```js
+// frontend/components/collection.jsx
+class Collection extends React.Component {
+	...
+	componentDidMount(){
+		this.scrollEvent = $(window).scroll( () => {
+		  if($(window).scrollTop() + $(window).height() == $(document).height()) {
+	      this.addRows();
+	   	}
+		});
+	}
+	addRows(){
+		const {show} = this.state;
+		const {collection} = this.props;
+
+		if (show === collection.length) return;
+
+		if (show + 9 <= collection.length){
+			this.setState({show: this.state.show + 9})
+		} else {
+			this.setState({show: collection.length})
+		}
+	}
+}
+```
 
 [thumbnail]: ./frontend/components/favorites.jsx
 [favorites]: ./frontend/components/favorites.jsx
@@ -118,45 +121,45 @@ http://surfswell.herokuapp.com
 - Key Controllers:
 	- [`Spot`](./app/controllers/spots_controller.rb)
 	- [`User`](./app/controllers/user_controller.rb)
-- Features
-	- [Automated Image Seeding](./lib/tasks/images.rake) 
-		- `images:search`: runs a [custom image scraper](./lib/image_scraper.js) that finds suitable google images and saves them to cloudinary CDN.
-		- `images:attach`: attaches cloudinary images to `Spot` models based on name
-		
-		```rb
-		namespace :images do 
+#### Features
+##### Seeding from Remote Data
+	- [`seeds.rb`](./db/seeds.rb)
+	- [`seeds_helper.rb`](./db/seeds_helper.rb)
 
-			task search: :environment do
+Spot information is seeded by `fetch_spots_remote` in `seeds.rb`. `fetch_spots_remote` requests spots from the external Spitcast API, verifies their forecast data, and writes them to a text file for later parsing by `create_spots` method call in the seed file. 
 
-				already_have = Set.new
+Because the information retrieved rarely changes, `fetch_spots_remote` is easily toggleable, allowing the administrator to decide whether to run this network-heavy action when re-seeding the app.
 
-				get_image_list.each do |image|
-					rmatch = /^spots\/(.*)\//.match(image)
-					already_have << rmatch[1] if rmatch
-				end
+##### Image Scraping
+- Files: 
+	- [`Images Rake`](./lib/images.rake)
+	- [`Image Scraper`](./lib/images_scraper.js)
 
-				to_fetch = Spot.pluck(:name).to_a - already_have.map{ |x| x.gsub("_", " ") }.to_a
-				list = to_fetch.map {|n| "\"" + n + "\" "}.join 
+- Tasks:
+	- `images:search`: runs a [custom image scraper](./lib/image_scraper.js) that finds suitable google images and saves them to cloudinary CDN.
+	- `images:attach`: attaches cloudinary images to `Spot` models based on name
 
-				system "node lib/image_scraper.js #{list}"
-			end
+These image tasks completely automate the tedius and time-consuming task of finding suitable images with which to populate seed data for the image-heavy UX.
 
-			task attach: :environment do
-				get_image_list.each do |path|
-					spotname = /^spots\/(.*)\//.match(path)
-					if spotname
-						name = spotname[1].gsub("_", " ")
-						spot = Spot.find_by(name: name)
-						Image.create(path: path, imageable: Spot.find_by(name: name))
-					end
-				end
-			end
-		end
-		```
+##### Spot Forecast Retrieval
+- Files: 
+	- [`Spot`](./app/models/spot.rb)
+	- [`SpotsController`](./app/controllers/spots_controller.rb)
+
+Spot forecasts are fetched and packaged server-side into an easily digestible object that is return to the client. This provides a convenient API hook (`api/spots/:id/forecast`) for client-side code. 
+
+Prior to this implementation, forecast information was fetched client-side directly from the API. This had several drawbacks: 
+- Info received was not packaged for easy consumption by the application, creating high demand for boilerplate formatting.
+- Race conditions around dependent requests would lead to brittle code.
+- Components would render piecemeal as information trickled in, resulting in amateurish UX.
+- API keys were exposed to the client.
+
+The current implementation solves all of these problems, but at a significant cost: By making requests synchronously on the server-side, forecast retrieval blocks the server from handling other requests (such as login/logout) for large chunks of time. Solution TBD, but some kind of concurrent implementation seems necessary.
+
 ## In Development
 
-- Improved performance of HTTP requests made server-side.
-- Improved `DailyChart` with detail, scale.
+- Improve performance of HTTP requests made server-side.
+- Improve `DailyChart` with detail, scale.
 - Image Gallery / Image Upload
 - Recommendations / Best Spot Today
 - Wetsuit Recommendations

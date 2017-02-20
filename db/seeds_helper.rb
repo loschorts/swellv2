@@ -31,18 +31,6 @@ def reset_tables
 		
 	Region.destroy_all
 	ActiveRecord::Base.connection.reset_pk_sequence!("regions")
-
-	# User.destroy_all
-	# ActiveRecord::Base.connection.reset_pk_sequence!("users")
-
-	# Favorite.destroy_all
-	# ActiveRecord::Base.connection.reset_pk_sequence!("favorites")
-
-	# SpotPhoto.destroy_all
-	# ActiveRecord::Base.connection.reset_pk_sequence!("spot_photos")
-
-	# NeighborRelation.destroy_all
-	# ActiveRecord::Base.connection.reset_pk_sequence!("neighbor_relations")
 end
 
 def fetch_spots_remote(should_run = false)
@@ -141,36 +129,3 @@ end
 def get_region_id(county_name)
 	return Region.find_by(name: $REGIONS[county_name]).id
 end
-
-# def fetch_neighbors_remote(should_run = false)
-# 	return unless should_run
-
-# 	Spot.all.each do |spot|
-# 		puts "fetching neighbors for #{spot.name}"
-
-# 		url = URI.parse("http://api.spitcast.com/api/spot/neighbors/#{spot.spitcast_id}/")
-# 		req = Net::HTTP::Get.new(url.to_s)
-# 		res = Net::HTTP.start(url.host, url.port) {|http|
-# 		  http.request(req)
-# 		}
-
-# 		if res.message == "OK"
-# 			File.open("./neighbors/#{spot.id}", "w") { |f| f.write(res.body) }
-# 		else 
-# 			puts "received bad response for #{url}"
-# 			File.open("./neighbors/#{spot.id}", "w") { |f| f.write("[]") }
-# 		end
-# 	end
-# end
-
-# def set_neighbors
-# 	Spot.all.each do |spot|
-# 		f = File.read("./neighbors/#{spot.id}")
-# 		results = JSON.parse(f)
-# 		results.each do |result|
-# 			neighbor = Spot.find_by(spitcast_id: result["spot_id"])
-# 			NeighborRelation.create(spot_id: spot.id, neighbor_id: neighbor.id)
-# 		end
-# 	end
-# end
-
