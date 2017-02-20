@@ -147,7 +147,7 @@ These image tasks completely automate the tedius and time-consuming task of find
 ##### Spot Forecast Retrieval
 - Files: 
 	- [`Spot`](./app/models/spot.rb)
-	- [`SpotsController`](./app/controllers/spots_controller.rb)
+	- [`SpotsController`](./app/controllers/api/spots_controller.rb)
 
 Spot forecasts are fetched and packaged server-side into an easily digestible object that is return to the client. This provides a convenient API hook (`api/spots/:id/forecast`) for client-side code. 
 
