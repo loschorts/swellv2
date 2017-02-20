@@ -9,8 +9,9 @@ import Weather from "./weather";
 import Waves from "./waves";
 import WavesDetail from "./waves_detail";
 import DailyChart from "./daily_chart";
-
+import Favorite from './favorite';
 import {fetchSpotForecast, fetchSpotWeather} from '../actions/spots';
+import {toggleFavorite} from '../actions/session';
 import {getBy, now} from '../utils/selectors';
 
 const loader = "http://res.cloudinary.com/swell/image/upload/v1487570836/ripple.svg";
@@ -21,7 +22,7 @@ class Focus extends React.Component {
 		this.props.fetchSpotForecast(parseInt(id));
 	}
 	render(){
-		const {params: {id}, spots, counties} = this.props;
+		const {params: {id}, spots, counties, toggleFavorite, currentUser} = this.props;
 		const spot = getBy(spots, "id", parseInt(id));
 		const forecast = spot.forecast;
 
@@ -45,6 +46,10 @@ class Focus extends React.Component {
 									<h2 className="size">
 										{now(forecast.overview).size} ft
 									</h2>
+									<Favorite 
+										toggleFavorite={toggleFavorite}
+										spot={spot} 
+										user={currentUser}/>
 								</div>
 							</div>
 							<Weather
@@ -103,7 +108,7 @@ class Focus extends React.Component {
 		this.forceUpdate();
 	}
 }
-const mapState = ({Spots, Counties}) => ({ spots: Spots, counties: Counties });
-const mapDispatch = ({fetchSpotForecast, fetchSpotWeather});
+const mapState = ({Session: {currentUser}, Spots, Counties}) => ({ spots: Spots, counties: Counties, currentUser });
+const mapDispatch = ({fetchSpotForecast, fetchSpotWeather, toggleFavorite});
 
 export default connect(mapState, mapDispatch)(Focus);

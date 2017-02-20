@@ -10,4 +10,9 @@ class Favorite < ActiveRecord::Base
 		Favorite.where(user_id: self.user_id)
 	end
 
+	def self.toggle(user_id, spot_id)
+		fav = Favorite.find_by(user_id: user_id, spot_id: spot_id)
+		fav ? fav.destroy : Favorite.create(user_id: user_id, spot_id: spot_id)
+	end
+
 end

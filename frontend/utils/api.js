@@ -17,3 +17,5 @@ export const logout = () => $.ajax({ url: "api/session", type: "DELETE" });
 export const searchSpotName = name => $.get("api/spots/search", {name});
 
 export const randomImage = () => $.get('api/images/random');
+
+export const toggleFavorite = id => $.post("api/favorites/toggle", {spot_id: id});

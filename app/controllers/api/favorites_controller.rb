@@ -11,6 +11,16 @@ class Api::FavoritesController < ApplicationController
 		end
 	end
 
+	def toggle
+		@user = current_user
+		if @user
+			Favorite.toggle(current_user.id, params[:spot_id])
+			render "api/users/show"
+		else
+			render json: {errors: ["not logged in"]}, status: 422
+		end
+	end
+
 	def index
 		@favorites = current_user ? current_user.favorites : []
 		render json: @favorites.map(&:spot_id)

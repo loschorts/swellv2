@@ -1,6 +1,10 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_AUTH_ERRORS } from '../constants';
 import * as API from '../utils/api';
 
+export const toggleFavorite = spot => dispatch => {
+	API.toggleFavorite(spot.id).then(user => dispatch(receiveCurrentUser(user)))
+}
+
 export const receiveCurrentUser = user => ({
 	type: RECEIVE_CURRENT_USER,
 	user

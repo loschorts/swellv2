@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     end
     resources :counties, only: [:show, :index], concerns: :location
     resources :regions, only: [:show, :index]
-    resources :favorites, only: [:create, :index, :destroy]
+    resources :favorites, only: [:create, :index, :destroy] do 
+      collection {post :toggle}
+    end
     resources :images, only: [] do
       collection {get :random}
     end
