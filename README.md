@@ -28,7 +28,7 @@ http://surfswell.herokuapp.com
 - Redux store with `Session`, `Spots`, `Search` reducers.
 
 - **Feature Highlights**
-	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` `this.props.onMount` callback fetches conditions and then changes header background to reflect condition quality.
+	- **Color-coded thumbnails based on spot forecast conditions.** `Thumbnail` fetches conditions and then changes header background to reflect condition quality.
 
 		```js
 			// frontend/components/favorites.jsx
