@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'pry-rails'
 gem 'newrelic_rpm'
 gem 'json'
 gem 'normalize-rails'
