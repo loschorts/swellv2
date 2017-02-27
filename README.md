@@ -2,8 +2,7 @@
 
 A swellular device for checking California surf forecasts.
 
-http://surfswell.herokuapp.com
-
+http://swell.report
 ## Features
 
 - Real daily forecasts for 150+ surf spots from Malibu to Mavericks.
