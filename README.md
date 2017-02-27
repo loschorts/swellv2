@@ -14,7 +14,7 @@ http://swell.report
 ## Engineering Overview
 
 - Built on Postgres/Rails/React/Redux.
-- Heroku Hosting, Cloudinary CDN.
+- Heroku Hosting, Cloudinary CDN, w/ Cloudflare.
 - Forecast data retrieved via Spitcast, Openweather APIs.
 - Internal JSON API serving 25+ endpoints ranging from session creation to forecast retrieval.
 - Automated seeding:
