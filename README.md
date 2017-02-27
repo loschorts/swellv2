@@ -2,7 +2,7 @@
 
 A swellular device for checking California surf forecasts.
 
-http://swell.report
+http://surfswell.herokuapp.com
 
 ## Features
 
